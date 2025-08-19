@@ -2,8 +2,10 @@ import {
   Body,
   Controller,
   Get,
+  HttpStatus,
   InternalServerErrorException,
   Post,
+  Query,
   Res,
   UploadedFiles,
   UseInterceptors,
@@ -70,15 +72,33 @@ export class AppController {
       });
       const data = await this.appService.createPdf(body);
 
-      return servePdf(
-        res,
-        join(constants.UPLOADED_PDF_DIRECTORY, data.fileName),
-      );
+      return res.status(HttpStatus.OK).json({
+        success: true,
+        data: join(constants.UPLOADED_PDF_DIRECTORY, data.fileName),
+      });
     } catch (error) {
       console.log('Error processing form data:', error);
       throw new InternalServerErrorException({
         success: false,
         message: error,
+      });
+    }
+  }
+
+  @Get('downloadPdf')
+  async getPdf(@Res() res: any, @Query('pdfPath') pdfPath: any) {
+    try {
+      if (!pdfPath) {
+        throw new InternalServerErrorException({
+          success: false,
+          message: 'File name is required',
+        });
+      }
+      return servePdf(res, pdfPath);
+    } catch (error) {
+      throw new InternalServerErrorException({
+        success: false,
+        message: 'Something went wrong while generating the PDF',
       });
     }
   }
