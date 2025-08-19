@@ -53,7 +53,11 @@ export class AppService {
 
     const template = await handlebars.compile(pdfTemplate);
 
-    const htmlContent = await template(payload);
+    const htmlContent = await template({
+      ...payload,
+      firstLogoUrl: 'http://localhost:3000/images/logo1.png',
+      secondLogoUrl: 'http://localhost:3000/images/logo2.png',
+    });
     const customPayload = {
       locationTableImage: '',
       firstLogoUrl: 'http://localhost:3000/images/logo1.png',

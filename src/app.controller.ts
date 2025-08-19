@@ -23,8 +23,7 @@ export class AppController {
   @UseInterceptors(
     FileFieldsInterceptor(
       [
-        { name: 'firstLogoUrl', maxCount: 1 },
-        { name: 'secondLogoUrl', maxCount: 1 },
+        { name: 'locationTableImage', maxCount: 1 },
         { name: 'complexImageUrl', maxCount: 1 },
         { name: 'locationFtuImageUrl', maxCount: 1 },
         { name: 'schematicDrawingImageUrl', maxCount: 1 },
