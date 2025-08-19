@@ -1,0 +1,251 @@
+{
+  "locationTableImage": "https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU",
+  "secondLogoUrl": "http://localhost:3000",
+  "firstLogoUrl": "http://localhost:3000",
+  "locationTable": {
+    "bag_pand_id": "0363100012177209",
+    "hb_nr": "HB0068",
+    "straat_huisnrs": "Singel 367",
+    "postcode_plaats": "1012 WJ Amsterdam",
+    "ap_gebied": "ASD-HDF",
+    "dp": "ASD-HDF-ODP008",
+    "projectnr": "14246",
+    "aannemer": "",
+    "datum": "07-07-2025",
+    "naam_schouwer": "Bayram Sarikaya"
+  },
+
+  "decisionTree": {
+    "flowchartUrl": "https://via.placeholder.com/600x500",
+    "notesText": "Kabels worden naar boven gebracht vanaf begane grond."
+  },
+  "complexImageUrl": "https://via.placeholder.com/400x300",
+  "locationFtuImageUrl": "https://via.placeholder.com/350x400",
+  "schematicDrawingImageUrl": "https://via.placeholder.com/350x400",
+  "jobDescription": {
+    "rows": [
+      {
+        "adres": "Singel",
+        "hnr": "387-2",
+        "lengte": "15",
+        "invoer": "1",
+        "stp": "1",
+        "dp": "008",
+        "streng_id": "008-1-3"
+      },
+      {
+        "adres": "Singel",
+        "hnr": "387-1",
+        "lengte": "12",
+        "invoer": "1",
+        "stp": "1",
+        "dp": "008",
+        "streng_id": "008-1-2"
+      },
+      {
+        "adres": "Singel",
+        "hnr": "387-H",
+        "lengte": "5",
+        "invoer": "1",
+        "stp": "1",
+        "dp": "008",
+        "streng_id": "008-1-1"
+      }
+    ]
+  },
+  "site_survey": {
+    "datum_site_survey": "07-07-2025",
+    "glasvezelvoorbereider": "B. Sarkaya",
+    "telefoon": "06-38161722",
+    "type_pand": {
+      "app_complex": true,
+      "duplex": true,
+      "comm_ruimte_aanwezig": true,
+      "anders": true
+    },
+    "monumentaal_pand_janes": "hhh",
+    "type_woningen": "Hoog",
+    "aantal_woningen": 3,
+    "aantal_per_etage": {
+      "B_G": 1,
+      "first": 1,
+      "second": 1,
+      "third": 3,
+      "fourth": 4,
+      "fifth": 5,
+      "sixth": 6,
+      "seventh": 7,
+      "eighth": 8,
+      "ninth": 9,
+      "tenth": 10,
+      "eleventh": 11,
+      "twelfth": 12
+    },
+    "kiogt_de_bag_met_de_realiteit": false,
+    "geschatte_hoogte_van_de_site": "3 m",
+    "stijgpunt": "Binnendoor",
+    "hoogwerker_nodig": false,
+    "site_id": "Singel 367",
+    "adressen_die_behoren_tot_de_site": "Singel 367",
+    "meerdere_vve_beheerders": false,
+    "beheer_contact": {
+      "email": "godhoudtvanonsallen@hotmail.com",
+      "telefoon": "0624264538"
+    },
+    "contactpersoon_beheer": "",
+    "contactpersoon_site": "",
+    "toegang_site_via": "hiiii",
+    "aanwezigen_tijdens_survey": {
+      "naam": "GLASVEZELNET AMSTERDAM",
+      "telefoonnummer": ""
+    },
+    "installatiegegevens": {
+      "locatie_in_of_opvoerpunt": "Voorzijde",
+      "aantal_invoergaten": 1,
+      "mantelbuis_of_koof_toegankelijk": false,
+      "bestaande_doorvoer_gebruiken": false,
+      "locatie_glasvezelaansluitpunt": "Meterkast",
+      "locatie_cai_aop": "Meterkast",
+      "locatie_isra": "Meterkast",
+      "locatie_meterkast": "Binnen woning",
+      "afwijkende_huisnummers": false,
+      "230v_aanwezig_locatie_ftu": true,
+      "brandwerende_afdichting": false,
+      "interne_verdeler_idp_gebruiken": false,
+      "doorvoerafhankelijk": true,
+      "ruimte_in_huidige_kabelgoot": false
+    }
+  },
+  "locatieImages": [
+    {
+      "url": "https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU",
+      "alt": "Aerial Map View"
+    },
+    {
+      "url": "https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU",
+      "alt": "Aerial Map View"
+    },
+    {
+      "url": "https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU",
+      "alt": "Aerial Map View"
+    },
+    {
+      "url": "https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU",
+      "alt": "Aerial Map View"
+    },
+    {
+      "url": "https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU",
+      "alt": "Aerial Map View"
+    }
+  ],
+  "beslisboomImages": [
+    {
+      "url": "https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU",
+      "alt": "Aerial Map View"
+    },
+    {
+      "url": "https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU",
+      "alt": "Aerial Map View"
+    },
+    {
+      "url": "https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU",
+      "alt": "Aerial Map View"
+    },
+    {
+      "url": "https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU",
+      "alt": "Aerial Map View"
+    },
+    {
+      "url": "https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU",
+      "alt": "Aerial Map View"
+    }
+  ],
+  "aanzichtComplexImages": [
+    {
+      "url": "https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU",
+      "alt": "Aerial Map View"
+    },
+    {
+      "url": "https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU",
+      "alt": "Aerial Map View"
+    },
+    {
+      "url": "https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU",
+      "alt": "Aerial Map View"
+    },
+    {
+      "url": "https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU",
+      "alt": "Aerial Map View"
+    },
+    {
+      "url": "https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU",
+      "alt": "Aerial Map View"
+    }
+  ],
+  "beschrijvingInvoerpuntenImages": [
+    {
+      "url": "https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU",
+      "alt": "Aerial Map View"
+    },
+    {
+      "url": "https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU",
+      "alt": "Aerial Map View"
+    },
+    {
+      "url": "https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU",
+      "alt": "Aerial Map View"
+    },
+    {
+      "url": "https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU",
+      "alt": "Aerial Map View"
+    },
+    {
+      "url": "https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU",
+      "alt": "Aerial Map View"
+    }
+  ],
+  "locatieFTUImages": [
+    {
+      "url": "https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU",
+      "alt": "Aerial Map View"
+    },
+    {
+      "url": "https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU",
+      "alt": "Aerial Map View"
+    },
+    {
+      "url": "https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU",
+      "alt": "Aerial Map View"
+    },
+    {
+      "url": "https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU",
+      "alt": "Aerial Map View"
+    },
+    {
+      "url": "https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU",
+      "alt": "Aerial Map View"
+    }
+  ],
+  "schematischeTekeningImages": [
+    {
+      "url": "https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU",
+      "alt": "Aerial Map View"
+    },
+    {
+      "url": "https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU",
+      "alt": "Aerial Map View"
+    },
+    {
+      "url": "https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU",
+      "alt": "Aerial Map View"
+    },
+    {
+      "url": "https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU",
+      "alt": "Aerial Map View"
+    },
+    {
+      "url": "https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU",
+      "alt": "Aerial Map View"
+    }
+  ]
+}
