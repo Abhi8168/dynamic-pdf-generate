@@ -7,7 +7,7 @@
       <style>
          @page {
          size: A4;
-         margin: 20mm;
+         margin: 15mm;
          }
          * {
          margin: 0;
@@ -23,7 +23,7 @@
          }
          .page {
          width: 210mm;
-         min-height: 297mm;
+         min-height: 310mm;
          padding: 5mm;
          margin: 0 auto;
          background: white;
@@ -65,9 +65,9 @@
          }
          .footer {
          position: absolute;
-         bottom: 8mm;
-         left: 8mm;
-         right: 8mm;
+         bottom: 0.1mm;
+         left: 0.1mm;
+         right: 0.1mm;
          display: flex;
          justify-content: space-between;
          font-size: 12px;
@@ -91,18 +91,22 @@
          font-weight: bold;
          margin: 10px 0 5px 0;
          }
-         .Home-page-image-container {
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         margin: 20px 0;
-         }
-         .Home-page-image {
-         width: 450px;
-         object-fit: contain;
-         aspect-ratio: 450 /450;
-         height: auto;
-         }
+.Home-page-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+}
+
+.Home-page-image {
+  width: 120mm;
+  height: 120mm;
+  border: 1px solid #ccc;  /* optional */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;   /* image hamesha fit hogi */
+  background-color: #fff;     /* white space fill karega */
+}
          .cover-image-placeholder {
          width: 100%;
          max-width: 400px;
@@ -333,6 +337,7 @@
          .page-content.case-2 img {
          width: 600px;
          height: 100%;
+          object-fit: contain;
          }
          /* Case 3 - 3 images: 2 on top, 1 below */
          .page-content.case-3 {
@@ -400,53 +405,52 @@
          </div>
          <div style="text-align: center;">
             <h1>PLAATSINGSDOCUMENT</h1>
-            <div class="Home-page-image-container">
-               <div class="Home-page-image">
-                  <img src={{locationTableImage}} alt="Plaatsingsdocument Cover Image" />
-               </div>
-            </div>
-            <table class="data-table" style="width: 60%; margin: 20px auto; border-collapse: collapse; text-align: center;">
-               <tr>
-                  <th>BAG Pand ID('s)</th>
-                  <td>{{locationTable.bag_pand_id}}</td>
-               </tr>
-               <tr>
-                  <th>HB nr.</th>
-                  <td>{{locationTable.hb_nr}}</td>
-               </tr>
-               <tr>
-                  <th>Straat + huisnrs.</th>
-                  <td>{{locationTable.straat_huisnrs}}</td>
-               </tr>
-               <tr>
-                  <th>Postcode + Plaats</th>
-                  <td>{{locationTable.postcode_plaats}}</td>
-               </tr>
-               <tr>
-                  <th>AP-gebied</th>
-                  <td>{{locationTable.ap_gebied}}</td>
-               </tr>
-               <tr>
-                  <th>DP</th>
-                  <td>{{locationTable.dp}}</td>
-               </tr>
-               <tr>
-                  <th>Projectnr.</th>
-                  <td>{{locationTable.projectnr}}</td>
-               </tr>
-               <tr>
-                  <th>Aannemer</th>
-                  <td>{{locationTable.aannemer}}</td>
-               </tr>
-               <tr>
-                  <th>Datum</th>
-                  <td>{{locationTable.datum}}</td>
-               </tr>
-               <tr>
-                  <th>Naam Schouwer</th>
-                  <td>{{locationTable.naam_schouwer}}</td>
-               </tr>
-            </table>
+<div class="Home-page-image-container">
+  <div class="Home-page-image" style="background-image: url('{{locationTableImage}}');"></div>
+</div>
+            <table class="data-table" style="width: 60%; margin: 20px auto; border-collapse: collapse; text-align: center; border: 1px solid #ccc;">
+  <tr>
+    <th style="width: 50%; border: 1px solid #ccc; padding: 8px;">BAG Pand ID('s)</th>
+    <td style="width: 50%; border: 1px solid #ccc; padding: 8px;">{{locationTable.bag_pand_id}}</td>
+  </tr>
+  <tr>
+    <th style="width: 50%; border: 1px solid #ccc; padding: 8px;">HB nr.</th>
+    <td style="width: 50%; border: 1px solid #ccc; padding: 8px;">{{locationTable.hb_nr}}</td>
+  </tr>
+  <tr>
+    <th style="width: 50%; border: 1px solid #ccc; padding: 8px;">Straat + huisnrs.</th>
+    <td style="width: 50%; border: 1px solid #ccc; padding: 8px;">{{locationTable.straat_huisnrs}}</td>
+  </tr>
+  <tr>
+    <th style="width: 50%; border: 1px solid #ccc; padding: 8px;">Postcode + Plaats</th>
+    <td style="width: 50%; border: 1px solid #ccc; padding: 8px;">{{locationTable.postcode_plaats}}</td>
+  </tr>
+  <tr>
+    <th style="width: 50%; border: 1px solid #ccc; padding: 8px;">AP-gebied</th>
+    <td style="width: 50%; border: 1px solid #ccc; padding: 8px;">{{locationTable.ap_gebied}}</td>
+  </tr>
+  <tr>
+    <th style="width: 50%; border: 1px solid #ccc; padding: 8px;">DP</th>
+    <td style="width: 50%; border: 1px solid #ccc; padding: 8px;">{{locationTable.dp}}</td>
+  </tr>
+  <tr>
+    <th style="width: 50%; border: 1px solid #ccc; padding: 8px;">Projectnr.</th>
+    <td style="width: 50%; border: 1px solid #ccc; padding: 8px;">{{locationTable.projectnr}}</td>
+  </tr>
+  <tr>
+    <th style="width: 50%; border: 1px solid #ccc; padding: 8px;">Aannemer</th>
+    <td style="width: 50%; border: 1px solid #ccc; padding: 8px;">{{locationTable.aannemer}}</td>
+  </tr>
+  <tr>
+    <th style="width: 50%; border: 1px solid #ccc; padding: 8px;">Datum</th>
+    <td style="width: 50%; border: 1px solid #ccc; padding: 8px;">{{locationTable.datum}}</td>
+  </tr>
+  <tr>
+    <th style="width: 50%; border: 1px solid #ccc; padding: 8px;">Naam Schouwer</th>
+    <td style="width: 50%; border: 1px solid #ccc; padding: 8px;">{{locationTable.naam_schouwer}}</td>
+  </tr>
+</table>
+
          </div>
       </div>
       <!-- Page 2: Table of Contents -->

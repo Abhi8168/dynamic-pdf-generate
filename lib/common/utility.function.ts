@@ -58,8 +58,14 @@ export const generatePDFBuffer = async (htmlContent: string) => {
 
   // Generate PDF
   const pdfBuffer = await page.pdf({
-    printBackground: true,
     format: 'A4',
+    printBackground: true, // Ensures backgrounds and colors are printed
+    // margin: {
+    //   top: '0.1mm',
+    //   right: '0.1mm',
+    //   bottom: '0.1mm',
+    //   left: '0.1mm',
+    // },
   });
 
   await browser.close();
