@@ -56,20 +56,30 @@ export class AppController {
       // Now replace uploaded image fields with URLs
       const baseUrl = `${process.env.BASE_URI}/images`; // update if needed
 
+      // Object.keys(files).forEach((key) => {
+      //   if (Array.isArray(files[key])) {
+      //     if (files[key].length === 1) {
+      //       // Single file (replace string)
+      //       body[key] = `${baseUrl}/${files[key][0].filename}`;
+      //     } else {
+      //       // Multiple files (replace array)
+      //       body[key] = files[key].map((f) => ({
+      //         url: `${baseUrl}/${f.filename}`,
+      //         alt: f.originalname,
+      //       }));
+      //     }
+      //   }
+      // });
       Object.keys(files).forEach((key) => {
         if (Array.isArray(files[key])) {
-          if (files[key].length === 1) {
-            // Single file (replace string)
-            body[key] = `${baseUrl}/${files[key][0].filename}`;
-          } else {
-            // Multiple files (replace array)
-            body[key] = files[key].map((f) => ({
-              url: `${baseUrl}/${f.filename}`,
-              alt: f.originalname,
-            }));
-          }
+          // Always treat as array, even if only one file
+          body[key] = files[key].map((f) => ({
+            url: `${baseUrl}/${f.filename}`,
+            alt: f.originalname,
+          }));
         }
       });
+
       const data = await this.appService.createPdf(body);
 
       return res.status(HttpStatus.OK).json({
