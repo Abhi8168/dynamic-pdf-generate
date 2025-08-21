@@ -17,6 +17,7 @@ export class AppService {
 
     const htmlContent = await template({
       ...payload,
+      locationTableImage:payload.locationTableImage[0],
       firstLogoUrl: `${process.env.BASE_URI}/static-images/logo1.png`,
       secondLogoUrl: `${process.env.BASE_URI}/static-images/logo2.png`,
       beslisboomImages: [
