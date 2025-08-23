@@ -3249,21 +3249,32 @@
                   <td>(in te vullen door gebouw eigenaar/beheerder)</td>
                </tr>
             </table>
-            <table class="hazard-table">
-               <tr class="gray-header">
-                  <td colspan="2"><strong>Opmerkingen</strong></td>
-               </tr>
-               <tr>
-                  <td><strong>1.</strong></td>
-                  <td>
-                     <strong>Opmerking 1</strong><br />Kabels worden naar boven gebracht vanaf begane grond.
-                  </td>
-               </tr>
-               <tr>
-                  <td><strong>2.</strong></td>
-                  <td><strong>Opmerking 2</strong></td>
-               </tr>
-            </table>
+         <table class="data-table" style="width: 100%;">
+    <tr style="background-color: #c0c0c0; font-weight: bold;">
+        <td colspan="2"><strong>Opmerkingen</strong></td>
+    </tr>
+    {{#if opmerkingen}}
+        {{#each opmerkingen}}
+        <tr>
+            <td style="width: 10%;"><strong>{{sr}}.</strong></td>
+            <td style="width: 90%;">
+                {{#if title}}
+                    <strong>{{title}}</strong>
+                    {{#if description}}<br /><br />{{description}}{{/if}}
+                {{else}}
+                    {{#if description}}{{description}}{{/if}}
+                {{/if}}
+            </td>
+        </tr>
+        {{/each}}
+    {{else}}
+        <tr>
+            <td colspan="2" style="text-align: center; font-style: italic; color: #666; padding: 16px;">
+                Geen opmerkingen beschikbaar
+            </td>
+        </tr>
+    {{/if}}
+</table>
          </div>
          <div class="footer">
             <div>Plaatsingsdocument: {{footerContent}}</div>
@@ -3591,7 +3602,7 @@
                   <th>DP</th>
                   <th>Streng ID</th>
                </tr>
-               {{#each jobDescription.rows}}
+               {{#each strenglijsten}}
                <tr style="font-size: 14px;">
                   <td>{{adres}}</td>
                   <td>{{hnr}}</td>

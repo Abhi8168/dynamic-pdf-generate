@@ -15,7 +15,13 @@
     "datum": "07-07-2025",
     "naam_schouwer": "Bayram Sarikaya"
   },
-
+  "opmerkingen": [
+    {
+      "sr":"",  
+      "title": "",
+      "description": ""
+    }
+  ],
   "decisionTree": {
     "flowchartUrl": "https://via.placeholder.com/600x500",
     "notesText": "Kabels worden naar boven gebracht vanaf begane grond."
@@ -23,37 +29,17 @@
   "complexImageUrl": "https://via.placeholder.com/400x300",
   "locationFtuImageUrl": "https://via.placeholder.com/350x400",
   "schematicDrawingImageUrl": "https://via.placeholder.com/350x400",
-  "jobDescription": {
-    "rows": [
-      {
-        "adres": "Singel",
-        "hnr": "387-2",
-        "lengte": "15",
-        "invoer": "1",
-        "stp": "1",
-        "dp": "008",
-        "streng_id": "008-1-3"
-      },
-      {
-        "adres": "Singel",
-        "hnr": "387-1",
-        "lengte": "12",
-        "invoer": "1",
-        "stp": "1",
-        "dp": "008",
-        "streng_id": "008-1-2"
-      },
-      {
-        "adres": "Singel",
-        "hnr": "387-H",
-        "lengte": "5",
-        "invoer": "1",
-        "stp": "1",
-        "dp": "008",
-        "streng_id": "008-1-1"
-      }
-    ]
-  },
+  "strenglijsten": [
+    {
+      "adres": "",
+      "hnr": "",
+      "lengte": "",
+      "invoer": "",
+      "stp": "",
+      "dp": "",
+      "strengId": ""
+    }
+  ],
   "site_survey": {
     "datum_site_survey": "07-07-2025",
     "glasvezelvoorbereider": "B. Sarkaya",
