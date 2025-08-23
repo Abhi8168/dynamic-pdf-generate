@@ -91,22 +91,21 @@
          font-weight: bold;
          margin: 10px 0 5px 0;
          }
-.Home-page-image-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 20px auto;
-}
-
-.Home-page-image {
-  width: 120mm;
-  height: 120mm;
-  border: 1px solid #ccc;  /* optional */
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;   /* image hamesha fit hogi */
-  background-color: #fff;     /* white space fill karega */
-}
+         .Home-page-image-container {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         margin: 20px auto;
+         }
+         .Home-page-image {
+         width: 120mm;
+         height: 120mm;
+         border: 1px solid #ccc;  /* optional */
+         background-repeat: no-repeat;
+         background-position: center;
+         background-size: contain;   /* image hamesha fit hogi */
+         background-color: #fff;     /* white space fill karega */
+         }
          .cover-image-placeholder {
          width: 100%;
          max-width: 400px;
@@ -337,7 +336,7 @@
          .page-content.case-2 img {
          width: 600px;
          height: 100%;
-          object-fit: contain;
+         object-fit: contain;
          }
          /* Case 3 - 3 images: 2 on top, 1 below */
          .page-content.case-3 {
@@ -405,52 +404,51 @@
          </div>
          <div style="text-align: center;">
             <h1>PLAATSINGSDOCUMENT</h1>
-<div class="Home-page-image-container">
-  <div class="Home-page-image" style="background-image: url('{{locationTableImage}}');"></div>
-</div>
+            <div class="Home-page-image-container">
+               <div class="Home-page-image" style="background-image: url('{{locationTableImage}}');"></div>
+            </div>
             <table class="data-table" style="width: 60%; margin: 20px auto; border-collapse: collapse; text-align: center; border: 1px solid #ccc;">
-  <tr>
-    <th style="width: 50%; border: 1px solid #ccc; padding: 8px;">BAG Pand ID('s)</th>
-    <td style="width: 50%; border: 1px solid #ccc; padding: 8px;">{{locationTable.bag_pand_id}}</td>
-  </tr>
-  <tr>
-    <th style="width: 50%; border: 1px solid #ccc; padding: 8px;">HB nr.</th>
-    <td style="width: 50%; border: 1px solid #ccc; padding: 8px;">{{locationTable.hb_nr}}</td>
-  </tr>
-  <tr>
-    <th style="width: 50%; border: 1px solid #ccc; padding: 8px;">Straat + huisnrs.</th>
-    <td style="width: 50%; border: 1px solid #ccc; padding: 8px;">{{locationTable.straat_huisnrs}}</td>
-  </tr>
-  <tr>
-    <th style="width: 50%; border: 1px solid #ccc; padding: 8px;">Postcode + Plaats</th>
-    <td style="width: 50%; border: 1px solid #ccc; padding: 8px;">{{locationTable.postcode_plaats}}</td>
-  </tr>
-  <tr>
-    <th style="width: 50%; border: 1px solid #ccc; padding: 8px;">AP-gebied</th>
-    <td style="width: 50%; border: 1px solid #ccc; padding: 8px;">{{locationTable.ap_gebied}}</td>
-  </tr>
-  <tr>
-    <th style="width: 50%; border: 1px solid #ccc; padding: 8px;">DP</th>
-    <td style="width: 50%; border: 1px solid #ccc; padding: 8px;">{{locationTable.dp}}</td>
-  </tr>
-  <tr>
-    <th style="width: 50%; border: 1px solid #ccc; padding: 8px;">Projectnr.</th>
-    <td style="width: 50%; border: 1px solid #ccc; padding: 8px;">{{locationTable.projectnr}}</td>
-  </tr>
-  <tr>
-    <th style="width: 50%; border: 1px solid #ccc; padding: 8px;">Aannemer</th>
-    <td style="width: 50%; border: 1px solid #ccc; padding: 8px;">{{locationTable.aannemer}}</td>
-  </tr>
-  <tr>
-    <th style="width: 50%; border: 1px solid #ccc; padding: 8px;">Datum</th>
-    <td style="width: 50%; border: 1px solid #ccc; padding: 8px;">{{locationTable.datum}}</td>
-  </tr>
-  <tr>
-    <th style="width: 50%; border: 1px solid #ccc; padding: 8px;">Naam Schouwer</th>
-    <td style="width: 50%; border: 1px solid #ccc; padding: 8px;">{{locationTable.naam_schouwer}}</td>
-  </tr>
-</table>
-
+               <tr>
+                  <th style="width: 50%; border: 1px solid #ccc; padding: 8px;">BAG Pand ID('s)</th>
+                  <td style="width: 50%; border: 1px solid #ccc; padding: 8px;">{{locationTable.bag_pand_id}}</td>
+               </tr>
+               <tr>
+                  <th style="width: 50%; border: 1px solid #ccc; padding: 8px;">HB nr.</th>
+                  <td style="width: 50%; border: 1px solid #ccc; padding: 8px;">{{locationTable.hb_nr}}</td>
+               </tr>
+               <tr>
+                  <th style="width: 50%; border: 1px solid #ccc; padding: 8px;">Straat + huisnrs.</th>
+                  <td style="width: 50%; border: 1px solid #ccc; padding: 8px;">{{locationTable.straat_huisnrs}}</td>
+               </tr>
+               <tr>
+                  <th style="width: 50%; border: 1px solid #ccc; padding: 8px;">Postcode + Plaats</th>
+                  <td style="width: 50%; border: 1px solid #ccc; padding: 8px;">{{locationTable.postcode_plaats}}</td>
+               </tr>
+               <tr>
+                  <th style="width: 50%; border: 1px solid #ccc; padding: 8px;">AP-gebied</th>
+                  <td style="width: 50%; border: 1px solid #ccc; padding: 8px;">{{locationTable.ap_gebied}}</td>
+               </tr>
+               <tr>
+                  <th style="width: 50%; border: 1px solid #ccc; padding: 8px;">DP</th>
+                  <td style="width: 50%; border: 1px solid #ccc; padding: 8px;">{{locationTable.dp}}</td>
+               </tr>
+               <tr>
+                  <th style="width: 50%; border: 1px solid #ccc; padding: 8px;">Projectnr.</th>
+                  <td style="width: 50%; border: 1px solid #ccc; padding: 8px;">{{locationTable.projectnr}}</td>
+               </tr>
+               <tr>
+                  <th style="width: 50%; border: 1px solid #ccc; padding: 8px;">Aannemer</th>
+                  <td style="width: 50%; border: 1px solid #ccc; padding: 8px;">{{locationTable.aannemer}}</td>
+               </tr>
+               <tr>
+                  <th style="width: 50%; border: 1px solid #ccc; padding: 8px;">Datum</th>
+                  <td style="width: 50%; border: 1px solid #ccc; padding: 8px;">{{locationTable.datum}}</td>
+               </tr>
+               <tr>
+                  <th style="width: 50%; border: 1px solid #ccc; padding: 8px;">Naam Schouwer</th>
+                  <td style="width: 50%; border: 1px solid #ccc; padding: 8px;">{{locationTable.naam_schouwer}}</td>
+               </tr>
+            </table>
          </div>
       </div>
       <!-- Page 2: Table of Contents -->
@@ -484,10 +482,6 @@
                <li><strong>9. Overeenkomst/instemmingsbesluit</strong></li>
             </ul>
          </div>
-         <div class="footer">
-            <div>Plaatsingsdocument: {{footerContent}}</div>
-            <div>Pagina 2 van 15</div>
-         </div>
       </div>
       <!-- Page 3: Location and Installation Details -->
       <div class="page">
@@ -510,7 +504,6 @@
             <!-- survey-table -->
             <table class="survey-table">
                <tr style="height: 20pt">
-                  </td>
                   <td
                      style="
                      width: 528pt;
@@ -523,7 +516,7 @@
                      border-right-style: solid;
                      border-right-width: 1pt;
                      "
-                     colspan="14"
+                     colspan="15"
                      bgcolor="#B3B3B3"
                      >
                      <p
@@ -540,20 +533,9 @@
                      </p>
                   </td>
                </tr>
+               <!-- Datum site survey row -->
                <tr style="height: 20pt">
-                  <td
-                     style="
-                     width: 161pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     >
+                  <td style="width: 161pt; border: 1pt solid #000">
                      <p
                         class="s10"
                         style="
@@ -566,20 +548,7 @@
                         Datum site survey
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 80pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     colspan="3"
-                     >
+                  <td style="width: 80pt; border: 1pt solid #000" colspan="3">
                      <p
                         class="s10"
                         style="
@@ -592,20 +561,7 @@
                         {{site_survey.datum_site_survey}}
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 183pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     colspan="7"
-                     >
+                  <td style="width: 183pt; border: 1pt solid #000" colspan="7">
                      <p
                         class="s10"
                         style="
@@ -618,21 +574,7 @@
                         Glasvezelvoorbereider: {{site_survey.glasvezelvoorbereider}}
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 104pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     colspan="3"
-                     >
-                     <p style="text-indent: 0pt; text-align: left" />
+                  <td style="width: 104pt; border: 1pt solid #000" colspan="4">
                      <p
                         class="s10"
                         style="
@@ -646,20 +588,9 @@
                      </p>
                   </td>
                </tr>
+               <!-- Type pand row -->
                <tr style="height: 19pt">
-                  <td
-                     style="
-                     width: 161pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     >
+                  <td style="width: 161pt; border: 1pt solid #000">
                      <p
                         class="s10"
                         style="
@@ -672,20 +603,7 @@
                         Type pandt
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 80pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     colspan="3"
-                     >
+                  <td style="width: 80pt; border: 1pt solid #000" colspan="3">
                      <p
                         class="s10"
                         style="
@@ -695,23 +613,13 @@
                         text-align: left;
                         "
                         >
-                        App. complex <span class="s11"> {{#if site_survey.type_pand.app_complex}} ☑ {{else}} ☐ {{/if}}</span>
+                        App. complex
+                        <span class="s11"
+                           >{{#if site_survey.type_pand.app_complex}} ☑ {{else}} ☐ {{/if}}</span
+                           >
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 59pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     colspan="3"
-                     >
+                  <td style="width: 59pt; border: 1pt solid #000" colspan="3">
                      <p
                         class="s10"
                         style="
@@ -721,23 +629,13 @@
                         text-align: left;
                         "
                         >
-                        Duplex <span class="s11">{{#if site_survey.type_pand.duplex}} ☑ {{else}} ☐ {{/if}}</span>
+                        Duplex
+                        <span class="s11"
+                           >{{#if site_survey.type_pand.duplex}} ☑ {{else}} ☐ {{/if}}</span
+                           >
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 124pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     colspan="4"
-                     >
+                  <td style="width: 124pt; border: 1pt solid #000" colspan="4">
                      <p
                         class="s10"
                         style="
@@ -747,23 +645,14 @@
                         text-align: left;
                         "
                         >
-                        Comm. ruimte aanwezig <span class="s11">{{#if site_survey.type_pand.comm_ruimte_aanwezig}} ☑ {{else}} ☐ {{/if}}</span>
+                        Comm. ruimte aanwezig
+                        <span class="s11"
+                           >{{#if site_survey.type_pand.comm_ruimte_aanwezig}} ☑ {{else}} ☐
+                        {{/if}}</span
+                           >
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 104pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     colspan="3"
-                     >
+                  <td style="width: 104pt; border: 1pt solid #000" colspan="4">
                      <p
                         class="s10"
                         style="
@@ -773,24 +662,16 @@
                         text-align: left;
                         "
                         >
-                        Anders <span class="s11">{{#if site_survey.type_pand.anders}} ☑ {{else}} ☐ {{/if}}</span>
+                        Anders
+                        <span class="s11"
+                           >{{#if site_survey.type_pand.anders}} ☑ {{else}} ☐ {{/if}}</span
+                           >
                      </p>
                   </td>
                </tr>
+               <!-- Other survey fields -->
                <tr style="height: 15pt">
-                  <td
-                     style="
-                     width: 161pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     >
+                  <td style="width: 161pt; border: 1pt solid #000">
                      <p
                         class="s10"
                         style="
@@ -803,20 +684,7 @@
                         Monumentaal pand ja/nee?
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 367pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     colspan="13"
-                     >
+                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
                      <p
                         class="s10"
                         style="
@@ -831,19 +699,7 @@
                   </td>
                </tr>
                <tr style="height: 15pt">
-                  <td
-                     style="
-                     width: 161pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     >
+                  <td style="width: 161pt; border: 1pt solid #000">
                      <p
                         class="s10"
                         style="
@@ -856,20 +712,7 @@
                         Type woningen
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 367pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     colspan="13"
-                     >
+                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
                      <p
                         class="s10"
                         style="
@@ -884,19 +727,7 @@
                   </td>
                </tr>
                <tr style="height: 15pt">
-                  <td
-                     style="
-                     width: 161pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     >
+                  <td style="width: 161pt; border: 1pt solid #000">
                      <p
                         class="s10"
                         style="
@@ -909,20 +740,7 @@
                         Aantal woningen
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 367pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     colspan="13"
-                     >
+                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
                      <p
                         class="s10"
                         style="
@@ -936,21 +754,9 @@
                      </p>
                   </td>
                </tr>
+               <!-- ETAGE HEADER ROW - WITH KD ADDED -->
                <tr style="height: 24pt">
-                  <td
-                     style="
-                     width: 161pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     bgcolor="#BFBFBF"
-                     >
+                  <td style="width: 161pt; border: 1pt solid #000" bgcolor="#BFBFBF">
                      <p
                         class="s10"
                         style="
@@ -963,20 +769,32 @@
                         Etage
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 22pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     bgcolor="#BFBFBF"
-                     >
+                  <!-- NEW KD COLUMN -->
+                  <td style="width: 29pt; border: 1pt solid #000" bgcolor="#BFBFBF">
+                     <p
+                        class="s10"
+                        style="
+                        padding-left: 5pt;
+                        text-indent: 0pt;
+                        line-height: 10pt;
+                        text-align: left;
+                        "
+                        >
+                        K
+                     </p>
+                     <p
+                        class="s10"
+                        style="
+                        padding-top: 1pt;
+                        padding-left: 5pt;
+                        text-indent: 0pt;
+                        text-align: left;
+                        "
+                        >
+                        D
+                     </p>
+                  </td>
+                  <td style="width: 22pt; border: 1pt solid #000" bgcolor="#BFBFBF">
                      <p
                         class="s10"
                         style="
@@ -1000,20 +818,7 @@
                         G
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 29pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     bgcolor="#BFBFBF"
-                     >
+                  <td style="width: 29pt; border: 1pt solid #000" bgcolor="#BFBFBF">
                      <p
                         class="s10"
                         style="padding-top: 5pt; text-indent: 0pt; text-align: center"
@@ -1021,20 +826,7 @@
                         1
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 29pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     bgcolor="#BFBFBF"
-                     >
+                  <td style="width: 29pt; border: 1pt solid #000" bgcolor="#BFBFBF">
                      <p
                         class="s10"
                         style="padding-top: 5pt; text-indent: 0pt; text-align: center"
@@ -1042,20 +834,7 @@
                         2
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 22pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     bgcolor="#BFBFBF"
-                     >
+                  <td style="width: 22pt; border: 1pt solid #000" bgcolor="#BFBFBF">
                      <p
                         class="s10"
                         style="padding-top: 5pt; text-indent: 0pt; text-align: center"
@@ -1063,20 +842,7 @@
                         3
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 29pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     bgcolor="#BFBFBF"
-                     >
+                  <td style="width: 29pt; border: 1pt solid #000" bgcolor="#BFBFBF">
                      <p
                         class="s10"
                         style="
@@ -1090,20 +856,7 @@
                         4
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 29pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     bgcolor="#BFBFBF"
-                     >
+                  <td style="width: 29pt; border: 1pt solid #000" bgcolor="#BFBFBF">
                      <p
                         class="s10"
                         style="
@@ -1116,20 +869,7 @@
                         5
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 29pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     bgcolor="#BFBFBF"
-                     >
+                  <td style="width: 29pt; border: 1pt solid #000" bgcolor="#BFBFBF">
                      <p
                         class="s10"
                         style="
@@ -1142,20 +882,7 @@
                         6
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 30pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     bgcolor="#BFBFBF"
-                     >
+                  <td style="width: 30pt; border: 1pt solid #000" bgcolor="#BFBFBF">
                      <p
                         class="s10"
                         style="
@@ -1168,20 +895,7 @@
                         7
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 29pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     bgcolor="#BFBFBF"
-                     >
+                  <td style="width: 29pt; border: 1pt solid #000" bgcolor="#BFBFBF">
                      <p
                         class="s10"
                         style="
@@ -1194,20 +908,7 @@
                         8
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 29pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     bgcolor="#BFBFBF"
-                     >
+                  <td style="width: 29pt; border: 1pt solid #000" bgcolor="#BFBFBF">
                      <p
                         class="s10"
                         style="
@@ -1220,20 +921,7 @@
                         9
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 29pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     bgcolor="#BFBFBF"
-                     >
+                  <td style="width: 29pt; border: 1pt solid #000" bgcolor="#BFBFBF">
                      <p
                         class="s10"
                         style="
@@ -1246,20 +934,7 @@
                         10
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 29pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     bgcolor="#BFBFBF"
-                     >
+                  <td style="width: 29pt; border: 1pt solid #000" bgcolor="#BFBFBF">
                      <p
                         class="s10"
                         style="
@@ -1272,18 +947,7 @@
                         11
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 32pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     "
-                     bgcolor="#BFBFBF"
-                     >
+                  <td style="width: 32pt; border: 1pt solid #000" bgcolor="#BFBFBF">
                      <p
                         class="s10"
                         style="
@@ -1297,20 +961,9 @@
                      </p>
                   </td>
                </tr>
+               <!-- AANTAL PER ETAGE DATA ROW - WITH KD ADDED -->
                <tr style="height: 17pt">
-                  <td
-                     style="
-                     width: 161pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     >
+                  <td style="width: 161pt; border: 1pt solid #000">
                      <p
                         class="s10"
                         style="
@@ -1323,19 +976,21 @@
                         Aantal per etage
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 22pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     >
+                  <!-- NEW KD DATA CELL -->
+                  <td style="width: 29pt; border: 1pt solid #000">
+                     <p
+                        class="s10"
+                        style="
+                        padding-top: 2pt;
+                        padding-left: 5pt;
+                        text-indent: 0pt;
+                        text-align: left;
+                        "
+                        >
+                        {{site_survey.aantal_per_etage.K_D}}
+                     </p>
+                  </td>
+                  <td style="width: 22pt; border: 1pt solid #000">
                      <p
                         class="s10"
                         style="
@@ -1348,19 +1003,7 @@
                         {{site_survey.aantal_per_etage.B_G}}
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 29pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     >
+                  <td style="width: 29pt; border: 1pt solid #000">
                      <p
                         class="s10"
                         style="
@@ -1373,19 +1016,7 @@
                         {{site_survey.aantal_per_etage.first}}
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 29pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     >
+                  <td style="width: 29pt; border: 1pt solid #000">
                      <p
                         class="s10"
                         style="
@@ -1398,20 +1029,7 @@
                         {{site_survey.aantal_per_etage.second}}
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 22pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     >
-                     <p style="text-indent: 0pt; text-align: left">
+                  <td style="width: 22pt; border: 1pt solid #000">
                      <p
                         class="s10"
                         style="
@@ -1423,22 +1041,8 @@
                         >
                         {{site_survey.aantal_per_etage.third}}
                      </p>
-                     </p>
                   </td>
-                  <td
-                     style="
-                     width: 29pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     >
-                     <p style="text-indent: 0pt; text-align: left">
+                  <td style="width: 29pt; border: 1pt solid #000">
                      <p
                         class="s10"
                         style="
@@ -1450,22 +1054,8 @@
                         >
                         {{site_survey.aantal_per_etage.fourth}}
                      </p>
-                     </p>
                   </td>
-                  <td
-                     style="
-                     width: 29pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     >
-                     <p style="text-indent: 0pt; text-align: left">
+                  <td style="width: 29pt; border: 1pt solid #000">
                      <p
                         class="s10"
                         style="
@@ -1477,22 +1067,8 @@
                         >
                         {{site_survey.aantal_per_etage.fifth}}
                      </p>
-                     </p>
                   </td>
-                  <td
-                     style="
-                     width: 29pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     >
-                     <p style="text-indent: 0pt; text-align: left">
+                  <td style="width: 29pt; border: 1pt solid #000">
                      <p
                         class="s10"
                         style="
@@ -1504,22 +1080,8 @@
                         >
                         {{site_survey.aantal_per_etage.sixth}}
                      </p>
-                     </p>
                   </td>
-                  <td
-                     style="
-                     width: 30pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     >
-                     <p style="text-indent: 0pt; text-align: left">
+                  <td style="width: 30pt; border: 1pt solid #000">
                      <p
                         class="s10"
                         style="
@@ -1531,22 +1093,8 @@
                         >
                         {{site_survey.aantal_per_etage.seventh}}
                      </p>
-                     </p>
                   </td>
-                  <td
-                     style="
-                     width: 29pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     >
-                     <p style="text-indent: 0pt; text-align: left">
+                  <td style="width: 29pt; border: 1pt solid #000">
                      <p
                         class="s10"
                         style="
@@ -1558,22 +1106,8 @@
                         >
                         {{site_survey.aantal_per_etage.eighth}}
                      </p>
-                     </p>
                   </td>
-                  <td
-                     style="
-                     width: 29pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     >
-                     <p style="text-indent: 0pt; text-align: left">
+                  <td style="width: 29pt; border: 1pt solid #000">
                      <p
                         class="s10"
                         style="
@@ -1585,22 +1119,8 @@
                         >
                         {{site_survey.aantal_per_etage.ninth}}
                      </p>
-                     </p>
                   </td>
-                  <td
-                     style="
-                     width: 29pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     >
-                     <p style="text-indent: 0pt; text-align: left">
+                  <td style="width: 29pt; border: 1pt solid #000">
                      <p
                         class="s10"
                         style="
@@ -1612,22 +1132,8 @@
                         >
                         {{site_survey.aantal_per_etage.tenth}}
                      </p>
-                     </p>
                   </td>
-                  <td
-                     style="
-                     width: 29pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     >
-                     <p style="text-indent: 0pt; text-align: left">
+                  <td style="width: 29pt; border: 1pt solid #000">
                      <p
                         class="s10"
                         style="
@@ -1639,22 +1145,8 @@
                         >
                         {{site_survey.aantal_per_etage.eleventh}}
                      </p>
-                     </p>
                   </td>
-                  <td
-                     style="
-                     width: 32pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     >
-                     <p style="text-indent: 0pt; text-align: left">
+                  <td style="width: 32pt; border: 1pt solid #000">
                      <p
                         class="s10"
                         style="
@@ -1666,1536 +1158,364 @@
                         >
                         {{site_survey.aantal_per_etage.twelfth}}
                      </p>
-                     </p>
                   </td>
                </tr>
                <tr style="height: 16pt">
-                  <td
-                     style="
-                     width: 161pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     >
-                     <p
-                        class="s10"
-                        style="
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        line-height: 10pt;
-                        text-align: left;
-                        "
-                        >
+                  <td style="width: 161pt; border: 1pt solid #000">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
                         Klopt de BAG met de realiteit?
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 367pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     colspan="13"
-                     >
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 1pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
+                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
                         {{site_survey.kiogt_de_bag_met_de_realiteit}}
                      </p>
                   </td>
                </tr>
                <tr style="height: 16pt">
-                  <td
-                     style="
-                     width: 161pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     >
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 1pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
+                  <td style="width: 161pt; border: 1pt solid #000">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
                         Geschatte hoogte van de site
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 367pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     colspan="13"
-                     >
-                     <p
-                        class="s10"
-                        style="
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        line-height: 10pt;
-                        text-align: left;
-                        "
-                        >
+                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
                         {{site_survey.geschatte_hoogte_van_de_site}}
                      </p>
                   </td>
                </tr>
                <tr style="height: 16pt">
-                  <td
-                     style="
-                     width: 161pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     >
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 1pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
+                  <td style="width: 161pt; border: 1pt solid #000">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
                         Stijgpunt
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 367pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     colspan="13"
-                     >
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 1pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
+                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
                         {{site_survey.stijgpunt}}
                      </p>
                   </td>
                </tr>
                <tr style="height: 16pt">
-                  <td
-                     style="
-                     width: 161pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     >
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 1pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
-                        Hoogwerker nodig ?
+                  <td style="width: 161pt; border: 1pt solid #000">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
+                        Hoogwerker nodig?
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 367pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     colspan="13"
-                     >
-                     <p
-                        class="s10"
-                        style="
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        line-height: 10pt;
-                        text-align: left;
-                        "
-                        >
+                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
                         {{site_survey.hoogwerker_nodig}}
                      </p>
                   </td>
                </tr>
                <tr style="height: 15pt">
-                  <td
-                     style="
-                     width: 161pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     >
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 1pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
+                  <td style="width: 161pt; border: 1pt solid #000">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
                         Site ID
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 367pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     colspan="13"
-                     >
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 2pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
+                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
                         {{site_survey.site_id}}
                      </p>
                   </td>
                </tr>
                <tr style="height: 14pt">
-                  <td
-                     style="
-                     width: 161pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     >
-                     <p
-                        class="s10"
-                        style="padding-left: 5pt; text-indent: 0pt; text-align: left"
-                        >
+                  <td style="width: 161pt; border: 1pt solid #000">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
                         Adressen die behoren tot de site
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 367pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     colspan="13"
-                     >
-                     <p
-                        class="s10"
-                        style="
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        line-height: 10pt;
-                        text-align: left;
-                        "
-                        >
+                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
                         {{site_survey.adressen_die_behoren_tot_de_site}}
                      </p>
                   </td>
                </tr>
                <tr style="height: 14pt">
-                  <td
-                     style="
-                     width: 161pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     >
-                     <p
-                        class="s10"
-                        style="padding-left: 5pt; text-indent: 0pt; text-align: left"
-                        >
+                  <td style="width: 161pt; border: 1pt solid #000">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
                         Meerdere VVE/Beheerders?
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 367pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     colspan="13"
-                     >
-                     <p
-                        class="s10"
-                        style="
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        line-height: 10pt;
-                        text-align: left;
-                        "
-                        >
+                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
                         {{site_survey.meerdere_vve_beheerders}}
                      </p>
                   </td>
                </tr>
                <tr style="height: 22pt">
-                  <td
-                     style="
-                     width: 161pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     >
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 4pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
-                        Beheer
+                  <td style="width: 161pt; border: 1pt solid #000">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
+                        Beheer (Email)
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 367pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     colspan="13"
-                     >
-                     <p
-                        style="
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        line-height: 11pt;
-                        text-align: left;
-                        "
-                        >
-                        <a href="mailto:{{site_survey.beheer_contact.email}}" class="s12"
-                           >{{site_survey.beheer_contact.email}}</a
-                           >
+                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+                     <p style="padding-left: 5pt; text-align: left">
+                        <a href="mailto:{{site_survey.beheer_contact.email}}">
+                        {{site_survey.beheer_contact.email}}
+                        </a>
                      </p>
                   </td>
                </tr>
                <tr style="height: 22pt">
-                  <td
-                     style="
-                     width: 161pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     >
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 4pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
-                        Beheer
+                  <td style="width: 161pt; border: 1pt solid #000">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
+                        Beheer (Telefoon)
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 367pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     colspan="13"
-                     >
-                     <p
-                        class="s13"
-                        style="
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        line-height: 11pt;
-                        text-align: left;
-                        "
-                        >
+                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
                         {{site_survey.beheer_contact.telefoon}}
                      </p>
                   </td>
                </tr>
                <tr style="height: 13pt">
-                  <td
-                     style="
-                     width: 161pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     >
-                     <p
-                        class="s10"
-                        style="padding-left: 5pt; text-indent: 0pt; text-align: left"
-                        >
+                  <td style="width: 161pt; border: 1pt solid #000">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
                         Contactpersoon beheer
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 367pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     colspan="13"
-                     >
-                     <p class="s10"
-                        style="
-                        padding-top: 2pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        ">{{site_survey.Contactpersoon_beheer}}</p>
+                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
+                        {{site_survey.contactpersoon_beheer}}
+                     </p>
                   </td>
                </tr>
                <tr style="height: 12pt">
-                  <td
-                     style="
-                     width: 161pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     >
-                     <p
-                        class="s10"
-                        style="
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        line-height: 10pt;
-                        text-align: left;
-                        "
-                        >
+                  <td style="width: 161pt; border: 1pt solid #000">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
                         Contactpersoon site
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 367pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     colspan="13"
-                     >
-                     <p class="s10"
-                        style="
-                        padding-top: 2pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        ">{{site_survey.contactpersoon_site}}</p>
+                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
+                        {{site_survey.contactpersoon_site}}
+                     </p>
                   </td>
                </tr>
                <tr style="height: 12pt">
-                  <td
-                     style="
-                     width: 161pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     >
-                     <p
-                        class="s10"
-                        style="padding-left: 5pt; text-indent: 0pt; text-align: left"
-                        >
+                  <td style="width: 161pt; border: 1pt solid #000">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
                         Toegang site via
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 367pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     colspan="13"
-                     >
-                     <p class="s10"
-                        style="
-                        padding-top: 2pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        ">{{site_survey.toegang_site_via}}</p>
+                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
+                        {{site_survey.toegang_site_via}}
+                     </p>
                   </td>
                </tr>
                <tr style="height: 12pt">
-                  <td
-                     style="
-                     width: 161pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     bgcolor="#B3B3B3"
-                     >
-                     <p
-                        class="s9"
-                        style="
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        line-height: 10pt;
-                        text-align: left;
-                        font-weight: bold;
-                        "
-                        >
+                  <td style="width: 161pt; border: 1pt solid #000" bgcolor="#B3B3B3">
+                     <p class="s9" style="padding-left: 5pt; text-align: left; font-weight: bold">
                         Aanwezigen tijdens survey
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 248pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     colspan="9"
-                     bgcolor="#B3B3B3"
-                     >
-                     <p
-                        class="s9"
-                        style="
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        line-height: 10pt;
-                        text-align: left;
-                        font-weight: bold;
-                        "
-                        >
+                  <td style="width: 248pt; border: 1pt solid #000" colspan="9" bgcolor="#B3B3B3">
+                     <p class="s9" style="padding-left: 5pt; text-align: left; font-weight: bold">
                         Naam
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 119pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     colspan="4"
-                     bgcolor="#B3B3B3"
-                     >
-                     <p
-                        class="s9"
-                        style="
-                        padding-left: 6pt;
-                        text-indent: 0pt;
-                        line-height: 10pt;
-                        text-align: left;
-                        font-weight: bold;
-                        "
-                        >
+                  <td style="width: 119pt; border: 1pt solid #000" colspan="5" bgcolor="#B3B3B3">
+                     <p class="s9" style="padding-left: 6pt; text-align: left; font-weight: bold">
                         Telefoonnummer
                      </p>
                   </td>
                </tr>
                <tr style="height: 12pt">
-                  <td
-                     style="
-                     width: 161pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     >
-                     <p
-                        class="s10"
-                        style="
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        line-height: 10pt;
-                        text-align: left;
-                        "
-                        >
+                  <td style="width: 161pt; border: 1pt solid #000">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
                         GLASVEZELNET AMSTERDAM
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 248pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     colspan="9"
-                     >
-                     <p class="s10"
-                        style="
-                        padding-top: 2pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        ">{{site_survey.aanwezigen_tijdens_survey.naam}}</p>
+                  <td style="width: 248pt; border: 1pt solid #000" colspan="9">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
+                        {{site_survey.aanwezigen_tijdens_survey.naam}}
+                     </p>
                   </td>
-                  <td
-                     style="
-                     width: 119pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     colspan="4"
-                     >
-                     <p class="s10"
-                        style="
-                        padding-top: 2pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        ">{{site_survey.aanwezigen_tijdens_survey.telefoonnummer}}</p>
+                  <td style="width: 119pt; border: 1pt solid #000" colspan="5">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
+                        {{site_survey.aanwezigen_tijdens_survey.telefoonnummer}}
+                     </p>
                   </td>
                </tr>
                <tr style="height: 12pt">
-                  <td
-                     style="
-                     width: 528pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     colspan="14"
-                     bgcolor="#B3B3B3"
-                     >
-                     <p
-                        class="s9"
-                        style="padding-left: 5pt; text-indent: 0pt; text-align: left; font-weight: bold;"
-                        >
+                  <td style="width: 528pt; border: 1pt solid #000" colspan="15" bgcolor="#B3B3B3">
+                     <p class="s9" style="padding-left: 5pt; text-align: left; font-weight: bold">
                         Installatiegegevens
                      </p>
                   </td>
                </tr>
                <tr style="height: 17pt">
-                  <td
-                     style="
-                     width: 161pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     >
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 2pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
+                  <td style="width: 161pt; border: 1pt solid #000">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
                         Locatie in- of opvoerpunt
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 367pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     colspan="13"
-                     >
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 2pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
+                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
                         {{site_survey.installatiegegevens.locatie_in_of_opvoerpunt}}
                      </p>
                   </td>
                </tr>
                <tr style="height: 16pt">
-                  <td
-                     style="
-                     width: 161pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     >
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 1pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
+                  <td style="width: 161pt; border: 1pt solid #000">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
                         Aantal invoergaten
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 367pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     colspan="13"
-                     >
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 1pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
+                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
                         {{site_survey.installatiegegevens.aantal_invoergaten}}
                      </p>
                   </td>
                </tr>
                <tr style="height: 16pt">
-                  <td
-                     style="
-                     width: 161pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     >
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 1pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
+                  <td style="width: 161pt; border: 1pt solid #000">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
                         Mantelbuis of koof toegankelijk?
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 367pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     colspan="13"
-                     >
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 1pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
+                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
                         {{site_survey.installatiegegevens.mantelbuis_of_koof_toegankelijk}}
                      </p>
                   </td>
                </tr>
                <tr style="height: 12pt">
-                  <td
-                     style="
-                     width: 161pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     >
-                     <p
-                        class="s10"
-                        style="
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        line-height: 10pt;
-                        text-align: left;
-                        "
-                        >
+                  <td style="width: 161pt; border: 1pt solid #000">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
                         Bestaande doorvoer gebruiken?
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 367pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     colspan="13"
-                     >
-                     <p
-                        class="s10"
-                        style="
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        line-height: 10pt;
-                        text-align: left;
-                        "
-                        >
+                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
                         {{site_survey.installatiegegevens.bestaande_doorvoer_gebruiken}}
                      </p>
                   </td>
                </tr>
                <tr style="height: 16pt">
-                  <td
-                     style="
-                     width: 161pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     >
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 1pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
+                  <td style="width: 161pt; border: 1pt solid #000">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
                         Locatie glasvezelaansluitpunt
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 367pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     colspan="13"
-                     >
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 1pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
+                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
                         {{site_survey.installatiegegevens.locatie_glasvezelaansluitpunt}}
                      </p>
                   </td>
                </tr>
                <tr style="height: 16pt">
-                  <td
-                     style="
-                     width: 161pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     >
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 1pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
+                  <td style="width: 161pt; border: 1pt solid #000">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
                         Locatie CAI AOP
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 367pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     colspan="13"
-                     >
-                     <p
-                        class="s10"
-                        style="
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        line-height: 10pt;
-                        text-align: left;
-                        "
-                        >
+                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
                         {{site_survey.installatiegegevens.locatie_cai_aop}}
                      </p>
                   </td>
                </tr>
                <tr style="height: 16pt">
-                  <td
-                     style="
-                     width: 161pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     >
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 1pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
+                  <td style="width: 161pt; border: 1pt solid #000">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
                         Locatie ISRA
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 367pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     colspan="13"
-                     >
-                     <p
-                        class="s10"
-                        style="
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        line-height: 10pt;
-                        text-align: left;
-                        "
-                        >
+                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
                         {{site_survey.installatiegegevens.locatie_isra}}
                      </p>
                   </td>
                </tr>
                <tr style="height: 16pt">
-                  <td
-                     style="
-                     width: 161pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     >
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 1pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
+                  <td style="width: 161pt; border: 1pt solid #000">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
                         Locatie meterkast
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 367pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     colspan="13"
-                     >
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 1pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
+                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
                         {{site_survey.installatiegegevens.locatie_meterkast}}
                      </p>
                   </td>
                </tr>
                <tr style="height: 17pt">
-                  <td
-                     style="
-                     width: 161pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     >
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 2pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
+                  <td style="width: 161pt; border: 1pt solid #000">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
                         Afwijkende huisnummers?
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 367pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     colspan="13"
-                     >
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 2pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
+                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
                         {{site_survey.installatiegegevens.afwijkende_huisnummers}}
                      </p>
                   </td>
                </tr>
                <tr style="height: 17pt">
-                  <td
-                     style="
-                     width: 161pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     >
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 2pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
+                  <td style="width: 161pt; border: 1pt solid #000">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
                         230V aanwezig locatie FTU?
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 367pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     colspan="13"
-                     >
-                     <p
-                        class="s10"
-                        style="padding-left: 5pt; text-indent: 0pt; text-align: left"
-                        >
+                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
                         {{site_survey.installatiegegevens.230v_aanwezig_locatie_ftu}}
                      </p>
                   </td>
                </tr>
                <tr style="height: 17pt">
-                  <td
-                     style="
-                     width: 161pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     >
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 2pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
+                  <td style="width: 161pt; border: 1pt solid #000">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
                         Brandwerende afdichting?
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 367pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     colspan="13"
-                     >
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 2pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
+                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
                         {{site_survey.installatiegegevens.brandwerende_afdichting}}
                      </p>
                   </td>
                </tr>
                <tr style="height: 17pt">
-                  <td
-                     style="
-                     width: 161pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     >
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 2pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
+                  <td style="width: 161pt; border: 1pt solid #000">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
                         Interne verdeler (IDP) gebruiken?
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 367pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     colspan="13"
-                     >
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 2pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
+                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
                         {{site_survey.installatiegegevens.interne_verdeler_idp_gebruiken}}
                      </p>
                   </td>
                </tr>
                <tr style="height: 17pt">
-                  <td
-                     style="
-                     width: 161pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     >
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 2pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
+                  <td style="width: 161pt; border: 1pt solid #000">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
                         Doorvoerafhankelijk?
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 367pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     colspan="13"
-                     >
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 2pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
+                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
                         {{site_survey.installatiegegevens.doorvoerafhankelijk}}
                      </p>
                   </td>
                </tr>
                <tr style="height: 17pt">
-                  <td
-                     style="
-                     width: 161pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     >
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 2pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
+                  <td style="width: 161pt; border: 1pt solid #000">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
                         Ruimte in huidige kabelgoot?
                      </p>
                   </td>
-                  <td
-                     style="
-                     width: 367pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     colspan="13"
-                     >
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 2pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
+                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+                     <p class="s10" style="padding-left: 5pt; text-align: left">
                         {{site_survey.installatiegegevens.ruimte_in_huidige_kabelgoot}}
                      </p>
                   </td>
                </tr>
             </table>
-         </div>
-         <div class="footer">
-            <div>Plaatsingsdocument: {{footerContent}}</div>
-            <div>Pagina 3 van 15</div>
          </div>
       </div>
       <!-- Page 4: Hazard Assessment -->
@@ -3249,36 +1569,32 @@
                   <td>(in te vullen door gebouw eigenaar/beheerder)</td>
                </tr>
             </table>
-         <table class="data-table" style="width: 100%;">
-    <tr style="background-color: #c0c0c0; font-weight: bold;">
-        <td colspan="2"><strong>Opmerkingen</strong></td>
-    </tr>
-    {{#if opmerkingen}}
-        {{#each opmerkingen}}
-        <tr>
-            <td style="width: 10%;"><strong>{{sr}}.</strong></td>
-            <td style="width: 90%;">
-                {{#if title}}
-                    <strong>{{title}}</strong>
-                    {{#if description}}<br /><br />{{description}}{{/if}}
-                {{else}}
-                    {{#if description}}{{description}}{{/if}}
-                {{/if}}
-            </td>
-        </tr>
-        {{/each}}
-    {{else}}
-        <tr>
-            <td colspan="2" style="text-align: center; font-style: italic; color: #666; padding: 16px;">
-                Geen opmerkingen beschikbaar
-            </td>
-        </tr>
-    {{/if}}
-</table>
-         </div>
-         <div class="footer">
-            <div>Plaatsingsdocument: {{footerContent}}</div>
-            <div>Pagina 4 van 15</div>
+            <table class="data-table" style="width: 100%;">
+               <tr style="background-color: #c0c0c0; font-weight: bold;">
+                  <td colspan="2"><strong>Opmerkingen</strong></td>
+               </tr>
+               {{#if opmerkingen}}
+               {{#each opmerkingen}}
+               <tr>
+                  <td style="width: 10%;"><strong>{{sr}}.</strong></td>
+                  <td style="width: 90%;">
+                     {{#if title}}
+                     <strong>{{title}}</strong>
+                     {{#if description}}<br /><br />{{description}}{{/if}}
+                     {{else}}
+                     {{#if description}}{{description}}{{/if}}
+                     {{/if}}
+                  </td>
+               </tr>
+               {{/each}}
+               {{else}}
+               <tr>
+                  <td colspan="2" style="text-align: center; font-style: italic; color: #666; padding: 16px;">
+                     Geen opmerkingen beschikbaar
+                  </td>
+               </tr>
+               {{/if}}
+            </table>
          </div>
       </div>
       <!-- Page 5: Location -->
@@ -3304,10 +1620,6 @@
             <img src="{{this.url}}" alt="{{#if this.alt}}{{this.alt}}{{else}}Location Image {{@index}}{{/if}}" />
             {{/each}}
             </span>
-         </div>
-         <div class="footer">
-            <div>Plaatsingsdocument: {{footerContent}}</div>
-            <div>Pagina 5 van 15</div>
          </div>
       </div>
       <!-- Page 6: Decision Tree -->
@@ -3336,12 +1648,8 @@
             <hr style=" border-bottom: 2px solid #000;"/>
             <div class="notes-section">
                <h3>Uitleg keuze beslisboom door aannemer</h3>
-               <p>{{decisionTree.notesText}}</p>
+               <p>{{decisionTree_notesText}}</p>
             </div>
-         </div>
-         <div class="footer">
-            <div>Plaatsingsdocument: {{footerContent}}</div>
-            <div>Pagina 6 van 15</div>
          </div>
       </div>
       <!-- Page 7: Building View -->
@@ -3367,10 +1675,6 @@
             <img src="{{this.url}}" alt="{{#if this.alt}}{{this.alt}}{{else}}Location Image {{@index}}{{/if}}" />
             {{/each}}
             </span>
-         </div>
-         <div class="footer">
-            <div>Plaatsingsdocument: {{footerContent}}</div>
-            <div>Pagina 7 van 15</div>
          </div>
       </div>
       <!-- Page 8: Cable Route Description -->
@@ -3404,10 +1708,6 @@
                   >
             </p>
          </div>
-         <div class="footer">
-            <div>Plaatsingsdocument: {{footerContent}}</div>
-            <div>Pagina 8 van 15</div>
-         </div>
       </div>
       <!-- Page 9: FTU Location -->
       <div class="page">
@@ -3431,10 +1731,6 @@
          <img src="{{this.url}}" alt="{{#if this.alt}}{{this.alt}}{{else}}Location Image {{@index}}{{/if}}" />
          {{/each}}
          </span>
-         <div class="footer">
-            <div>Plaatsingsdocument: {{footerContent}}</div>
-            <div>Pagina 9 van 15</div>
-         </div>
       </div>
       <!-- Page 10: Schematic Drawing -->
       <div class="page">
@@ -3459,10 +1755,6 @@
             <img src="{{this.url}}" alt="{{#if this.alt}}{{this.alt}}{{else}}Location Image {{@index}}{{/if}}" />
             {{/each}}
             </span>
-         </div>
-         <div class="footer">
-            <div>Plaatsingsdocument: {{footerContent}}</div>
-            <div>Pagina 10 van 15</div>
          </div>
       </div>
       <!-- Pages 11: Additional sections -->
@@ -3535,10 +1827,6 @@
                   worden achtergelaten.
                </li>
             </ol>
-         </div>
-         <div class="footer">
-            <div>Plaatsingsdocument: {{footerContent}}</div>
-            <div>Pagina 11 van 15</div>
          </div>
       </div>
       <!-- Page 12: Work Description and Technical Specifications -->
@@ -3614,10 +1902,6 @@
                </tr>
                {{/each}}
             </table>
-         </div>
-         <div class="footer">
-            <div>Plaatsingsdocument: {{footerContent}}</div>
-            <div>Pagina 12 van 15</div>
          </div>
       </div>
       <!-- Page 13: Materials List -->
@@ -3786,10 +2070,6 @@
                </div>
             </div>
          </div>
-         <div class="footer">
-            <div>Plaatsingsdocument: {{footerContent}}</div>
-            <div>Pagina 13 van 15</div>
-         </div>
       </div>
       <!-- Page 14: Agreement Contract -->
       <div class="page">
@@ -3864,10 +2144,6 @@
                Perceel/de Percelen in het bijgesloten installatiedocument, welke deel
                uitmaakt van deze overeenkomst. (zie bijlage)
             </p>
-         </div>
-         <div class="footer">
-            <div>Plaatsingsdocument: {{footerContent}}</div>
-            <div>Pagina 14 van 15</div>
          </div>
       </div>
       <!-- Page 15: Agreement Continuation and Signatures -->
@@ -3948,10 +2224,6 @@
                   <p>Datum: ______-______-______</p>
                </div>
             </div>
-         </div>
-         <div class="footer">
-            <div>Plaatsingsdocument: {{footerContent}}</div>
-            <div>Pagina 15 van 15</div>
          </div>
       </div>
    </body>

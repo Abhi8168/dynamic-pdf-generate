@@ -17,9 +17,9 @@
   },
   "opmerkingen": [
     {
-      "sr":"",  
-      "title": "",
-      "description": ""
+      "sr":"1",  
+      "title": "www",
+      "description": "rrrrrr"
     }
   ],
   "decisionTree": {
@@ -54,6 +54,7 @@
     "type_woningen": "Hoog",
     "aantal_woningen": 3,
     "aantal_per_etage": {
+      "K_D": 1,
       "B_G": 1,
       "first": 1,
       "second": 1,
@@ -79,8 +80,8 @@
       "email": "godhoudtvanonsallen@hotmail.com",
       "telefoon": "0624264538"
     },
-    "contactpersoon_beheer": "",
-    "contactpersoon_site": "",
+    "contactpersoon_beheer": "22",
+    "contactpersoon_site": "55",
     "toegang_site_via": "hiiii",
     "aanwezigen_tijdens_survey": {
       "naam": "GLASVEZELNET AMSTERDAM",
