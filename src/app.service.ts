@@ -15,9 +15,10 @@ export class AppService {
 
     const template = await handlebars.compile(pdfTemplate);
 
+    console.log('Payload received for PDF generation:', payload);
     const htmlContent = await template({
       ...payload,
-      locationTableImage:payload.locationTableImage[0],
+      locationTableImage: payload?.locationTableImage[0]?.url || '',
       firstLogoUrl: `${process.env.BASE_URI}/static-images/logo1.png`,
       secondLogoUrl: `${process.env.BASE_URI}/static-images/logo2.png`,
       beslisboomImages: [
@@ -28,7 +29,11 @@ export class AppService {
       ],
     });
 
-    const pdfBufferData = await generatePDFBuffer(htmlContent);
+    const footerContent = `Plaatsingsdocument: ${payload?.locationTable?.dp || ''} , ${
+      payload?.locationTable?.straat_huisnrs || ''}`
+    
+    
+    const pdfBufferData = await generatePDFBuffer(htmlContent,footerContent);
 
     if (!pdfBufferData) {
       throw new BadRequestException({

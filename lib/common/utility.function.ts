@@ -20,7 +20,10 @@ export const createPath = (dir: string): boolean => {
   }
 };
 
-export const generatePDFBuffer = async (htmlContent: string) => {
+export const generatePDFBuffer = async (
+  htmlContent: string,
+  footerContent: string,
+) => {
   const browser = await puppeteer.launch({
     headless: true,
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
@@ -56,16 +59,36 @@ export const generatePDFBuffer = async (htmlContent: string) => {
   // Apply print CSS
   await page.emulateMediaType('print');
 
+  // Load your HTML content
+
   // Generate PDF
   const pdfBuffer = await page.pdf({
     format: 'A4',
-    printBackground: true, // Ensures backgrounds and colors are printed
-    // margin: {
-    //   top: '0.1mm',
-    //   right: '0.1mm',
-    //   bottom: '0.1mm',
-    //   left: '0.1mm',
-    // },
+    printBackground: true,
+    displayHeaderFooter: true,
+    headerTemplate: '<div></div>',
+    footerTemplate: `
+  <div style="
+    width: 100%; 
+    padding: 8px 20px; 
+    box-sizing: border-box; 
+    font-family: Arial, sans-serif; 
+    font-size: 11px; 
+    color: #444; 
+    font-weight: 600; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;">
+      <div></div>
+      <div style="text-align:center;">${footerContent || ''}</div>
+      <div style="text-align:right;">Page <span class="pageNumber"></span> of <span class="totalPages"></span></div>
+  </div>
+`,
+
+    margin: {
+      top: '60px',
+      bottom: '60px',
+    },
   });
 
   await browser.close();

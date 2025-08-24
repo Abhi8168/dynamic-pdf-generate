@@ -52,6 +52,10 @@ export class AppController {
       if (body?.jobDescription)
         body.jobDescription = JSON.parse(body.jobDescription);
       if (body?.site_survey) body.site_survey = JSON.parse(body.site_survey);
+      if(body?.opmerkingen) body.opmerkingen = JSON.parse(body.opmerkingen);
+      if(body?.strenglijsten) body.strenglijsten = JSON.parse(body.strenglijsten);
+      if(body?.decisionTree_notesText) body.decisionTree_notesText = JSON.parse(body.decisionTree_notesText);
+
 
       // Now replace uploaded image fields with URLs
       const baseUrl = `${process.env.BASE_URI}/images`; // update if needed
