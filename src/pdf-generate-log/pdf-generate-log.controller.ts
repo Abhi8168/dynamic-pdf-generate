@@ -6,7 +6,7 @@ import {
 } from '@nestjs/common';
 import { PdgGenerateLogService } from './pdf-generate-log.service';
 
-@Controller('pdg-generate-log')
+@Controller('pdf-generate-log')
 export class PdgGenerateLogController {
   constructor(private readonly pdgGenerateLogService: PdgGenerateLogService) {}
 
