@@ -7,7 +7,7 @@ import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
-import { PdfLogModule } from './pdf-log/pdf-log.module';
+import { PdgGenerateLogModule } from './pdf-generate-log/pdf-generate-log.module';
 
 @Module({
   imports: [
@@ -28,7 +28,8 @@ import { PdfLogModule } from './pdf-log/pdf-log.module';
     }),
     AuthModule,
     UserModule,
-    PdfLogModule,
+    PdgGenerateLogModule,
+    
   ],
   controllers: [AppController],
   providers: [AppService],

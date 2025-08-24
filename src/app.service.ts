@@ -3,10 +3,13 @@ import * as fs from 'fs';
 import * as handlebars from 'handlebars';
 import constants from 'lib/common/constants'; // Your constants file with PDF_TEMPLATE_PATH
 import { createPath, generatePDFBuffer } from 'lib/common/utility.function';
+import { PdgGenerateLogService } from './pdf-generate-log/pdf-generate-log.service';
+import { join } from 'path';
 
 @Injectable()
 export class AppService {
-  async createPdf(payload) {
+  constructor(private readonly pdgGenerateLogService: PdgGenerateLogService) {}
+  async createPdf(payload, userDetail) {
     const pdfTemplate = fs.readFileSync(constants.PDF_TEMPLATE_PATH).toString();
 
     // Ensure the directory exists
@@ -15,7 +18,6 @@ export class AppService {
 
     const template = await handlebars.compile(pdfTemplate);
 
-    console.log('Payload received for PDF generation:', payload);
     const htmlContent = await template({
       ...payload,
       locationTableImage: payload?.locationTableImage[0]?.url || '',
@@ -30,10 +32,10 @@ export class AppService {
     });
 
     const footerContent = `Plaatsingsdocument: ${payload?.locationTable?.dp || ''} , ${
-      payload?.locationTable?.straat_huisnrs || ''}`
-    
-    
-    const pdfBufferData = await generatePDFBuffer(htmlContent,footerContent);
+      payload?.locationTable?.straat_huisnrs || ''
+    }`;
+
+    const pdfBufferData = await generatePDFBuffer(htmlContent, footerContent);
 
     if (!pdfBufferData) {
       throw new BadRequestException({
@@ -48,6 +50,13 @@ export class AppService {
 
     // Create a new PDF document
     fs.writeFileSync(pdfFilePath, pdfBufferData);
+    const pdfPathUrl = join(constants.UPLOADED_PDF_DIRECTORY, fileName);
+    // Log the PDF generation
+    await this.pdgGenerateLogService.createLog(
+      userDetail._id,
+      payload,
+      pdfPathUrl,
+    );
     return { pdfFilePath, fileName };
   }
 }

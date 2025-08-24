@@ -6,6 +6,7 @@ import {
   InternalServerErrorException,
   Post,
   Query,
+  Req,
   Res,
   UploadedFiles,
   UseInterceptors,
@@ -43,8 +44,10 @@ export class AppController {
     @UploadedFiles() files: Record<string, any[]>,
     @Body() body: any,
     @Res() res: any,
+    @Req() req: any,
   ) {
     try {
+      const userDetail= req?.user;
       // Convert JSON strings inside body back into objects
       if (body?.locationTable)
         body.locationTable = JSON.parse(body.locationTable);
@@ -52,10 +55,11 @@ export class AppController {
       if (body?.jobDescription)
         body.jobDescription = JSON.parse(body.jobDescription);
       if (body?.site_survey) body.site_survey = JSON.parse(body.site_survey);
-      if(body?.opmerkingen) body.opmerkingen = JSON.parse(body.opmerkingen);
-      if(body?.strenglijsten) body.strenglijsten = JSON.parse(body.strenglijsten);
-      if(body?.decisionTree_notesText) body.decisionTree_notesText = JSON.parse(body.decisionTree_notesText);
-
+      if (body?.opmerkingen) body.opmerkingen = JSON.parse(body.opmerkingen);
+      if (body?.strenglijsten)
+        body.strenglijsten = JSON.parse(body.strenglijsten);
+      if (body?.decisionTree_notesText)
+        body.decisionTree_notesText = JSON.parse(body.decisionTree_notesText);
 
       // Now replace uploaded image fields with URLs
       const baseUrl = `${process.env.BASE_URI}/images`; // update if needed
@@ -84,7 +88,7 @@ export class AppController {
         }
       });
 
-      const data = await this.appService.createPdf(body);
+      const data = await this.appService.createPdf(body,userDetail);
 
       return res.status(HttpStatus.OK).json({
         success: true,
