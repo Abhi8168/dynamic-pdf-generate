@@ -31,9 +31,24 @@ export class AppService {
       ],
     });
 
-    const footerContent = `Plaatsingsdocument: ${payload?.locationTable?.dp || ''} , ${
-      payload?.locationTable?.straat_huisnrs || ''
-    }`;
+    const footerContent = `
+  <div class="footer">
+    <div>Plaatsingsdocument: ${payload?.locationTable?.dp || ''} ${payload?.locationTable?.straat_huisnrs || ''}</div>
+  </div>
+  <style>
+    .footer {
+      position: absolute;
+      bottom: 8mm;
+      left: 8mm;
+      right: 8mm;
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      border-top: 1px solid #000;
+      padding-top: 5px;
+    }
+  </style>
+`;
 
     const pdfBufferData = await generatePDFBuffer(htmlContent, footerContent);
 

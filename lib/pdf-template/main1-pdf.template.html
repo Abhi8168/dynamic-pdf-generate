@@ -1,2231 +1,2286 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="nl">
-   <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Document</title>
-      <style>
-         @page {
-         size: A4;
-         margin: 15mm;
-         }
-         * {
-         margin: 0;
-         padding: 0;
-         box-sizing: border-box;
-         }
-         body {
-         font-family: Arial, sans-serif;
-         font-size: 14px;
-         line-height: 1.4;
-         color: #000;
-         background: white;
-         }
-         .page {
-         width: 210mm;
-         min-height: 310mm;
-         padding: 5mm;
-         margin: 0 auto;
-         background: white;
-         border: 1px solid #000;
-         page-break-after: always;
-         position: relative;
-         }
-         .page:last-child {
-         page-break-after: avoid;
-         }
-         .header {
-         display: flex;
-         justify-content: space-between;
-         align-items: center;
-         margin-bottom: 10px;
-         padding-bottom: 5px;
-         border-bottom: 4px solid #000;
-         }
-         .header-left,
-         .header-right {
-         width: 80px;
-         height: 80px;
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         text-align: center;
-         }
-         .header-left img,
-         .header-right img {
-         width: 80px;
-         height: 80px;
-         object-fit: contain;
-         }
-         .header-center {
-         flex: 1;
-         text-align: center;
-         font-weight: bold;
-         font-size: 14px;
-         }
-         .footer {
-         position: absolute;
-         bottom: 0.1mm;
-         left: 0.1mm;
-         right: 0.1mm;
-         display: flex;
-         justify-content: space-between;
-         font-size: 12px;
-         border-top: 1px solid #000;
-         padding-top: 5px;
-         }
-         h1 {
-         font-size: 30px;
-         font-weight: bold;
-         margin: 20px 0;
-         text-align: center;
-         }
-         h2 {
-         font-size: 24px;
-         font-weight: bold;
-         margin: 15px 0 10px 0;
-         text-decoration: underline;
-         }
-         h3 {
-         font-size: 20px;
-         font-weight: bold;
-         margin: 10px 0 5px 0;
-         }
-         .Home-page-image-container {
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         margin: 20px auto;
-         }
-         .Home-page-image {
-         width: 120mm;
-         height: 120mm;
-         border: 1px solid #ccc;  /* optional */
-         background-repeat: no-repeat;
-         background-position: center;
-         background-size: contain;   /* image hamesha fit hogi */
-         background-color: #fff;     /* white space fill karega */
-         }
-         .cover-image-placeholder {
-         width: 100%;
-         max-width: 400px;
-         height: 300px;
-         margin: 20px auto;
-         display: block;
-         background-color: #e8f4f8;
-         border: 2px solid #4a90a4;
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         color: #4a90a4;
-         font-style: italic;
-         }
-         .data-table {
-         width: 80%;
-         border-collapse: collapse;
-         margin: 20px 0;
-         }
-         .data-table th,
-         .data-table td {
-         border: 1px solid #000;
-         padding: 5px;
-         text-align: left;
-         font-size: 12px;
-         }
-         .data-table th {
-         background-color: #f0f0f0;
-         font-weight: bold;
-         }
-         .toc-list {
-         list-style: none;
-         margin: 20px 0;
-         }
-         .toc-list li {
-         margin: 8px 0;
-         font-size: 18px;
-         }
-         .survey-table {
-         width: 100%;
-         border-collapse: collapse;
-         margin: 8px 0;
-         font-size: 11px;
-         }
-         .survey-table th,
-         .survey-table td {
-         border: 1px solid #000;
-         padding: 1.5px;
-         text-align: left;
-         white-space: normal;       
-         word-break: break-word;       
-         overflow-wrap: break-word;
-         }
-         .survey-table th {
-         background-color: #e0e0e0;
-         font-weight: bold;
-         }
-         .location-placeholder {
-         width: 100%;
-         height: 400px;
-         background-color: #f0f8f0;
-         display: flex;
-         color: #4a8c4a;
-         font-style: italic;
-         margin: 20px 0;
-         }
-         .flowchart-container {
-         width: 100%;
-         height: 500px;
-         margin: 20px auto;
-         position: relative;
-         background-color: #cfe0f7;
-         }
-         .flowchart-element {
-         position: absolute;
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         text-align: center;
-         font-size: 9px;
-         font-weight: bold;
-         color: white;
-         padding: 5px;
-         }
-         .blue-oval {
-         background-color: #1e5aa8;
-         border-radius: 50px;
-         width: 120px;
-         height: 40px;
-         }
-         .blue-diamond {
-         background-color: #1e5aa8;
-         width: 80px;
-         height: 80px;
-         transform: rotate(45deg);
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         }
-         .blue-diamond span {
-         transform: rotate(-45deg);
-         font-size: 8px;
-         }
-         .green-oval {
-         background-color: #4a8c4a;
-         border-radius: 50px;
-         width: 140px;
-         height: 35px;
-         }
-         .red-oval {
-         background-color: #c41e3a;
-         border-radius: 50px;
-         width: 140px;
-         height: 35px;
-         }
-         .building-placeholder {
-         width: 100%;
-         height: 400px;
-         background-color: #f8f0e8;
-         display: flex;
-         color: #a4704a;
-         font-style: italic;
-         margin: 20px auto;
-         }
-         .cable-placeholder {
-         width: 100%;
-         height: 350px;
-         background-color: #f8f8e8;
-         display: flex;
-         color: #a4a44a;
-         font-style: italic;
-         margin: 10px 0;
-         }
-         .schematic-container {
-         width: 100%;
-         max-width: 500px;
-         margin: 20px auto;
-         border: 2px solid #000;
-         }
-         .schematic-table {
-         width: 100%;
-         border-collapse: collapse;
-         }
-         .schematic-table td {
-         border: 1px solid #ccc;
-         padding: 20px;
-         text-align: center;
-         font-weight: bold;
-         position: relative;
-         }
-         .schematic-arrow {
-         position: absolute;
-         right: -20px;
-         top: 50%;
-         transform: translateY(-50%);
-         color: red;
-         font-size: 24px;
-         font-weight: bold;
-         }
-         .ftu-placeholder {
-         width: 100%;
-         height: 400px;
-         background-color: #f0f0f8;
-         display: flex;
-         align-items: flex-start;
-         justify-content: start;
-         color: #4a4aa4;
-         font-style: italic;
-         margin: 20px auto;
-         }
-         .hazard-table {
-         width: 100%;
-         border-collapse: collapse;
-         margin: 20px 0;
-         table-layout: fixed; 
-         }
-         .hazard-table th,
-         .hazard-table td {
-         border: 1px solid #000;
-         padding: 5px;
-         font-size: 11px;
-         word-break: break-word;
-         overflow-wrap: break-word;
-         white-space: normal; 
-         }
-         .hazard-table .yellow-row {
-         background-color: #ffff00;
-         }
-         .hazard-table .gray-header {
-         background-color: #c0c0c0;
-         font-weight: bold;
-         }
-         .notes-section {
-         margin: 20px 0;
-         font-size: 14px;
-         white-space: normal;          /* allows normal line breaks */
-         word-break: break-word;       /* breaks long words if needed */
-         overflow-wrap: break-word;
-         }
-         .page-content {
-         padding-left: 10px;
-         padding-right: 10px;
-         display: grid;
-         grid-gap: 10px;
-         }
-         @media print {
-         .page {
-         border: none;
-         margin: 0;
-         padding: 0;
-         }
-         }
-         /* Case 1 - 1 image covers whole page */
-         .page-content.case-1 {
-         grid-template-columns: 1fr;
-         grid-template-rows: 1fr;
-         }
-         .page-content.case-1 img {
-         width: 100%;
-         height: 100%;
-         object-fit: contain;
-         }
-         /* Case 2 - 2 images split vertically */
-         .page-content.case-2 {
-         /* grid-template-columns: 1fr; */
-         grid-template-rows: 1fr 1fr;
-         }
-         .page-content.case-2 img {
-         width: 600px;
-         height: 100%;
-         object-fit: contain;
-         }
-         /* Case 3 - 3 images: 2 on top, 1 below */
-         .page-content.case-3 {
-         grid-template-columns: 1fr 1fr;
-         grid-template-rows: 1fr 1fr;
-         grid-template-areas: 
-         "img1 img2"
-         "img3 img3";
-         }
-         .page-content.case-3 img:nth-child(1) { grid-area: img1; }
-         .page-content.case-3 img:nth-child(2) { grid-area: img2; }
-         .page-content.case-3 img:nth-child(3) { grid-area: img3; }
-         .page-content.case-3 img {
-         width: 100%;
-         height: 100%;
-         object-fit: contain;
-         }
-         /* Case 4 - 4 images in 2x2 grid */
-         .page-content.case-4 {
-         grid-template-columns: 1fr 1fr;
-         grid-template-rows: 1fr 1fr;
-         }
-         .page-content.case-4 img {
-         width: 100%;
-         height: 100%;
-         object-fit: contain;
-         }
-         /* Case 5 - 5 images: 4 in 2x2, 1 below */
-         .page-content.case-5 {
-         grid-template-columns: 1fr 1fr;
-         grid-template-rows: 1fr 1fr 1fr;
-         grid-template-areas: 
-         "img1 img2"
-         "img3 img4"
-         "img5 img6";
-         }
-         .page-content.case-5 img:nth-child(1) { grid-area: img1; }
-         .page-content.case-5 img:nth-child(2) { grid-area: img2; }
-         .page-content.case-5 img:nth-child(3) { grid-area: img3; }
-         .page-content.case-5 img:nth-child(4) { grid-area: img4; }
-         .page-content.case-5 img:nth-child(5) { grid-area: img5; }
-         .page-content.case-5 img {
-         width: 100%;
-         height: 100%;
-         object-fit: contain;
-         }
-      </style>
-   </head>
-   <body>
-      <!-- Page 1: Cover Page -->
-      <div class="page">
-         <div class="header" style="border: 0;">
-            <div class="header-left">
-               <img
-                  src={{firstLogoUrl}}
-                  alt="ARTEMIS Logo"
-                  />
-            </div>
-            <div class="header-right">
-               <img
-                  src={{secondLogoUrl}}
-                  alt="KPN NetwerkNL Logo"
-                  />
-            </div>
-         </div>
-         <div style="text-align: center;">
-            <h1>PLAATSINGSDOCUMENT</h1>
-            <div class="Home-page-image-container">
-               <div class="Home-page-image" style="background-image: url('{{locationTableImage}}');"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @page {
+        size: A4;
+        margin: 5mm;
+      }
 
-            </div>
-            <table class="data-table" style="width: 60%; margin: 20px auto; border-collapse: collapse; text-align: center; border: 1px solid #ccc;">
-               <tr>
-                  <th style="width: 50%; border: 1px solid #ccc; padding: 8px;">BAG Pand ID('s)</th>
-                  <td style="width: 50%; border: 1px solid #ccc; padding: 8px;">{{locationTable.bag_pand_id}}</td>
-               </tr>
-               <tr>
-                  <th style="width: 50%; border: 1px solid #ccc; padding: 8px;">HB nr.</th>
-                  <td style="width: 50%; border: 1px solid #ccc; padding: 8px;">{{locationTable.hb_nr}}</td>
-               </tr>
-               <tr>
-                  <th style="width: 50%; border: 1px solid #ccc; padding: 8px;">Straat + huisnrs.</th>
-                  <td style="width: 50%; border: 1px solid #ccc; padding: 8px;">{{locationTable.straat_huisnrs}}</td>
-               </tr>
-               <tr>
-                  <th style="width: 50%; border: 1px solid #ccc; padding: 8px;">Postcode + Plaats</th>
-                  <td style="width: 50%; border: 1px solid #ccc; padding: 8px;">{{locationTable.postcode_plaats}}</td>
-               </tr>
-               <tr>
-                  <th style="width: 50%; border: 1px solid #ccc; padding: 8px;">AP-gebied</th>
-                  <td style="width: 50%; border: 1px solid #ccc; padding: 8px;">{{locationTable.ap_gebied}}</td>
-               </tr>
-               <tr>
-                  <th style="width: 50%; border: 1px solid #ccc; padding: 8px;">DP</th>
-                  <td style="width: 50%; border: 1px solid #ccc; padding: 8px;">{{locationTable.dp}}</td>
-               </tr>
-               <tr>
-                  <th style="width: 50%; border: 1px solid #ccc; padding: 8px;">Projectnr.</th>
-                  <td style="width: 50%; border: 1px solid #ccc; padding: 8px;">{{locationTable.projectnr}}</td>
-               </tr>
-               <tr>
-                  <th style="width: 50%; border: 1px solid #ccc; padding: 8px;">Aannemer</th>
-                  <td style="width: 50%; border: 1px solid #ccc; padding: 8px;">{{locationTable.aannemer}}</td>
-               </tr>
-               <tr>
-                  <th style="width: 50%; border: 1px solid #ccc; padding: 8px;">Datum</th>
-                  <td style="width: 50%; border: 1px solid #ccc; padding: 8px;">{{locationTable.datum}}</td>
-               </tr>
-               <tr>
-                  <th style="width: 50%; border: 1px solid #ccc; padding: 8px;">Naam Schouwer</th>
-                  <td style="width: 50%; border: 1px solid #ccc; padding: 8px;">{{locationTable.naam_schouwer}}</td>
-               </tr>
-            </table>
-         </div>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        line-height: 1.4;
+        color: #000;
+        background: white;
+      }
+
+      /* Constant header for every page */
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 25mm;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 2px solid #000;
+        padding: 5px 15mm;
+        background: white;
+        z-index: 1000;
+      }
+
+      .header-left,
+      .header-right {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .header-left img,
+      .header-right img {
+        width: 50px;
+        height: 50px;
+        object-fit: contain;
+      }
+
+      /* Cover page specific styling */
+      .page.no-header {
+        padding-top: 5mm;
+      }
+
+      .page.no-header .cover-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        padding-bottom: 5px;
+        border-bottom: 4px solid #000;
+      }
+
+      .page.no-header .cover-header .header-left,
+      .page.no-header .cover-header .header-right {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .page.no-header .cover-header img {
+        width: 50px;
+        height: 50px;
+        object-fit: contain;
+      }
+
+      .page {
+        width: 210mm;
+        min-height: 210mm;
+        page-break-after: always;
+        padding-left: 15mm;
+        padding-right: 15mm;
+        padding-bottom: 15mm;
+        position: relative;
+      }
+
+      .page:last-child {
+        page-break-after: avoid;
+      }
+
+      h1 {
+        font-size: 30px;
+        font-weight: bold;
+        margin: 20px 0;
+        text-align: center;
+      }
+
+      h2 {
+        font-size: 24px;
+        font-weight: bold;
+        margin: 15px 0 10px 0;
+        text-decoration: underline;
+      }
+
+      h3 {
+        font-size: 20px;
+        font-weight: bold;
+        margin: 10px 0 5px 0;
+      }
+
+      .Home-page-image-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 20px auto;
+      }
+
+      .Home-page-image {
+        width: 120mm;
+        height: 120mm;
+        border: 1px solid #ccc;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        background-color: #fff;
+      }
+
+      .cover-image-placeholder {
+        width: 100%;
+        max-width: 400px;
+        height: 300px;
+        margin: 20px auto;
+        display: block;
+        background-color: #e8f4f8;
+        border: 2px solid #4a90a4;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #4a90a4;
+        font-style: italic;
+      }
+
+      .data-table {
+        width: 80%;
+        border-collapse: collapse;
+        margin: 20px 0;
+      }
+
+      .data-table th,
+      .data-table td {
+        border: 1px solid #000;
+        padding: 5px;
+        text-align: left;
+        font-size: 12px;
+      }
+
+      .data-table th {
+        background-color: #f0f0f0;
+        font-weight: bold;
+      }
+
+      .toc-list {
+        list-style: none;
+        margin: 20px 0;
+      }
+
+      .toc-list li {
+        margin: 8px 0;
+        font-size: 18px;
+      }
+
+      .survey-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 8px 0;
+        font-size: 11px;
+      }
+
+      .survey-table th,
+      .survey-table td {
+        border: 1px solid #000;
+        padding: 1.5px;
+        text-align: left;
+        white-space: normal;
+        word-break: break-word;
+        overflow-wrap: break-word;
+      }
+
+      .survey-table th {
+        background-color: #e0e0e0;
+        font-weight: bold;
+      }
+
+      .location-placeholder {
+        width: 100%;
+        height: 400px;
+        background-color: #f0f8f0;
+        display: flex;
+        color: #4a8c4a;
+        font-style: italic;
+        margin: 20px 0;
+      }
+
+      .flowchart-container {
+        width: 100%;
+        height: 500px;
+        margin: 20px auto;
+        position: relative;
+        background-color: #cfe0f7;
+      }
+
+      .flowchart-element {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-size: 9px;
+        font-weight: bold;
+        color: white;
+        padding: 5px;
+      }
+
+      .blue-oval {
+        background-color: #1e5aa8;
+        border-radius: 50px;
+        width: 120px;
+        height: 40px;
+      }
+
+      .blue-diamond {
+        background-color: #1e5aa8;
+        width: 80px;
+        height: 80px;
+        transform: rotate(45deg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .blue-diamond span {
+        transform: rotate(-45deg);
+        font-size: 8px;
+      }
+
+      .green-oval {
+        background-color: #4a8c4a;
+        border-radius: 50px;
+        width: 140px;
+        height: 35px;
+      }
+
+      .red-oval {
+        background-color: #c41e3a;
+        border-radius: 50px;
+        width: 140px;
+        height: 35px;
+      }
+
+      .building-placeholder {
+        width: 100%;
+        height: 400px;
+        background-color: #f8f0e8;
+        display: flex;
+        color: #a4704a;
+        font-style: italic;
+        margin: 20px auto;
+      }
+
+      .cable-placeholder {
+        width: 100%;
+        height: 350px;
+        background-color: #f8f8e8;
+        display: flex;
+        color: #a4a44a;
+        font-style: italic;
+        margin: 10px 0;
+      }
+
+      .schematic-container {
+        width: 100%;
+        max-width: 500px;
+        margin: 20px auto;
+        border: 2px solid #000;
+      }
+
+      .schematic-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .schematic-table td {
+        border: 1px solid #ccc;
+        padding: 20px;
+        text-align: center;
+        font-weight: bold;
+        position: relative;
+      }
+
+      .schematic-arrow {
+        position: absolute;
+        right: -20px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: red;
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      .ftu-placeholder {
+        width: 100%;
+        height: 400px;
+        background-color: #f0f0f8;
+        display: flex;
+        align-items: flex-start;
+        justify-content: start;
+        color: #4a4aa4;
+        font-style: italic;
+        margin: 20px auto;
+      }
+
+      .hazard-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        table-layout: fixed;
+      }
+
+      .hazard-table th,
+      .hazard-table td {
+        border: 1px solid #000;
+        padding: 5px;
+        font-size: 11px;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        white-space: normal;
+      }
+
+      .hazard-table .yellow-row {
+        background-color: #ffff00;
+      }
+
+      .hazard-table .gray-header {
+        background-color: #c0c0c0;
+        font-weight: bold;
+      }
+
+      .notes-section {
+        margin: 20px 0;
+        font-size: 14px;
+        white-space: normal;
+        word-break: break-word;
+        overflow-wrap: break-word;
+      }
+
+      .main-page-content-padding {
+        padding-top: 30mm;
+      }
+
+      .page-content {
+        padding-left: 10px;
+        padding-right: 10px;
+        display: grid;
+        grid-gap: 10px;
+      }
+
+      @media print {
+        .page {
+          border: none;
+          margin: 0;
+          padding: 0;
+        }
+      }
+
+      /* Case 1 - 1 image covers whole page */
+      .page-content.case-1 {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+      }
+
+      .page-content.case-1 img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      /* Case 2 - 2 images split vertically */
+      .page-content.case-2 {
+        grid-template-rows: 1fr 1fr;
+      }
+
+      .page-content.case-2 img {
+        width: 600px;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      /* Case 3 - 3 images: 2 on top, 1 below */
+      .page-content.case-3 {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas:
+          'img1 img2'
+          'img3 img3';
+      }
+
+      .page-content.case-3 img:nth-child(1) {
+        grid-area: img1;
+      }
+      .page-content.case-3 img:nth-child(2) {
+        grid-area: img2;
+      }
+      .page-content.case-3 img:nth-child(3) {
+        grid-area: img3;
+      }
+
+      .page-content.case-3 img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      /* Case 4 - 4 images in 2x2 grid */
+      .page-content.case-4 {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+      }
+
+      .page-content.case-4 img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      /* Case 5 - 5 images: 4 in 2x2, 1 below */
+      .page-content.case-5 {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-areas:
+          'img1 img2'
+          'img3 img4'
+          'img5 img6';
+      }
+
+      .page-content.case-5 img:nth-child(1) {
+        grid-area: img1;
+      }
+      .page-content.case-5 img:nth-child(2) {
+        grid-area: img2;
+      }
+      .page-content.case-5 img:nth-child(3) {
+        grid-area: img3;
+      }
+      .page-content.case-5 img:nth-child(4) {
+        grid-area: img4;
+      }
+      .page-content.case-5 img:nth-child(5) {
+        grid-area: img5;
+      }
+
+      .page-content.case-5 img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Constant Header (will appear on all pages except first) -->
+    <div class="header">
+      <div class="header-left">
+        <img src="{{firstLogoUrl}}" alt="ARTEMIS Logo" />
       </div>
-      <!-- Page 2: Table of Contents -->
-      <div class="page">
-         <div class="header">
-            <div class="header-left">
-               <img
-                  src={{firstLogoUrl}}
-                  alt="ARTEMIS Logo"
-                  />
-            </div>
-            <div class="header-right">
-               <img
-                  src={{secondLogoUrl}}
-                  alt="KPN NetwerkNL Logo"
-                  style="object-fit: cover;"
-                  />
-            </div>
-         </div>
-         <div class="page-content">
-            <h1>Inhoudsopgave</h1>
-            <ul class="toc-list" style="display: flex; flex-direction: column; gap: 20px;">
-               <li><strong>1. Locatie en installatiegegevens</strong></li>
-               <li><strong>2. Locatie</strong></li>
-               <li><strong>3. Beslisboom</strong></li>
-               <li><strong>4. Aanzicht complex eenheden</strong></li>
-               <li><strong>5. Beschrijving tracé en kabelroute</strong></li>
-               <li><strong>6. Schematische tekening</strong></li>
-               <li><strong>7. Beschrijving aanleg</strong></li>
-               <li><strong>8. Materiaalstaat</strong></li>
-               <li><strong>9. Overeenkomst/instemmingsbesluit</strong></li>
-            </ul>
-         </div>
+      <div style="font-weight: bold;">
+       <p>Amsterdam Burgwallen</p>
       </div>
-      <!-- Page 3: Location and Installation Details -->
-      <div class="page">
-         <div class="header">
-            <div class="header-left">
-               <img
-                  src={{firstLogoUrl}}
-                  alt="ARTEMIS Logo"
-                  />
-            </div>
-            <div class="header-right">
-               <img
-                  src={{secondLogoUrl}}
-                  alt="KPN NetwerkNL Logo"
-                  />
-            </div>
-         </div>
-         <div class="page-content">
-            <h2>1. Locatie en installatiegegevens</h2>
-            <!-- survey-table -->
-            <table class="survey-table">
-               <tr style="height: 20pt">
-                  <td
-                     style="
-                     width: 528pt;
-                     border-top-style: solid;
-                     border-top-width: 1pt;
-                     border-left-style: solid;
-                     border-left-width: 1pt;
-                     border-bottom-style: solid;
-                     border-bottom-width: 1pt;
-                     border-right-style: solid;
-                     border-right-width: 1pt;
-                     "
-                     colspan="15"
-                     bgcolor="#B3B3B3"
-                     >
-                     <p
-                        class="s9"
-                        style="
-                        padding-top: 3pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        font-weight: bold;
-                        "
-                        >
-                        Site survey/locatie details
-                     </p>
-                  </td>
-               </tr>
-               <!-- Datum site survey row -->
-               <tr style="height: 20pt">
-                  <td style="width: 161pt; border: 1pt solid #000">
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 3pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
-                        Datum site survey
-                     </p>
-                  </td>
-                  <td style="width: 80pt; border: 1pt solid #000" colspan="3">
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 3pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
-                        {{site_survey.datum_site_survey}}
-                     </p>
-                  </td>
-                  <td style="width: 183pt; border: 1pt solid #000" colspan="7">
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 3pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
-                        Glasvezelvoorbereider: {{site_survey.glasvezelvoorbereider}}
-                     </p>
-                  </td>
-                  <td style="width: 104pt; border: 1pt solid #000" colspan="4">
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 3pt;
-                        padding-left: 6pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
-                        Tel. {{site_survey.telefoon}}
-                     </p>
-                  </td>
-               </tr>
-               <!-- Type pand row -->
-               <tr style="height: 19pt">
-                  <td style="width: 161pt; border: 1pt solid #000">
-                     <p
-                        class="s10"
-                        style="
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        line-height: 10pt;
-                        text-align: left;
-                        "
-                        >
-                        Type pandt
-                     </p>
-                  </td>
-                  <td style="width: 80pt; border: 1pt solid #000" colspan="3">
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 2pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
-                        App. complex
-                        <span class="s11"
-                           >{{#if site_survey.type_pand.app_complex}} ☑ {{else}} ☐ {{/if}}</span
-                           >
-                     </p>
-                  </td>
-                  <td style="width: 59pt; border: 1pt solid #000" colspan="3">
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 2pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
-                        Duplex
-                        <span class="s11"
-                           >{{#if site_survey.type_pand.duplex}} ☑ {{else}} ☐ {{/if}}</span
-                           >
-                     </p>
-                  </td>
-                  <td style="width: 124pt; border: 1pt solid #000" colspan="4">
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 2pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
-                        Comm. ruimte aanwezig
-                        <span class="s11"
-                           >{{#if site_survey.type_pand.comm_ruimte_aanwezig}} ☑ {{else}} ☐
-                        {{/if}}</span
-                           >
-                     </p>
-                  </td>
-                  <td style="width: 104pt; border: 1pt solid #000" colspan="4">
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 2pt;
-                        padding-left: 6pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
-                        Anders
-                        <span class="s11"
-                           >{{#if site_survey.type_pand.anders}} ☑ {{else}} ☐ {{/if}}</span
-                           >
-                     </p>
-                  </td>
-               </tr>
-               <!-- Other survey fields -->
-               <tr style="height: 15pt">
-                  <td style="width: 161pt; border: 1pt solid #000">
-                     <p
-                        class="s10"
-                        style="
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        line-height: 10pt;
-                        text-align: left;
-                        "
-                        >
-                        Monumentaal pand ja/nee?
-                     </p>
-                  </td>
-                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 1pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
-                        {{site_survey.monumentaal_pand_janes}}
-                     </p>
-                  </td>
-               </tr>
-               <tr style="height: 15pt">
-                  <td style="width: 161pt; border: 1pt solid #000">
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 1pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
-                        Type woningen
-                     </p>
-                  </td>
-                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 1pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
-                        {{site_survey.type_woningen}}
-                     </p>
-                  </td>
-               </tr>
-               <tr style="height: 15pt">
-                  <td style="width: 161pt; border: 1pt solid #000">
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 1pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
-                        Aantal woningen
-                     </p>
-                  </td>
-                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 1pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
-                        {{site_survey.aantal_woningen}}
-                     </p>
-                  </td>
-               </tr>
-               <!-- ETAGE HEADER ROW - WITH KD ADDED -->
-               <tr style="height: 24pt">
-                  <td style="width: 161pt; border: 1pt solid #000" bgcolor="#BFBFBF">
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 5pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
-                        Etage
-                     </p>
-                  </td>
-                  <!-- NEW KD COLUMN -->
-                  <td style="width: 29pt; border: 1pt solid #000" bgcolor="#BFBFBF">
-                     <p
-                        class="s10"
-                        style="
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        line-height: 10pt;
-                        text-align: left;
-                        "
-                        >
-                        K
-                     </p>
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 1pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
-                        D
-                     </p>
-                  </td>
-                  <td style="width: 22pt; border: 1pt solid #000" bgcolor="#BFBFBF">
-                     <p
-                        class="s10"
-                        style="
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        line-height: 10pt;
-                        text-align: left;
-                        "
-                        >
-                        B
-                     </p>
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 1pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
-                        G
-                     </p>
-                  </td>
-                  <td style="width: 29pt; border: 1pt solid #000" bgcolor="#BFBFBF">
-                     <p
-                        class="s10"
-                        style="padding-top: 5pt; text-indent: 0pt; text-align: center"
-                        >
-                        1
-                     </p>
-                  </td>
-                  <td style="width: 29pt; border: 1pt solid #000" bgcolor="#BFBFBF">
-                     <p
-                        class="s10"
-                        style="padding-top: 5pt; text-indent: 0pt; text-align: center"
-                        >
-                        2
-                     </p>
-                  </td>
-                  <td style="width: 22pt; border: 1pt solid #000" bgcolor="#BFBFBF">
-                     <p
-                        class="s10"
-                        style="padding-top: 5pt; text-indent: 0pt; text-align: center"
-                        >
-                        3
-                     </p>
-                  </td>
-                  <td style="width: 29pt; border: 1pt solid #000" bgcolor="#BFBFBF">
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 5pt;
-                        padding-left: 2pt;
-                        padding-right: 1pt;
-                        text-indent: 0pt;
-                        text-align: center;
-                        "
-                        >
-                        4
-                     </p>
-                  </td>
-                  <td style="width: 29pt; border: 1pt solid #000" bgcolor="#BFBFBF">
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 5pt;
-                        padding-left: 1pt;
-                        text-indent: 0pt;
-                        text-align: center;
-                        "
-                        >
-                        5
-                     </p>
-                  </td>
-                  <td style="width: 29pt; border: 1pt solid #000" bgcolor="#BFBFBF">
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 5pt;
-                        padding-left: 2pt;
-                        text-indent: 0pt;
-                        text-align: center;
-                        "
-                        >
-                        6
-                     </p>
-                  </td>
-                  <td style="width: 30pt; border: 1pt solid #000" bgcolor="#BFBFBF">
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 5pt;
-                        padding-left: 2pt;
-                        text-indent: 0pt;
-                        text-align: center;
-                        "
-                        >
-                        7
-                     </p>
-                  </td>
-                  <td style="width: 29pt; border: 1pt solid #000" bgcolor="#BFBFBF">
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 5pt;
-                        padding-left: 1pt;
-                        text-indent: 0pt;
-                        text-align: center;
-                        "
-                        >
-                        8
-                     </p>
-                  </td>
-                  <td style="width: 29pt; border: 1pt solid #000" bgcolor="#BFBFBF">
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 5pt;
-                        padding-left: 2pt;
-                        text-indent: 0pt;
-                        text-align: center;
-                        "
-                        >
-                        9
-                     </p>
-                  </td>
-                  <td style="width: 29pt; border: 1pt solid #000" bgcolor="#BFBFBF">
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 5pt;
-                        padding-left: 10pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
-                        10
-                     </p>
-                  </td>
-                  <td style="width: 29pt; border: 1pt solid #000" bgcolor="#BFBFBF">
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 5pt;
-                        padding-left: 10pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
-                        11
-                     </p>
-                  </td>
-                  <td style="width: 32pt; border: 1pt solid #000" bgcolor="#BFBFBF">
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 5pt;
-                        padding-left: 10pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
-                        12
-                     </p>
-                  </td>
-               </tr>
-               <!-- AANTAL PER ETAGE DATA ROW - WITH KD ADDED -->
-               <tr style="height: 17pt">
-                  <td style="width: 161pt; border: 1pt solid #000">
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 2pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
-                        Aantal per etage
-                     </p>
-                  </td>
-                  <!-- NEW KD DATA CELL -->
-                  <td style="width: 29pt; border: 1pt solid #000">
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 2pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
-                        {{site_survey.aantal_per_etage.K_D}}
-                     </p>
-                  </td>
-                  <td style="width: 22pt; border: 1pt solid #000">
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 2pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
-                        {{site_survey.aantal_per_etage.B_G}}
-                     </p>
-                  </td>
-                  <td style="width: 29pt; border: 1pt solid #000">
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 2pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
-                        {{site_survey.aantal_per_etage.first}}
-                     </p>
-                  </td>
-                  <td style="width: 29pt; border: 1pt solid #000">
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 2pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
-                        {{site_survey.aantal_per_etage.second}}
-                     </p>
-                  </td>
-                  <td style="width: 22pt; border: 1pt solid #000">
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 2pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
-                        {{site_survey.aantal_per_etage.third}}
-                     </p>
-                  </td>
-                  <td style="width: 29pt; border: 1pt solid #000">
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 2pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
-                        {{site_survey.aantal_per_etage.fourth}}
-                     </p>
-                  </td>
-                  <td style="width: 29pt; border: 1pt solid #000">
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 2pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
-                        {{site_survey.aantal_per_etage.fifth}}
-                     </p>
-                  </td>
-                  <td style="width: 29pt; border: 1pt solid #000">
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 2pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
-                        {{site_survey.aantal_per_etage.sixth}}
-                     </p>
-                  </td>
-                  <td style="width: 30pt; border: 1pt solid #000">
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 2pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
-                        {{site_survey.aantal_per_etage.seventh}}
-                     </p>
-                  </td>
-                  <td style="width: 29pt; border: 1pt solid #000">
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 2pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
-                        {{site_survey.aantal_per_etage.eighth}}
-                     </p>
-                  </td>
-                  <td style="width: 29pt; border: 1pt solid #000">
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 2pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
-                        {{site_survey.aantal_per_etage.ninth}}
-                     </p>
-                  </td>
-                  <td style="width: 29pt; border: 1pt solid #000">
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 2pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
-                        {{site_survey.aantal_per_etage.tenth}}
-                     </p>
-                  </td>
-                  <td style="width: 29pt; border: 1pt solid #000">
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 2pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
-                        {{site_survey.aantal_per_etage.eleventh}}
-                     </p>
-                  </td>
-                  <td style="width: 32pt; border: 1pt solid #000">
-                     <p
-                        class="s10"
-                        style="
-                        padding-top: 2pt;
-                        padding-left: 5pt;
-                        text-indent: 0pt;
-                        text-align: left;
-                        "
-                        >
-                        {{site_survey.aantal_per_etage.twelfth}}
-                     </p>
-                  </td>
-               </tr>
-               <tr style="height: 16pt">
-                  <td style="width: 161pt; border: 1pt solid #000">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        Klopt de BAG met de realiteit?
-                     </p>
-                  </td>
-                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        {{site_survey.kiogt_de_bag_met_de_realiteit}}
-                     </p>
-                  </td>
-               </tr>
-               <tr style="height: 16pt">
-                  <td style="width: 161pt; border: 1pt solid #000">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        Geschatte hoogte van de site
-                     </p>
-                  </td>
-                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        {{site_survey.geschatte_hoogte_van_de_site}}
-                     </p>
-                  </td>
-               </tr>
-               <tr style="height: 16pt">
-                  <td style="width: 161pt; border: 1pt solid #000">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        Stijgpunt
-                     </p>
-                  </td>
-                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        {{site_survey.stijgpunt}}
-                     </p>
-                  </td>
-               </tr>
-               <tr style="height: 16pt">
-                  <td style="width: 161pt; border: 1pt solid #000">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        Hoogwerker nodig?
-                     </p>
-                  </td>
-                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        {{site_survey.hoogwerker_nodig}}
-                     </p>
-                  </td>
-               </tr>
-               <tr style="height: 15pt">
-                  <td style="width: 161pt; border: 1pt solid #000">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        Site ID
-                     </p>
-                  </td>
-                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        {{site_survey.site_id}}
-                     </p>
-                  </td>
-               </tr>
-               <tr style="height: 14pt">
-                  <td style="width: 161pt; border: 1pt solid #000">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        Adressen die behoren tot de site
-                     </p>
-                  </td>
-                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        {{site_survey.adressen_die_behoren_tot_de_site}}
-                     </p>
-                  </td>
-               </tr>
-               <tr style="height: 14pt">
-                  <td style="width: 161pt; border: 1pt solid #000">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        Meerdere VVE/Beheerders?
-                     </p>
-                  </td>
-                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        {{site_survey.meerdere_vve_beheerders}}
-                     </p>
-                  </td>
-               </tr>
-               <tr style="height: 22pt">
-                  <td style="width: 161pt; border: 1pt solid #000">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        Beheer (Email)
-                     </p>
-                  </td>
-                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
-                     <p style="padding-left: 5pt; text-align: left">
-                        <a href="mailto:{{site_survey.beheer_contact.email}}">
-                        {{site_survey.beheer_contact.email}}
-                        </a>
-                     </p>
-                  </td>
-               </tr>
-               <tr style="height: 22pt">
-                  <td style="width: 161pt; border: 1pt solid #000">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        Beheer (Telefoon)
-                     </p>
-                  </td>
-                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        {{site_survey.beheer_contact.telefoon}}
-                     </p>
-                  </td>
-               </tr>
-               <tr style="height: 13pt">
-                  <td style="width: 161pt; border: 1pt solid #000">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        Contactpersoon beheer
-                     </p>
-                  </td>
-                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        {{site_survey.contactpersoon_beheer}}
-                     </p>
-                  </td>
-               </tr>
-               <tr style="height: 12pt">
-                  <td style="width: 161pt; border: 1pt solid #000">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        Contactpersoon site
-                     </p>
-                  </td>
-                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        {{site_survey.contactpersoon_site}}
-                     </p>
-                  </td>
-               </tr>
-               <tr style="height: 12pt">
-                  <td style="width: 161pt; border: 1pt solid #000">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        Toegang site via
-                     </p>
-                  </td>
-                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        {{site_survey.toegang_site_via}}
-                     </p>
-                  </td>
-               </tr>
-               <tr style="height: 12pt">
-                  <td style="width: 161pt; border: 1pt solid #000" bgcolor="#B3B3B3">
-                     <p class="s9" style="padding-left: 5pt; text-align: left; font-weight: bold">
-                        Aanwezigen tijdens survey
-                     </p>
-                  </td>
-                  <td style="width: 248pt; border: 1pt solid #000" colspan="9" bgcolor="#B3B3B3">
-                     <p class="s9" style="padding-left: 5pt; text-align: left; font-weight: bold">
-                        Naam
-                     </p>
-                  </td>
-                  <td style="width: 119pt; border: 1pt solid #000" colspan="5" bgcolor="#B3B3B3">
-                     <p class="s9" style="padding-left: 6pt; text-align: left; font-weight: bold">
-                        Telefoonnummer
-                     </p>
-                  </td>
-               </tr>
-               <tr style="height: 12pt">
-                  <td style="width: 161pt; border: 1pt solid #000">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        GLASVEZELNET AMSTERDAM
-                     </p>
-                  </td>
-                  <td style="width: 248pt; border: 1pt solid #000" colspan="9">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        {{site_survey.aanwezigen_tijdens_survey.naam}}
-                     </p>
-                  </td>
-                  <td style="width: 119pt; border: 1pt solid #000" colspan="5">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        {{site_survey.aanwezigen_tijdens_survey.telefoonnummer}}
-                     </p>
-                  </td>
-               </tr>
-               <tr style="height: 12pt">
-                  <td style="width: 528pt; border: 1pt solid #000" colspan="15" bgcolor="#B3B3B3">
-                     <p class="s9" style="padding-left: 5pt; text-align: left; font-weight: bold">
-                        Installatiegegevens
-                     </p>
-                  </td>
-               </tr>
-               <tr style="height: 17pt">
-                  <td style="width: 161pt; border: 1pt solid #000">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        Locatie in- of opvoerpunt
-                     </p>
-                  </td>
-                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        {{site_survey.installatiegegevens.locatie_in_of_opvoerpunt}}
-                     </p>
-                  </td>
-               </tr>
-               <tr style="height: 16pt">
-                  <td style="width: 161pt; border: 1pt solid #000">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        Aantal invoergaten
-                     </p>
-                  </td>
-                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        {{site_survey.installatiegegevens.aantal_invoergaten}}
-                     </p>
-                  </td>
-               </tr>
-               <tr style="height: 16pt">
-                  <td style="width: 161pt; border: 1pt solid #000">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        Mantelbuis of koof toegankelijk?
-                     </p>
-                  </td>
-                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        {{site_survey.installatiegegevens.mantelbuis_of_koof_toegankelijk}}
-                     </p>
-                  </td>
-               </tr>
-               <tr style="height: 12pt">
-                  <td style="width: 161pt; border: 1pt solid #000">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        Bestaande doorvoer gebruiken?
-                     </p>
-                  </td>
-                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        {{site_survey.installatiegegevens.bestaande_doorvoer_gebruiken}}
-                     </p>
-                  </td>
-               </tr>
-               <tr style="height: 16pt">
-                  <td style="width: 161pt; border: 1pt solid #000">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        Locatie glasvezelaansluitpunt
-                     </p>
-                  </td>
-                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        {{site_survey.installatiegegevens.locatie_glasvezelaansluitpunt}}
-                     </p>
-                  </td>
-               </tr>
-               <tr style="height: 16pt">
-                  <td style="width: 161pt; border: 1pt solid #000">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        Locatie CAI AOP
-                     </p>
-                  </td>
-                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        {{site_survey.installatiegegevens.locatie_cai_aop}}
-                     </p>
-                  </td>
-               </tr>
-               <tr style="height: 16pt">
-                  <td style="width: 161pt; border: 1pt solid #000">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        Locatie ISRA
-                     </p>
-                  </td>
-                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        {{site_survey.installatiegegevens.locatie_isra}}
-                     </p>
-                  </td>
-               </tr>
-               <tr style="height: 16pt">
-                  <td style="width: 161pt; border: 1pt solid #000">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        Locatie meterkast
-                     </p>
-                  </td>
-                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        {{site_survey.installatiegegevens.locatie_meterkast}}
-                     </p>
-                  </td>
-               </tr>
-               <tr style="height: 17pt">
-                  <td style="width: 161pt; border: 1pt solid #000">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        Afwijkende huisnummers?
-                     </p>
-                  </td>
-                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        {{site_survey.installatiegegevens.afwijkende_huisnummers}}
-                     </p>
-                  </td>
-               </tr>
-               <tr style="height: 17pt">
-                  <td style="width: 161pt; border: 1pt solid #000">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        230V aanwezig locatie FTU?
-                     </p>
-                  </td>
-                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        {{site_survey.installatiegegevens.230v_aanwezig_locatie_ftu}}
-                     </p>
-                  </td>
-               </tr>
-               <tr style="height: 17pt">
-                  <td style="width: 161pt; border: 1pt solid #000">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        Brandwerende afdichting?
-                     </p>
-                  </td>
-                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        {{site_survey.installatiegegevens.brandwerende_afdichting}}
-                     </p>
-                  </td>
-               </tr>
-               <tr style="height: 17pt">
-                  <td style="width: 161pt; border: 1pt solid #000">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        Interne verdeler (IDP) gebruiken?
-                     </p>
-                  </td>
-                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        {{site_survey.installatiegegevens.interne_verdeler_idp_gebruiken}}
-                     </p>
-                  </td>
-               </tr>
-               <tr style="height: 17pt">
-                  <td style="width: 161pt; border: 1pt solid #000">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        Doorvoerafhankelijk?
-                     </p>
-                  </td>
-                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        {{site_survey.installatiegegevens.doorvoerafhankelijk}}
-                     </p>
-                  </td>
-               </tr>
-               <tr style="height: 17pt">
-                  <td style="width: 161pt; border: 1pt solid #000">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        Ruimte in huidige kabelgoot?
-                     </p>
-                  </td>
-                  <td style="width: 367pt; border: 1pt solid #000" colspan="14">
-                     <p class="s10" style="padding-left: 5pt; text-align: left">
-                        {{site_survey.installatiegegevens.ruimte_in_huidige_kabelgoot}}
-                     </p>
-                  </td>
-               </tr>
-            </table>
-         </div>
+      <div class="header-right">
+        <img src="{{secondLogoUrl}}" alt="KPN NetwerkNL Logo" />
       </div>
-      <!-- Page 4: Hazard Assessment -->
-      <div class="page">
-         <div class="header">
-            <div class="header-left">
-               <img
-                  src="{{firstLogoUrl}}"
-                  alt="ARTEMIS Logo"
-                  />
-            </div>
-            <div class="header-right">
-               <img
-                  src="{{secondLogoUrl}}"
-                  alt="KPN NetwerkNL Logo"
-                  />
-            </div>
-         </div>
-         <div class="page-content">
-            <table class="hazard-table">
-               <tr class="yellow-row">
-                  <td>Brandwerende afdichting aanwezig</td>
-                  <td>Ja/Nee*</strong></td>
-               </tr>
-               <tr class="yellow-row">
-                  <td>Asbest /verontreiniging aanwezig. Woningen voor 1993 gebouwd</td>
-                  <td>
-                     JA/NEE* (in te vullen door gebouw eigenaar/beheerder), bij NEE geen
-                     verder onderzoek nodig / bij JA zie volgende regel
-                  </td>
-               </tr>
-               <tr class="yellow-row">
-                  <td>
-                     Zijn er tekeningen/gegevens met betrekking tot de brandscheidingen
-                     aanwezig en/of beschikbaar?
-                  </td>
-                  <td>(in te vullen door gebouw eigenaar/beheerder)</td>
-               </tr>
-               <tr class="yellow-row">
-                  <td>
-                     Zijn de bestaande doorvoeren (gecertificeerd) brandwerend
-                     uitgevoerd?
-                  </td>
-                  <td>(in te vullen door gebouw eigenaar/beheerder)</td>
-               </tr>
-               <tr class="yellow-row">
-                  <td>
-                     UITKOMST: Asbest/verontreiniging aanwezig het in te volgen
-                     kabeltraject?
-                  </td>
-                  <td>(in te vullen door gebouw eigenaar/beheerder)</td>
-               </tr>
-            </table>
-            <table class="data-table" style="width: 100%;">
-               <tr style="background-color: #c0c0c0; font-weight: bold;">
-                  <td colspan="2"><strong>Opmerkingen</strong></td>
-               </tr>
-               {{#if opmerkingen}}
-               {{#each opmerkingen}}
-               <tr>
-                  <td style="width: 10%;"><strong>{{sr}}.</strong></td>
-                  <td style="width: 90%;">
-                     {{#if title}}
-                     <strong>{{title}}</strong>
-                     {{#if description}}<br /><br />{{description}}{{/if}}
-                     {{else}}
-                     {{#if description}}{{description}}{{/if}}
-                     {{/if}}
-                  </td>
-               </tr>
-               {{/each}}
-               {{else}}
-               <tr>
-                  <td colspan="2" style="text-align: center; font-style: italic; color: #666; padding: 16px;">
-                     Geen opmerkingen beschikbaar
-                  </td>
-               </tr>
-               {{/if}}
-            </table>
-         </div>
+    </div>
+
+    <!-- Page 1: Cover Page (no header) -->
+    <div class="page">
+      <div class="page-content main-page-content-padding" style="text-align: center">
+        <h1>PLAATSINGSDOCUMENT</h1>
+        <div class="Home-page-image-container">
+          <div
+            class="Home-page-image"
+            style="background-image: url('{{locationTableImage}}');"
+          ></div>
+        </div>
+        <table
+          class="data-table"
+          style="
+            width: 60%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            text-align: center;
+            border: 1px solid #ccc;
+          "
+        >
+          <tr>
+            <th style="width: 50%; border: 1px solid #ccc; padding: 8px">
+              BAG Pand ID('s)
+            </th>
+            <td style="width: 50%; border: 1px solid #ccc; padding: 8px">
+              {{locationTable.bag_pand_id}}
+            </td>
+          </tr>
+          <tr>
+            <th style="width: 50%; border: 1px solid #ccc; padding: 8px">
+              HB nr.
+            </th>
+            <td style="width: 50%; border: 1px solid #ccc; padding: 8px">
+              {{locationTable.hb_nr}}
+            </td>
+          </tr>
+          <tr>
+            <th style="width: 50%; border: 1px solid #ccc; padding: 8px">
+              Straat + huisnrs.
+            </th>
+            <td style="width: 50%; border: 1px solid #ccc; padding: 8px">
+              {{locationTable.straat_huisnrs}}
+            </td>
+          </tr>
+          <tr>
+            <th style="width: 50%; border: 1px solid #ccc; padding: 8px">
+              Postcode + Plaats
+            </th>
+            <td style="width: 50%; border: 1px solid #ccc; padding: 8px">
+              {{locationTable.postcode_plaats}}
+            </td>
+          </tr>
+          <tr>
+            <th style="width: 50%; border: 1px solid #ccc; padding: 8px">
+              AP-gebied
+            </th>
+            <td style="width: 50%; border: 1px solid #ccc; padding: 8px">
+              {{locationTable.ap_gebied}}
+            </td>
+          </tr>
+          <tr>
+            <th style="width: 50%; border: 1px solid #ccc; padding: 8px">DP</th>
+            <td style="width: 50%; border: 1px solid #ccc; padding: 8px">
+              {{locationTable.dp}}
+            </td>
+          </tr>
+          <tr>
+            <th style="width: 50%; border: 1px solid #ccc; padding: 8px">
+              Projectnr.
+            </th>
+            <td style="width: 50%; border: 1px solid #ccc; padding: 8px">
+              {{locationTable.projectnr}}
+            </td>
+          </tr>
+          <tr>
+            <th style="width: 50%; border: 1px solid #ccc; padding: 8px">
+              Aannemer
+            </th>
+            <td style="width: 50%; border: 1px solid #ccc; padding: 8px">
+              {{locationTable.aannemer}}
+            </td>
+          </tr>
+          <tr>
+            <th style="width: 50%; border: 1px solid #ccc; padding: 8px">
+              Datum
+            </th>
+            <td style="width: 50%; border: 1px solid #ccc; padding: 8px">
+              {{locationTable.datum}}
+            </td>
+          </tr>
+          <tr>
+            <th style="width: 50%; border: 1px solid #ccc; padding: 8px">
+              Naam Schouwer
+            </th>
+            <td style="width: 50%; border: 1px solid #ccc; padding: 8px">
+              {{locationTable.naam_schouwer}}
+            </td>
+          </tr>
+        </table>
       </div>
-      <!-- Page 5: Location -->
-      <div class="page">
-         <div class="header">
-            <div class="header-left">
-               <img
-                  src={{firstLogoUrl}}
-                  alt="ARTEMIS Logo"
-                  />
-            </div>
-            <div class="header-right">
-               <img
-                  src={{secondLogoUrl}}
-                  alt="KPN NetwerkNL Logo"
-                  />
-            </div>
-         </div>
-         <div class="page-content ">
-            <h2>2. Locatie</h2>
-            <span class="page-content case-{{locatieImages.length}}">
-            {{#each locatieImages}}
-            <img src="{{this.url}}" alt="{{#if this.alt}}{{this.alt}}{{else}}Location Image {{@index}}{{/if}}" />
-            {{/each}}
-            </span>
-         </div>
+    </div>
+
+    <!-- Page 2: Table of Contents (header will auto-appear) -->
+    <div class="page">
+      <div class="page-content main-page-content-padding">
+        <h1>Inhoudsopgave</h1>
+        <ul
+          class="toc-list"
+          style="display: flex; flex-direction: column; gap: 20px"
+        >
+          <li><strong>1. Locatie en installatiegegevens</strong></li>
+          <li><strong>2. Locatie</strong></li>
+          <li><strong>3. Beslisboom</strong></li>
+          <li><strong>4. Aanzicht complex eenheden</strong></li>
+          <li><strong>5. Beschrijving tracé en kabelroute</strong></li>
+          <li><strong>6. Schematische tekening</strong></li>
+          <li><strong>7. Beschrijving aanleg</strong></li>
+          <li><strong>8. Materiaalstaat</strong></li>
+          <li><strong>9. Overeenkomst/instemmingsbesluit</strong></li>
+        </ul>
       </div>
-      <!-- Page 6: Decision Tree -->
-      <div class="page">
-         <div class="header">
-            <div class="header-left">
-               <img
-                  src={{firstLogoUrl}}
-                  alt="ARTEMIS Logo"
-                  />
-            </div>
-            <div class="header-right">
-               <img
-                  src={{secondLogoUrl}}
-                  alt="KPN NetwerkNL Logo"
-                  />
-            </div>
-         </div>
-         <div class="page-content">
-            <h2>3. Beslisboom</h2>
-            <span class="page-content case-{{beslisboomImages.length}}">
-            {{#each beslisboomImages}}
-            <img src="{{this.url}}" alt="{{#if this.alt}}{{this.alt}}{{else}}Location Image {{@index}}{{/if}}" />
-            {{/each}}
-            </span>
-            <hr style=" border-bottom: 2px solid #000;"/>
-            <div class="notes-section">
-               <h3>Uitleg keuze beslisboom door aannemer</h3>
-               <p>{{decisionTree_notesText}}</p>
-            </div>
-         </div>
+    </div>
+
+    <!-- Page 3: Location and Installation Details -->
+    <div class="page">
+      <div class="page-content main-page-content-padding">
+        <h2>1. Locatie en installatiegegevens</h2>
+        <table class="survey-table">
+          <tr style="height: 20pt">
+            <td
+              style="
+                width: 528pt;
+                border-top-style: solid;
+                border-top-width: 1pt;
+                border-left-style: solid;
+                border-left-width: 1pt;
+                border-bottom-style: solid;
+                border-bottom-width: 1pt;
+                border-right-style: solid;
+                border-right-width: 1pt;
+              "
+              colspan="15"
+              bgcolor="#B3B3B3"
+            >
+              <p
+                class="s9"
+                style="
+                  padding-top: 3pt;
+                  padding-left: 5pt;
+                  text-indent: 0pt;
+                  text-align: left;
+                  font-weight: bold;
+                "
+              >
+                Site survey/locatie details
+              </p>
+            </td>
+          </tr>
+          <!-- Datum site survey row -->
+          <tr style="height: 20pt">
+            <td style="width: 161pt; border: 1pt solid #000">
+              <p
+                class="s10"
+                style="
+                  padding-top: 3pt;
+                  padding-left: 5pt;
+                  text-indent: 0pt;
+                  text-align: left;
+                "
+              >
+                Datum site survey
+              </p>
+            </td>
+            <td style="width: 80pt; border: 1pt solid #000" colspan="3">
+              <p
+                class="s10"
+                style="
+                  padding-top: 3pt;
+                  padding-left: 5pt;
+                  text-indent: 0pt;
+                  text-align: left;
+                "
+              >
+                {{site_survey.datum_site_survey}}
+              </p>
+            </td>
+            <td style="width: 183pt; border: 1pt solid #000" colspan="7">
+              <p
+                class="s10"
+                style="
+                  padding-top: 3pt;
+                  padding-left: 5pt;
+                  text-indent: 0pt;
+                  text-align: left;
+                "
+              >
+                Glasvezelvoorbereider: {{site_survey.glasvezelvoorbereider}}
+              </p>
+            </td>
+            <td style="width: 104pt; border: 1pt solid #000" colspan="4">
+              <p
+                class="s10"
+                style="
+                  padding-top: 3pt;
+                  padding-left: 6pt;
+                  text-indent: 0pt;
+                  text-align: left;
+                "
+              >
+                Tel. {{site_survey.telefoon}}
+              </p>
+            </td>
+          </tr>
+          <!-- Type pand row -->
+          <tr style="height: 19pt">
+            <td style="width: 161pt; border: 1pt solid #000">
+              <p
+                class="s10"
+                style="
+                  padding-left: 5pt;
+                  text-indent: 0pt;
+                  line-height: 10pt;
+                  text-align: left;
+                "
+              >
+                Type pandt
+              </p>
+            </td>
+            <td style="width: 80pt; border: 1pt solid #000" colspan="3">
+              <p
+                class="s10"
+                style="
+                  padding-top: 2pt;
+                  padding-left: 5pt;
+                  text-indent: 0pt;
+                  text-align: left;
+                "
+              >
+                App. complex
+                <span class="s11"
+                  >{{#if site_survey.type_pand.app_complex}} ☑ {{else}} ☐
+                  {{/if}}</span
+                >
+              </p>
+            </td>
+            <td style="width: 59pt; border: 1pt solid #000" colspan="3">
+              <p
+                class="s10"
+                style="
+                  padding-top: 2pt;
+                  padding-left: 5pt;
+                  text-indent: 0pt;
+                  text-align: left;
+                "
+              >
+                Duplex
+                <span class="s11"
+                  >{{#if site_survey.type_pand.duplex}} ☑ {{else}} ☐
+                  {{/if}}</span
+                >
+              </p>
+            </td>
+            <td style="width: 124pt; border: 1pt solid #000" colspan="4">
+              <p
+                class="s10"
+                style="
+                  padding-top: 2pt;
+                  padding-left: 5pt;
+                  text-indent: 0pt;
+                  text-align: left;
+                "
+              >
+                Comm. ruimte aanwezig
+                <span class="s11"
+                  >{{#if site_survey.type_pand.comm_ruimte_aanwezig}} ☑
+                  {{else}} ☐ {{/if}}</span
+                >
+              </p>
+            </td>
+            <td style="width: 104pt; border: 1pt solid #000" colspan="4">
+              <p
+                class="s10"
+                style="
+                  padding-top: 2pt;
+                  padding-left: 6pt;
+                  text-indent: 0pt;
+                  text-align: left;
+                "
+              >
+                Anders
+                <span class="s11"
+                  >{{#if site_survey.type_pand.anders}} ☑ {{else}} ☐
+                  {{/if}}</span
+                >
+              </p>
+            </td>
+          </tr>
+          <!-- Other survey fields -->
+          <tr style="height: 15pt">
+            <td style="width: 161pt; border: 1pt solid #000">
+              <p
+                class="s10"
+                style="
+                  padding-left: 5pt;
+                  text-indent: 0pt;
+                  line-height: 10pt;
+                  text-align: left;
+                "
+              >
+                Monumentaal pand ja/nee?
+              </p>
+            </td>
+            <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+              <p
+                class="s10"
+                style="
+                  padding-top: 1pt;
+                  padding-left: 5pt;
+                  text-indent: 0pt;
+                  text-align: left;
+                "
+              >
+                {{site_survey.monumentaal_pand_janes}}
+              </p>
+            </td>
+          </tr>
+          <tr style="height: 15pt">
+            <td style="width: 161pt; border: 1pt solid #000">
+              <p
+                class="s10"
+                style="
+                  padding-top: 1pt;
+                  padding-left: 5pt;
+                  text-indent: 0pt;
+                  text-align: left;
+                "
+              >
+                Type woningen
+              </p>
+            </td>
+            <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+              <p
+                class="s10"
+                style="
+                  padding-top: 1pt;
+                  padding-left: 5pt;
+                  text-indent: 0pt;
+                  text-align: left;
+                "
+              >
+                {{site_survey.type_woningen}}
+              </p>
+            </td>
+          </tr>
+          <tr style="height: 15pt">
+            <td style="width: 161pt; border: 1pt solid #000">
+              <p
+                class="s10"
+                style="
+                  padding-top: 1pt;
+                  padding-left: 5pt;
+                  text-indent: 0pt;
+                  text-align: left;
+                "
+              >
+                Aantal woningen
+              </p>
+            </td>
+            <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+              <p
+                class="s10"
+                style="
+                  padding-top: 1pt;
+                  padding-left: 5pt;
+                  text-indent: 0pt;
+                  text-align: left;
+                "
+              >
+                {{site_survey.aantal_woningen}}
+              </p>
+            </td>
+          </tr>
+          <!-- ETAGE HEADER ROW - WITH KD ADDED -->
+          <tr style="height: 24pt">
+            <td style="width: 161pt; border: 1pt solid #000" bgcolor="#BFBFBF">
+              <p
+                class="s10"
+                style="
+                  padding-top: 5pt;
+                  padding-left: 5pt;
+                  text-indent: 0pt;
+                  text-align: left;
+                "
+              >
+                Etage
+              </p>
+            </td>
+            <!-- NEW KD COLUMN -->
+            <td style="width: 29pt; border: 1pt solid #000" bgcolor="#BFBFBF">
+              <p
+                class="s10"
+                style="
+                  padding-left: 5pt;
+                  text-indent: 0pt;
+                  line-height: 10pt;
+                  text-align: left;
+                "
+              >
+                K
+              </p>
+              <p
+                class="s10"
+                style="
+                  padding-top: 1pt;
+                  padding-left: 5pt;
+                  text-indent: 0pt;
+                  text-align: left;
+                "
+              >
+                D
+              </p>
+            </td>
+            <td style="width: 22pt; border: 1pt solid #000" bgcolor="#BFBFBF">
+              <p
+                class="s10"
+                style="
+                  padding-left: 5pt;
+                  text-indent: 0pt;
+                  line-height: 10pt;
+                  text-align: left;
+                "
+              >
+                B
+              </p>
+              <p
+                class="s10"
+                style="
+                  padding-top: 1pt;
+                  padding-left: 5pt;
+                  text-indent: 0pt;
+                  text-align: left;
+                "
+              >
+                G
+              </p>
+            </td>
+            <td style="width: 29pt; border: 1pt solid #000" bgcolor="#BFBFBF">
+              <p
+                class="s10"
+                style="padding-top: 5pt; text-indent: 0pt; text-align: center"
+              >
+                1
+              </p>
+            </td>
+            <td style="width: 29pt; border: 1pt solid #000" bgcolor="#BFBFBF">
+              <p
+                class="s10"
+                style="padding-top: 5pt; text-indent: 0pt; text-align: center"
+              >
+                2
+              </p>
+            </td>
+            <td style="width: 22pt; border: 1pt solid #000" bgcolor="#BFBFBF">
+              <p
+                class="s10"
+                style="padding-top: 5pt; text-indent: 0pt; text-align: center"
+              >
+                3
+              </p>
+            </td>
+            <td style="width: 29pt; border: 1pt solid #000" bgcolor="#BFBFBF">
+              <p
+                class="s10"
+                style="
+                  padding-top: 5pt;
+                  padding-left: 2pt;
+                  padding-right: 1pt;
+                  text-indent: 0pt;
+                  text-align: center;
+                "
+              >
+                4
+              </p>
+            </td>
+            <td style="width: 29pt; border: 1pt solid #000" bgcolor="#BFBFBF">
+              <p
+                class="s10"
+                style="
+                  padding-top: 5pt;
+                  padding-left: 1pt;
+                  text-indent: 0pt;
+                  text-align: center;
+                "
+              >
+                5
+              </p>
+            </td>
+            <td style="width: 29pt; border: 1pt solid #000" bgcolor="#BFBFBF">
+              <p
+                class="s10"
+                style="
+                  padding-top: 5pt;
+                  padding-left: 2pt;
+                  text-indent: 0pt;
+                  text-align: center;
+                "
+              >
+                6
+              </p>
+            </td>
+            <td style="width: 30pt; border: 1pt solid #000" bgcolor="#BFBFBF">
+              <p
+                class="s10"
+                style="
+                  padding-top: 5pt;
+                  padding-left: 2pt;
+                  text-indent: 0pt;
+                  text-align: center;
+                "
+              >
+                7
+              </p>
+            </td>
+            <td style="width: 29pt; border: 1pt solid #000" bgcolor="#BFBFBF">
+              <p
+                class="s10"
+                style="
+                  padding-top: 5pt;
+                  padding-left: 1pt;
+                  text-indent: 0pt;
+                  text-align: center;
+                "
+              >
+                8
+              </p>
+            </td>
+            <td style="width: 29pt; border: 1pt solid #000" bgcolor="#BFBFBF">
+              <p
+                class="s10"
+                style="
+                  padding-top: 5pt;
+                  padding-left: 2pt;
+                  text-indent: 0pt;
+                  text-align: center;
+                "
+              >
+                9
+              </p>
+            </td>
+            <td style="width: 29pt; border: 1pt solid #000" bgcolor="#BFBFBF">
+              <p
+                class="s10"
+                style="
+                  padding-top: 5pt;
+                  padding-left: 10pt;
+                  text-indent: 0pt;
+                  text-align: left;
+                "
+              >
+                10
+              </p>
+            </td>
+            <td style="width: 29pt; border: 1pt solid #000" bgcolor="#BFBFBF">
+              <p
+                class="s10"
+                style="
+                  padding-top: 5pt;
+                  padding-left: 10pt;
+                  text-indent: 0pt;
+                  text-align: left;
+                "
+              >
+                11
+              </p>
+            </td>
+            <td style="width: 32pt; border: 1pt solid #000" bgcolor="#BFBFBF">
+              <p
+                class="s10"
+                style="
+                  padding-top: 5pt;
+                  padding-left: 10pt;
+                  text-indent: 0pt;
+                  text-align: left;
+                "
+              >
+                12
+              </p>
+            </td>
+          </tr>
+          <!-- AANTAL PER ETAGE DATA ROW - WITH KD ADDED -->
+          <tr style="height: 17pt">
+            <td style="width: 161pt; border: 1pt solid #000">
+              <p
+                class="s10"
+                style="
+                  padding-top: 2pt;
+                  padding-left: 5pt;
+                  text-indent: 0pt;
+                  text-align: left;
+                "
+              >
+                Aantal per etage
+              </p>
+            </td>
+            <!-- NEW KD DATA CELL -->
+            <td style="width: 29pt; border: 1pt solid #000">
+              <p
+                class="s10"
+                style="
+                  padding-top: 2pt;
+                  padding-left: 5pt;
+                  text-indent: 0pt;
+                  text-align: left;
+                "
+              >
+                {{site_survey.aantal_per_etage.K_D}}
+              </p>
+            </td>
+            <td style="width: 22pt; border: 1pt solid #000">
+              <p
+                class="s10"
+                style="
+                  padding-top: 2pt;
+                  padding-left: 5pt;
+                  text-indent: 0pt;
+                  text-align: left;
+                "
+              >
+                {{site_survey.aantal_per_etage.B_G}}
+              </p>
+            </td>
+            <td style="width: 29pt; border: 1pt solid #000">
+              <p
+                class="s10"
+                style="
+                  padding-top: 2pt;
+                  padding-left: 5pt;
+                  text-indent: 0pt;
+                  text-align: left;
+                "
+              >
+                {{site_survey.aantal_per_etage.first}}
+              </p>
+            </td>
+            <td style="width: 29pt; border: 1pt solid #000">
+              <p
+                class="s10"
+                style="
+                  padding-top: 2pt;
+                  padding-left: 5pt;
+                  text-indent: 0pt;
+                  text-align: left;
+                "
+              >
+                {{site_survey.aantal_per_etage.second}}
+              </p>
+            </td>
+            <td style="width: 22pt; border: 1pt solid #000">
+              <p
+                class="s10"
+                style="
+                  padding-top: 2pt;
+                  padding-left: 5pt;
+                  text-indent: 0pt;
+                  text-align: left;
+                "
+              >
+                {{site_survey.aantal_per_etage.third}}
+              </p>
+            </td>
+            <td style="width: 29pt; border: 1pt solid #000">
+              <p
+                class="s10"
+                style="
+                  padding-top: 2pt;
+                  padding-left: 5pt;
+                  text-indent: 0pt;
+                  text-align: left;
+                "
+              >
+                {{site_survey.aantal_per_etage.fourth}}
+              </p>
+            </td>
+            <td style="width: 29pt; border: 1pt solid #000">
+              <p
+                class="s10"
+                style="
+                  padding-top: 2pt;
+                  padding-left: 5pt;
+                  text-indent: 0pt;
+                  text-align: left;
+                "
+              >
+                {{site_survey.aantal_per_etage.fifth}}
+              </p>
+            </td>
+            <td style="width: 29pt; border: 1pt solid #000">
+              <p
+                class="s10"
+                style="
+                  padding-top: 2pt;
+                  padding-left: 5pt;
+                  text-indent: 0pt;
+                  text-align: left;
+                "
+              >
+                {{site_survey.aantal_per_etage.sixth}}
+              </p>
+            </td>
+            <td style="width: 30pt; border: 1pt solid #000">
+              <p
+                class="s10"
+                style="
+                  padding-top: 2pt;
+                  padding-left: 5pt;
+                  text-indent: 0pt;
+                  text-align: left;
+                "
+              >
+                {{site_survey.aantal_per_etage.seventh}}
+              </p>
+            </td>
+            <td style="width: 29pt; border: 1pt solid #000">
+              <p
+                class="s10"
+                style="
+                  padding-top: 2pt;
+                  padding-left: 5pt;
+                  text-indent: 0pt;
+                  text-align: left;
+                "
+              >
+                {{site_survey.aantal_per_etage.eighth}}
+              </p>
+            </td>
+            <td style="width: 29pt; border: 1pt solid #000">
+              <p
+                class="s10"
+                style="
+                  padding-top: 2pt;
+                  padding-left: 5pt;
+                  text-indent: 0pt;
+                  text-align: left;
+                "
+              >
+                {{site_survey.aantal_per_etage.ninth}}
+              </p>
+            </td>
+            <td style="width: 29pt; border: 1pt solid #000">
+              <p
+                class="s10"
+                style="
+                  padding-top: 2pt;
+                  padding-left: 5pt;
+                  text-indent: 0pt;
+                  text-align: left;
+                "
+              >
+                {{site_survey.aantal_per_etage.tenth}}
+              </p>
+            </td>
+            <td style="width: 29pt; border: 1pt solid #000">
+              <p
+                class="s10"
+                style="
+                  padding-top: 2pt;
+                  padding-left: 5pt;
+                  text-indent: 0pt;
+                  text-align: left;
+                "
+              >
+                {{site_survey.aantal_per_etage.eleventh}}
+              </p>
+            </td>
+            <td style="width: 32pt; border: 1pt solid #000">
+              <p
+                class="s10"
+                style="
+                  padding-top: 2pt;
+                  padding-left: 5pt;
+                  text-indent: 0pt;
+                  text-align: left;
+                "
+              >
+                {{site_survey.aantal_per_etage.twelfth}}
+              </p>
+            </td>
+          </tr>
+          <tr style="height: 16pt">
+            <td style="width: 161pt; border: 1pt solid #000">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                Klopt de BAG met de realiteit?
+              </p>
+            </td>
+            <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                {{site_survey.kiogt_de_bag_met_de_realiteit}}
+              </p>
+            </td>
+          </tr>
+          <tr style="height: 16pt">
+            <td style="width: 161pt; border: 1pt solid #000">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                Geschatte hoogte van de site
+              </p>
+            </td>
+            <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                {{site_survey.geschatte_hoogte_van_de_site}}
+              </p>
+            </td>
+          </tr>
+          <tr style="height: 16pt">
+            <td style="width: 161pt; border: 1pt solid #000">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                Stijgpunt
+              </p>
+            </td>
+            <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                {{site_survey.stijgpunt}}
+              </p>
+            </td>
+          </tr>
+          <tr style="height: 16pt">
+            <td style="width: 161pt; border: 1pt solid #000">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                Hoogwerker nodig?
+              </p>
+            </td>
+            <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                {{site_survey.hoogwerker_nodig}}
+              </p>
+            </td>
+          </tr>
+          <tr style="height: 15pt">
+            <td style="width: 161pt; border: 1pt solid #000">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                Site ID
+              </p>
+            </td>
+            <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                {{site_survey.site_id}}
+              </p>
+            </td>
+          </tr>
+          <tr style="height: 14pt">
+            <td style="width: 161pt; border: 1pt solid #000">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                Adressen die behoren tot de site
+              </p>
+            </td>
+            <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                {{site_survey.adressen_die_behoren_tot_de_site}}
+              </p>
+            </td>
+          </tr>
+          <tr style="height: 14pt">
+            <td style="width: 161pt; border: 1pt solid #000">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                Meerdere VVE/Beheerders?
+              </p>
+            </td>
+            <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                {{site_survey.meerdere_vve_beheerders}}
+              </p>
+            </td>
+          </tr>
+          <tr style="height: 22pt">
+            <td style="width: 161pt; border: 1pt solid #000">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                Beheer (Email)
+              </p>
+            </td>
+            <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+              <p style="padding-left: 5pt; text-align: left">
+                <a href="mailto:{{site_survey.beheer_contact.email}}">
+                  {{site_survey.beheer_contact.email}}
+                </a>
+              </p>
+            </td>
+          </tr>
+          <tr style="height: 22pt">
+            <td style="width: 161pt; border: 1pt solid #000">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                Beheer (Telefoon)
+              </p>
+            </td>
+            <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                {{site_survey.beheer_contact.telefoon}}
+              </p>
+            </td>
+          </tr>
+          <tr style="height: 13pt">
+            <td style="width: 161pt; border: 1pt solid #000">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                Contactpersoon beheer
+              </p>
+            </td>
+            <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                {{site_survey.contactpersoon_beheer}}
+              </p>
+            </td>
+          </tr>
+          <tr style="height: 12pt">
+            <td style="width: 161pt; border: 1pt solid #000">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                Contactpersoon site
+              </p>
+            </td>
+            <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                {{site_survey.contactpersoon_site}}
+              </p>
+            </td>
+          </tr>
+          <tr style="height: 12pt">
+            <td style="width: 161pt; border: 1pt solid #000">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                Toegang site via
+              </p>
+            </td>
+            <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                {{site_survey.toegang_site_via}}
+              </p>
+            </td>
+          </tr>
+          <tr style="height: 12pt">
+            <td style="width: 161pt; border: 1pt solid #000" bgcolor="#B3B3B3">
+              <p
+                class="s9"
+                style="padding-left: 5pt; text-align: left; font-weight: bold"
+              >
+                Aanwezigen tijdens survey
+              </p>
+            </td>
+            <td
+              style="width: 248pt; border: 1pt solid #000"
+              colspan="9"
+              bgcolor="#B3B3B3"
+            >
+              <p
+                class="s9"
+                style="padding-left: 5pt; text-align: left; font-weight: bold"
+              >
+                Naam
+              </p>
+            </td>
+            <td
+              style="width: 119pt; border: 1pt solid #000"
+              colspan="5"
+              bgcolor="#B3B3B3"
+            >
+              <p
+                class="s9"
+                style="padding-left: 6pt; text-align: left; font-weight: bold"
+              >
+                Telefoonnummer
+              </p>
+            </td>
+          </tr>
+          <tr style="height: 12pt">
+            <td style="width: 161pt; border: 1pt solid #000">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                GLASVEZELNET AMSTERDAM
+              </p>
+            </td>
+            <td style="width: 248pt; border: 1pt solid #000" colspan="9">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                {{site_survey.aanwezigen_tijdens_survey.naam}}
+              </p>
+            </td>
+            <td style="width: 119pt; border: 1pt solid #000" colspan="5">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                {{site_survey.aanwezigen_tijdens_survey.telefoonnummer}}
+              </p>
+            </td>
+          </tr>
+          <tr style="height: 12pt">
+            <td
+              style="width: 528pt; border: 1pt solid #000"
+              colspan="15"
+              bgcolor="#B3B3B3"
+            >
+              <p
+                class="s9"
+                style="padding-left: 5pt; text-align: left; font-weight: bold"
+              >
+                Installatiegegevens
+              </p>
+            </td>
+          </tr>
+          <tr style="height: 17pt">
+            <td style="width: 161pt; border: 1pt solid #000">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                Locatie in- of opvoerpunt
+              </p>
+            </td>
+            <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                {{site_survey.installatiegegevens.locatie_in_of_opvoerpunt}}
+              </p>
+            </td>
+          </tr>
+          <tr style="height: 16pt">
+            <td style="width: 161pt; border: 1pt solid #000">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                Aantal invoergaten
+              </p>
+            </td>
+            <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                {{site_survey.installatiegegevens.aantal_invoergaten}}
+              </p>
+            </td>
+          </tr>
+          <tr style="height: 16pt">
+            <td style="width: 161pt; border: 1pt solid #000">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                Mantelbuis of koof toegankelijk?
+              </p>
+            </td>
+            <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                {{site_survey.installatiegegevens.mantelbuis_of_koof_toegankelijk}}
+              </p>
+            </td>
+          </tr>
+          <tr style="height: 12pt">
+            <td style="width: 161pt; border: 1pt solid #000">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                Bestaande doorvoer gebruiken?
+              </p>
+            </td>
+            <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                {{site_survey.installatiegegevens.bestaande_doorvoer_gebruiken}}
+              </p>
+            </td>
+          </tr>
+          <tr style="height: 16pt">
+            <td style="width: 161pt; border: 1pt solid #000">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                Locatie glasvezelaansluitpunt
+              </p>
+            </td>
+            <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                {{site_survey.installatiegegevens.locatie_glasvezelaansluitpunt}}
+              </p>
+            </td>
+          </tr>
+          <tr style="height: 16pt">
+            <td style="width: 161pt; border: 1pt solid #000">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                Locatie CAI AOP
+              </p>
+            </td>
+            <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                {{site_survey.installatiegegevens.locatie_cai_aop}}
+              </p>
+            </td>
+          </tr>
+          <tr style="height: 16pt">
+            <td style="width: 161pt; border: 1pt solid #000">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                Locatie ISRA
+              </p>
+            </td>
+            <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                {{site_survey.installatiegegevens.locatie_isra}}
+              </p>
+            </td>
+          </tr>
+          <tr style="height: 16pt">
+            <td style="width: 161pt; border: 1pt solid #000">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                Locatie meterkast
+              </p>
+            </td>
+            <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                {{site_survey.installatiegegevens.locatie_meterkast}}
+              </p>
+            </td>
+          </tr>
+          <tr style="height: 17pt">
+            <td style="width: 161pt; border: 1pt solid #000">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                Afwijkende huisnummers?
+              </p>
+            </td>
+            <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                {{site_survey.installatiegegevens.afwijkende_huisnummers}}
+              </p>
+            </td>
+          </tr>
+          <tr style="height: 17pt">
+            <td style="width: 161pt; border: 1pt solid #000">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                230V aanwezig locatie FTU?
+              </p>
+            </td>
+            <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                {{site_survey.installatiegegevens.230v_aanwezig_locatie_ftu}}
+              </p>
+            </td>
+          </tr>
+          <tr style="height: 17pt">
+            <td style="width: 161pt; border: 1pt solid #000">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                Brandwerende afdichting?
+              </p>
+            </td>
+            <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                {{site_survey.installatiegegevens.brandwerende_afdichting}}
+              </p>
+            </td>
+          </tr>
+          <tr style="height: 17pt">
+            <td style="width: 161pt; border: 1pt solid #000">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                Interne verdeler (IDP) gebruiken?
+              </p>
+            </td>
+            <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                {{site_survey.installatiegegevens.interne_verdeler_idp_gebruiken}}
+              </p>
+            </td>
+          </tr>
+          <tr style="height: 17pt">
+            <td style="width: 161pt; border: 1pt solid #000">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                Doorvoerafhankelijk?
+              </p>
+            </td>
+            <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                {{site_survey.installatiegegevens.doorvoerafhankelijk}}
+              </p>
+            </td>
+          </tr>
+          <tr style="height: 17pt">
+            <td style="width: 161pt; border: 1pt solid #000">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                Ruimte in huidige kabelgoot?
+              </p>
+            </td>
+            <td style="width: 367pt; border: 1pt solid #000" colspan="14">
+              <p class="s10" style="padding-left: 5pt; text-align: left">
+                {{site_survey.installatiegegevens.ruimte_in_huidige_kabelgoot}}
+              </p>
+            </td>
+          </tr>
+        </table>
       </div>
-      <!-- Page 7: Building View -->
-      <div class="page">
-         <div class="header">
-            <div class="header-left">
-               <img
-                  src={{firstLogoUrl}}
-                  alt="ARTEMIS Logo"
-                  />
-            </div>
-            <div class="header-right">
-               <img
-                  src={{secondLogoUrl}}
-                  alt="KPN NetwerkNL Logo"
-                  />
-            </div>
-         </div>
-         <div class="page-content">
-            <h2>4. Aanzicht complex eenheden</h2>
-            <span class="page-content case-{{aanzichtComplexImages.length}}">
-            {{#each aanzichtComplexImages}}
-            <img src="{{this.url}}" alt="{{#if this.alt}}{{this.alt}}{{else}}Location Image {{@index}}{{/if}}" />
-            {{/each}}
-            </span>
-         </div>
+    </div>
+
+    <!-- Page 4: Hazard Assessment -->
+    <div class="page">
+      <div class="page-content main-page-content-padding">
+        <table class="hazard-table">
+          <tr class="yellow-row">
+            <td>Brandwerende afdichting aanwezig</td>
+            <td>Ja/Nee*</td>
+          </tr>
+          <tr class="yellow-row">
+            <td>
+              Asbest /verontreiniging aanwezig. Woningen voor 1993 gebouwd
+            </td>
+            <td>
+              JA/NEE* (in te vullen door gebouw eigenaar/beheerder), bij NEE
+              geen verder onderzoek nodig / bij JA zie volgende regel
+            </td>
+          </tr>
+          <tr class="yellow-row">
+            <td>
+              Zijn er tekeningen/gegevens met betrekking tot de brandscheidingen
+              aanwezig en/of beschikbaar?
+            </td>
+            <td>(in te vullen door gebouw eigenaar/beheerder)</td>
+          </tr>
+          <tr class="yellow-row">
+            <td>
+              Zijn de bestaande doorvoeren (gecertificeerd) brandwerend
+              uitgevoerd?
+            </td>
+            <td>(in te vullen door gebouw eigenaar/beheerder)</td>
+          </tr>
+          <tr class="yellow-row">
+            <td>
+              UITKOMST: Asbest/verontreiniging aanwezig het in te volgen
+              kabeltraject?
+            </td>
+            <td>(in te vullen door gebouw eigenaar/beheerder)</td>
+          </tr>
+        </table>
+        <table class="data-table" style="width: 100%">
+          <tr style="background-color: #c0c0c0; font-weight: bold">
+            <td colspan="2"><strong>Opmerkingen</strong></td>
+          </tr>
+          {{#if opmerkingen}} {{#each opmerkingen}}
+          <tr>
+            <td style="width: 10%"><strong>{{sr}}.</strong></td>
+            <td style="width: 90%">
+              {{#if title}}
+              <strong>{{title}}</strong>
+              {{#if description}}<br /><br />{{description}}{{/if}} {{else}}
+              {{#if description}}{{description}}{{/if}} {{/if}}
+            </td>
+          </tr>
+          {{/each}} {{else}}
+          <tr>
+            <td
+              colspan="2"
+              style="
+                text-align: center;
+                font-style: italic;
+                color: #666;
+                padding: 16px;
+              "
+            >
+              Geen opmerkingen beschikbaar
+            </td>
+          </tr>
+          {{/if}}
+        </table>
       </div>
-      <!-- Page 8: Cable Route Description -->
-      <div class="page">
-         <div class="header">
-            <div class="header-left">
-               <img
-                  src={{firstLogoUrl}}
-                  alt="ARTEMIS Logo"
-                  />
-            </div>
-            <div class="header-right">
-               <img
-                  src={{secondLogoUrl}}
-                  alt="KPN NetwerkNL Logo"
-                  />
-            </div>
-         </div>
-         <div class="page-content">
-            <h2>5. Beschrijving tracé en kabelroute</h2>
-            <h3>Invoerpunten</h3>
-            <span class="page-content case-{{beschrijvingInvoerpuntenImages.length}}">
-            {{#each beschrijvingInvoerpuntenImages}}
-            <img src="{{this.url}}" alt="{{#if this.alt}}{{this.alt}}{{else}}Location Image {{@index}}{{/if}}" />
-            {{/each}}
-            </span>
-            <p>
-               <strong
-                  >Dit is het stijgpunt, vanaf hier worden de kabels naar boven
-               gebracht.</strong
-                  >
-            </p>
-         </div>
+    </div>
+
+    <!-- Page 5: Location -->
+    <div class="page">
+      <div class="page-content main-page-content-padding">
+        <h2>2. Locatie</h2>
+        <span class="page-content case-{{locatieImages.length}}">
+          {{#each locatieImages}}
+          <img
+            src="{{this.url}}"
+            alt="{{#if this.alt}}{{this.alt}}{{else}}Location Image {{@index}}{{/if}}"
+          />
+          {{/each}}
+        </span>
       </div>
-      <!-- Page 9: FTU Location -->
-      <div class="page">
-         <div class="header">
-            <div class="header-left">
-               <img
-                  src={{firstLogoUrl}}
-                  alt="ARTEMIS Logo"
-                  />
-            </div>
-            <div class="header-right">
-               <img
-                  src={{secondLogoUrl}}
-                  alt="KPN NetwerkNL Logo"
-                  />
-            </div>
-         </div>
-         <h2>Locatie FTU:</h2>
-         <span class="page-content case-{{locatieFTUImages.length}}">
-         {{#each locatieFTUImages}}
-         <img src="{{this.url}}" alt="{{#if this.alt}}{{this.alt}}{{else}}Location Image {{@index}}{{/if}}" />
-         {{/each}}
-         </span>
+    </div>
+
+    <!-- Page 6: Decision Tree -->
+    <div class="page">
+      <div class="page-content main-page-content-padding">
+        <h2>3. Beslisboom</h2>
+        <span class="page-content case-{{beslisboomImages.length}}">
+          {{#each beslisboomImages}}
+          <img
+            src="{{this.url}}"
+            alt="{{#if this.alt}}{{this.alt}}{{else}}Location Image {{@index}}{{/if}}"
+          />
+          {{/each}}
+        </span>
+        <hr style="border-bottom: 2px solid #000" />
+        <div class="notes-section">
+          <h3>Uitleg keuze beslisboom door aannemer</h3>
+          <p>{{decisionTree_notesText}}</p>
+        </div>
       </div>
-      <!-- Page 10: Schematic Drawing -->
-      <div class="page">
-         <div class="header">
-            <div class="header-left">
-               <img
-                  src={{firstLogoUrl}}
-                  alt="ARTEMIS Logo"
-                  />
-            </div>
-            <div class="header-right">
-               <img
-                  src={{secondLogoUrl}}
-                  alt="KPN NetwerkNL Logo"
-                  />
-            </div>
-         </div>
-         <div class="page-content">
-            <h2>6. Schematische tekening</h2>
-            <span class="page-content case-{{schematischeTekeningImages.length}}">
-            {{#each schematischeTekeningImages}}
-            <img src="{{this.url}}" alt="{{#if this.alt}}{{this.alt}}{{else}}Location Image {{@index}}{{/if}}" />
-            {{/each}}
-            </span>
-         </div>
+    </div>
+
+    <!-- Page 7: Building View -->
+    <div class="page">
+      <div class="page-content main-page-content-padding>
+        <h2>4. Aanzicht complex eenheden</h2>
+        <span class="page-content case-{{aanzichtComplexImages.length}}">
+          {{#each aanzichtComplexImages}}
+          <img
+            src="{{this.url}}"
+            alt="{{#if this.alt}}{{this.alt}}{{else}}Location Image {{@index}}{{/if}}"
+          />
+          {{/each}}
+        </span>
       </div>
-      <!-- Pages 11: Additional sections -->
-      <div class="page">
-         <div class="header">
-            <div class="header-left">
-               <img
-                  src={{firstLogoUrl}}
-                  alt="ARTEMIS Logo"
-                  />
-            </div>
-            <div class="header-right">
-               <img
-                  src={{secondLogoUrl}}
-                  alt="KPN NetwerkNL Logo"
-                  />
-            </div>
-         </div>
-         <div class="page-content">
-            <h2>7. Beschrijving aanleg</h2>
-            <h3 style="font-size: 18px;">Planning:</h3>
-            <p style="font-size: 16px;">
-               De woningen worden per streng gepland (verticale stijging). Dit betekent
-               dat wij, m.b.t. de doorvoer, van alle bewoners afhankelijk zijn om de
-               woningen vanaf de begane grond tot aan de hoogste etage gelijktijdig aan
-               te kunnen sluiten. Bewoners worden doormiddel van een afspraakbrief op
-               de hoogte gesteld, op welke datum en dagdeel de aansluiting wordt
-               gerealiseerd.
-            </p>
-            <h3 style="font-size: 18px; padding-top: 20px;">Afwerking van kabels en invoer/doorvoer gaten.</h3>
-            <p style="font-size: 16px;">
-               De invoeren die gemaakt worden voor het glasvezeltraject in de woning/ het complex, worden na het invoeren van de glasvezelkabel zorgvuldig dichtgemaakt met daarvoor gebruikelijke afdichtingsmateriaal.
-            </p>
-            <p style="font-size: 16px;">
-               Dit afdichtingsmateriaal is waterdicht en gas-belemmerend en voldoet aan de Nederlandse NENnorm 2768.
-            </p>
-            <p style="font-size: 16px;">
-               Alle door ons te maken doorvoeren door brandwerende muren en plafonds (scheidingsconstructies) worden volgens de normen brandwerend afgewerkt.
-            </p>
-            <p style="font-size: 16px;">
-               Met betrekking tot de doorvoeren op/vanuit zorgplicht, artikel 1.16 Naar
-               Bouwbesluit en/of de Woningwet, maken wij u erop attent dat de eisen aan
-               de weerstand tegen branddoorslag, brandoverslag en rookdoorgang zoals
-               gesteld worden in de afdichtingsmateriaal voorschriften dat bestaande en
-               nieuwe doorvoeren (al dan niet na het aanbrengen en/of wijzigingen)
-               inclusief samenhangende voorzieningen (zoals brandwerende
-               brandmanchetten) adequaat beheerd, onderhouden en gecontroleerd dienen
-               te worden. Mocht blijken dat niet meer aan de voorschriften van het
-               bouwbesluit wordt voldaan, dienen deze tekortkomingen direct worden
-               hersteld.
-            </p>
-            <h3 style="font-size: 18px; padding-top: 25px;">Montagevoorschrift:</h3>
-            <ol style="font-size: 16px; padding-left: 40px;">
-               <li>Bestraling en/of groen openleggen bij invoerpunt.</li>
-               <li>
-                  Doorvoer bij iedere woning hoort gasdicht te worden achtergelaten.
-               </li>
-               <li>
-                  Alle kabels voorzien van het juiste huisnummer en verdiepingnummer.
-               </li>
-               <li>Alle kabels dienen te worden afgedicht d.m.v. eindkap.</li>
-               <li>
-                  Alle geboorde doorvoeren dienen gasdicht te worden achtergelaten.
-               </li>
-               <li>
-                  Geopende bestraling/plantsoen dichtleggen en waar nodig herstellen.
-               </li>
-               <li>
-                  Na afloop werkzaamheden dient de werkplek schoon en opgeruimd te
-                  worden achtergelaten.
-               </li>
-            </ol>
-         </div>
+    </div>
+
+    <!-- Page 8: Cable Route Description -->
+    <div class="page">
+      <div class="page-content main-page-content-padding">
+        <h2>5. Beschrijving tracé en kabelroute</h2>
+        <h3>Invoerpunten</h3>
+        <span
+          class="page-content case-{{beschrijvingInvoerpuntenImages.length}}"
+        >
+          {{#each beschrijvingInvoerpuntenImages}}
+          <img
+            src="{{this.url}}"
+            alt="{{#if this.alt}}{{this.alt}}{{else}}Location Image {{@index}}{{/if}}"
+          />
+          {{/each}}
+        </span>
+        <p>
+          <strong
+            >Dit is het stijgpunt, vanaf hier worden de kabels naar boven
+            gebracht.</strong
+          >
+        </p>
       </div>
-      <!-- Page 12: Work Description and Technical Specifications -->
-      <div class="page">
-         <div class="header">
-            <div class="header-left">
-               <img
-                  src={{firstLogoUrl}}
-                  alt="ARTEMIS Logo"
-                  />
-            </div>
-            <div class="header-right">
-               <img
-                  src={{secondLogoUrl}}
-                  alt="KPN NetwerkNL Logo"
-                  />
-            </div>
-         </div>
-         <div class="page-content">
-            <h3 style="font-size: 18px;">Werkomschrijving:</h3>
-            <ul style="list-style: none; margin: 10px 0; font-size: 16px; padding-left: 20px;">
-               <li>
-                  ☑ Vanaf tracé naar de gevel van het pand graven/pneumatisch boren.
-               </li>
-               <li>
-                  ☑ Bij de invoerpunten worden de kabels, via de route binnendoor naar
-                  de aansluitpunten verlegd.
-               </li>
-               <li>☑ Routering binnendoor.</li>
-               <li>
-                  ☑ De glasvezelaansluitpunten (FTU's) worden in de berging geplaatst.
-               </li>
-            </ul>
-            <h3 style="font-size: 18px; padding-top: 30px;">Strenglijsten</h3>
-            <p style="font-size: 16px; padding-top: 10px;">
-               Geschatte in- of opvoerpunt per woning staan onder de foto's vermeld.
-               Indien onduidelijk vragen aub.
-            </p>
-            <p style="font-size: 16px; padding-top: 30px;">
-               De geschatte in- of opvoerpunt van de glasvezelkabel is de lengte die op
-               rol gelegd bij het invoerpunt van het complex.
-               <strong>Let op:</strong> aantal meters is inclusief overmaat.
-            </p>
-            <p style="font-size: 16px; padding-top: 30px;">
-               GLASVEZELNET AMSTERDAM B.V. is niet verantwoordelijk
-               voor de 230 volt voorziening.
-            </p>
-            <p style="color: red; font-size: 16px;">
-               * Indien er om uitvoeringstechnische redenen afgeweken dient te
-               worden van de invoeringswijze zoals beschreven in het getekende
-               installatiedocument, zal in overleg met de contactpersoon ter plaatse
-               een nieuw technisch uitvoerbaar tracé worden bepaald.
-            </p>
-            <table class="survey-table" style="margin-top: 30px; width: 80%;">
-               <tr style="font-size: 16px;">
-                  <th>Adres</th>
-                  <th>Hnr</th>
-                  <th>Lengte</th>
-                  <th>Invoer</th>
-                  <th>St.p</th>
-                  <th>DP</th>
-                  <th>Streng ID</th>
-               </tr>
-               {{#each strenglijsten}}
-               <tr style="font-size: 14px;">
-                  <td>{{adres}}</td>
-                  <td>{{hnr}}</td>
-                  <td>{{lengte}}</td>
-                  <td>{{invoer}}</td>
-                  <td>{{stp}}</td>
-                  <td>{{dp}}</td>
-                  <td>{{strengId}}</td>
-               </tr>
-               {{/each}}
-            </table>
-         </div>
+    </div>
+
+    <!-- Page 9: FTU Location -->
+    <div class="page">
+      <div class="page-content main-page-content-padding">
+        <h2>Locatie FTU:</h2>
+        <span class="page-content case-{{locatieFTUImages.length}}">
+          {{#each locatieFTUImages}}
+          <img
+            src="{{this.url}}"
+            alt="{{#if this.alt}}{{this.alt}}{{else}}Location Image {{@index}}{{/if}}"
+          />
+          {{/each}}
+        </span>
       </div>
-      <!-- Page 13: Materials List -->
-      <div class="page">
-         <div class="header">
-            <div class="header-left">
-               <img
-                  src={{firstLogoUrl}}
-                  alt="ARTEMIS Logo"
-                  />
-            </div>
-            <div class="header-right">
-               <img
-                  src={{secondLogoUrl}}
-                  alt="KPN NetwerkNL Logo"
-                  />
-            </div>
-         </div>
-         <div class="page-content">
-            <h2>8. Materiaalstaat</h2>
-            <table class="survey-table">
-               <tr style="font-size: 14px;">
-                  <th>Omschrijving</th>
-                  <th>Aantal</th>
-                  <th>Type</th>
-                  <th>Huidige te gebruiken?</th>
-               </tr>
-               <tr style="font-size: 14px;">
-                  <td>Schroeven</td>
-                  <td></td>
-                  <td>Dozen 4x40</td>
-                  <td>Nee</td>
-               </tr>
-               <tr style="font-size: 14px;">
-                  <td>RVS schroeven</td>
-                  <td></td>
-                  <td>Dozen 4x40</td>
-                  <td></td>
-               </tr>
-               <tr style="font-size: 14px;">
-                  <td>Stoplas</td>
-                  <td></td>
-                  <td>Kokers</td>
-                  <td>Nee</td>
-               </tr>
-               <tr style="font-size: 14px;">
-                  <td>Clips</td>
-                  <td></td>
-                  <td>Zak</td>
-                  <td></td>
-               </tr>
-               <tr style="font-size: 14px;">
-                  <td>Krimpkous</td>
-                  <td></td>
-                  <td>Rol</td>
-                  <td></td>
-               </tr>
-               <tr style="font-size: 14px;">
-                  <td>Kit</td>
-                  <td></td>
-                  <td>Tubes</td>
-                  <td></td>
-               </tr>
-               <tr style="font-size: 14px;">
-                  <td>Pluggen</td>
-                  <td></td>
-                  <td>Dozen 6 mm</td>
-                  <td></td>
-               </tr>
-               <tr style="font-size: 14px;">
-                  <td>FTU</td>
-                  <td>3</td>
-                  <td>TRIO</td>
-                  <td></td>
-               </tr>
-               <tr style="font-size: 14px;">
-                  <td>PVS goot</td>
-                  <td>Mtr</td>
-                  <td></td>
-                  <td></td>
-               </tr>
-               <tr style="font-size: 14px;">
-                  <td>Kunststof goot (grijs)</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-               </tr>
-               <tr style="font-size: 14px;">
-                  <td>Fwart(s) flex</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-               </tr>
-               <tr style="font-size: 14px;">
-                  <td>IDP</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-               </tr>
-               <tr style="font-size: 14px;">
-                  <td>Type kabel</td>
-                  <td>DAC</td>
-                  <td></td>
-                  <td></td>
-               </tr>
-               <tr style="font-size: 14px;">
-                  <td>Brandwerende afwerking</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-               </tr>
-               <tr style="font-size: 14px;">
-                  <td>muurplug</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-               </tr>
-            </table>
-            <p style="margin: 20px 0; font-size: 14px">
-               Standaard verbruiksmateriaal; Pluggen, schroeven, trekontlasting, kit,
-               Stoplas, krimpkous, flexibele buis, tube, parasulum, beugels en
-               vulbusjes.
-            </p>
-            <p style="margin-top: 40px; font-size: 16px;">
-               Akkoord voor uitvoering van de in dit document beschreven hoogbouw.
-            </p>
-            <p style="margin-top: 30px; font-size: 16px;">Betreffende sitelocatie {{siteLocationName}} te Amsterdam.</p>
-            <p style="margin-top: 30px; font-size: 16px;">Uitvoering zoals beschreven in dit document.</p>
-            <div style="margin-top: 40px">
-               <p style="font-size: 16px;"><strong>Voor akkoord:</strong></p>
-               <div
-                  style="
-                  display: flex;
-                  gap: 100px;
-                  margin-top: 20px;
-                  "
-                  >
-                  <div>
-                     <p>Namens {{siteLocationName}}</p>
-                     <div
-                        style="
-                        border-bottom: 1px solid #000;
-                        width: 200px;
-                        margin: 20px 0;
-                        "
-                        ></div>
-                  </div>
-                  <div>
-                     <p>Namens Artemis Naam:</p>
-                     <p>Naam:</p>
-                  </div>
-               </div>
-               <div
-                  style="
-                  display: flex;
-                  gap: 100px;
-                  margin-top: 80px;
-                  "
-                  >
-                  <div>
-                     <p>Handtekening:_____________________</p>
-                  </div>
-                  <div>
-                     <p>Handtekening:_____________________</p>
-                  </div>
-               </div>
-            </div>
-         </div>
+    </div>
+
+    <!-- Page 10: Schematic Drawing -->
+    <div class="page">
+      <div class="page-content main-page-content-padding">
+        <h2>6. Schematische tekening</h2>
+        <span class="page-content case-{{schematischeTekeningImages.length}}">
+          {{#each schematischeTekeningImages}}
+          <img
+            src="{{this.url}}"
+            alt="{{#if this.alt}}{{this.alt}}{{else}}Location Image {{@index}}{{/if}}"
+          />
+          {{/each}}
+        </span>
       </div>
-      <!-- Page 14: Agreement Contract -->
-      <div class="page">
-         <div class="header">
-            <div class="header-left">
-               <img
-                  src={{firstLogoUrl}}
-                  alt="ARTEMIS Logo"
-                  />
-            </div>
-            <div class="header-right">
-               <img
-                  src={{secondLogoUrl}}
-                  alt="KPN NetwerkNL Logo"
-                  />
-            </div>
-         </div>
-         <div class="page-content">
-            <h2 style="font-weight: lighter;">8. OVEREENKOMST</h2>
-            <h3 style=" text-decoration: underline; font-size: 16px;">DEELOVEREENKOMST GLASVEZELNET AMSTERDAM B.V.</h3>
-            <p style="margin-top: 20px;">
-               <strong>BEHORENDE BIJ DE RAAMOVEREENKOMST REGGEBIED TTM B.V.</strong>
-            </p>
-            <p>
-               <strong>
-               STREKKENDE TOT DE VERKRIJGING VAN EEN GEBRUIKSRECHT VOOR ONBEPAALDE TIJD
-               BETREFFENDE DE AANLEG EN INSTANDHOUDING VAN KABELS EN/OF LEIDINGEN MET
-               BIJBEHORENDE IN, OP OF BOVEN PARTICULIERE GRONDEN EN GEBOUWEN.
-               </strong>
-            </p>
-            <p style="margin-top: 20px; font-size: 17px;"><strong>Partijen:</strong></p>
-            <ol style="padding-left: 30px; font-size: 16px;">
-               <li>
-                  <strong style=" text-decoration: underline;">Glasvezelnet Amsterdam B.V.</strong>, een besloten
-                  vennootschap met beperkte aansprakelijkheid, statutair gevestigd te
-                  Rijssen en kantoorhoudende aan de Stationsstraat 115 te (8911 MH)
-                  Amersfoort, te dezen vertegenwoordigd door haar projectmanager de heer
-                  R. Suurd, als gevolmachtigde, hierna te noemen: "de Gerechtigde";
-               </li>
-            </ol>
-            <p style="margin-top: 20px; margin-bottom: 20px; font-size: 16px;"> en</p>
-            <ol start="2" style="padding-left: 30px; font-size: 16px;">
-               <li>
-                  Statutair gevestigd te Amsterdam, kantoorhoudende aan
-                  <strong>{{siteLocationName}}</strong>, geregistreerd in het handelsregister van
-                  de Kamer van Koophandel onder nummer _________________ te dezen
-                  vertegenwoordigd door _________________ in zijn/haar hoedanigheid als
-                  beheerder wonen, hierna te noemen: "_________________".
-               </li>
-            </ol>
-            <p style="margin-top: 20px; font-size: 17px;"><strong>OVEREENGEKOMEN DAT:</strong></p>
-            <ul style="padding-left: 30px; font-size: 16px; margin-top: 10px;">
-               <li >
-                  Partijen een raamovereenkomst inzake de vestiging van meerdere
-                  gebruiksrechten ten behoeve van het aanleggen, in stand houden en
-                  opruimen van Kabels zijn aangegaan (hierna de
-                  <strong>Raamovereenkomst</strong>);
-               </li>
-               <li>
-                  De Grondeigenaar aan Gerechtigde een Gebruiksrecht wenst te verlenen.
-               </li>
-               <li>Partijen het navolgende zijn overeengekomen:</li>
-            </ul>
-            <p style="margin-top: 20px; font-size: 17px;"><strong>KOMEN HET VOLGENDE OVEREEN:</strong></p>
-            <p style="margin-top: 20px; font-size: 16px; "><strong>Artikel 1 Gebruiksrecht</strong></p>
-            <p style="margin-left: 20px; margin-top: 15px; font-size: 16px; ">
-               1.1 Onder de voorwaarden zoals uiteengezet in de Raamovereenkomst,
-               verleent de Grondeigenaar aan de Gerechtigde een Gebruiksrecht
-               inhoudende het leggen, hebben, houden en onderhouden, verwijderen of
-               vervangen van een of meer telecommunicatie- en/of andere leidingen, een
-               en ander technisch telecommunicatienetwerk in de grond van en/of het
-               Perceel/de Percelen in het bijgesloten installatiedocument, welke deel
-               uitmaakt van deze overeenkomst. (zie bijlage)
-            </p>
-         </div>
+    </div>
+
+    <!-- Page 11: Additional sections -->
+    <div class="page">
+      <div class="page-content main-page-content-padding">
+        <h2>7. Beschrijving aanleg</h2>
+        <h3 style="font-size: 18px">Planning:</h3>
+        <p style="font-size: 16px">
+          De woningen worden per streng gepland (verticale stijging). Dit
+          betekent dat wij, m.b.t. de doorvoer, van alle bewoners afhankelijk
+          zijn om de woningen vanaf de begane grond tot aan de hoogste etage
+          gelijktijdig aan te kunnen sluiten. Bewoners worden doormiddel van een
+          afspraakbrief op de hoogte gesteld, op welke datum en dagdeel de
+          aansluiting wordt gerealiseerd.
+        </p>
+        <h3 style="font-size: 18px; padding-top: 20px">
+          Afwerking van kabels en invoer/doorvoer gaten.
+        </h3>
+        <p style="font-size: 16px">
+          De invoeren die gemaakt worden voor het glasvezeltraject in de woning/
+          het complex, worden na het invoeren van de glasvezelkabel zorgvuldig
+          dichtgemaakt met daarvoor gebruikelijke afdichtingsmateriaal.
+        </p>
+        <p style="font-size: 16px">
+          Dit afdichtingsmateriaal is waterdicht en gas-belemmerend en voldoet
+          aan de Nederlandse NENnorm 2768.
+        </p>
+        <p style="font-size: 16px">
+          Alle door ons te maken doorvoeren door brandwerende muren en plafonds
+          (scheidingsconstructies) worden volgens de normen brandwerend
+          afgewerkt.
+        </p>
+        <p style="font-size: 16px">
+          Met betrekking tot de doorvoeren op/vanuit zorgplicht, artikel 1.16
+          Naar Bouwbesluit en/of de Woningwet, maken wij u erop attent dat de
+          eisen aan de weerstand tegen branddoorslag, brandoverslag en
+          rookdoorgang zoals gesteld worden in de afdichtingsmateriaal
+          voorschriften dat bestaande en nieuwe doorvoeren (al dan niet na het
+          aanbrengen en/of wijzigingen) inclusief samenhangende voorzieningen
+          (zoals brandwerende brandmanchetten) adequaat beheerd, onderhouden en
+          gecontroleerd dienen te worden. Mocht blijken dat niet meer aan de
+          voorschriften van het bouwbesluit wordt voldaan, dienen deze
+          tekortkomingen direct worden hersteld.
+        </p>
+        <h3 style="font-size: 18px; padding-top: 25px">Montagevoorschrift:</h3>
+        <ol style="font-size: 16px; padding-left: 40px">
+          <li>Bestraling en/of groen openleggen bij invoerpunt.</li>
+          <li>
+            Doorvoer bij iedere woning hoort gasdicht te worden achtergelaten.
+          </li>
+          <li>
+            Alle kabels voorzien van het juiste huisnummer en verdiepingnummer.
+          </li>
+          <li>Alle kabels dienen te worden afgedicht d.m.v. eindkap.</li>
+          <li>
+            Alle geboorde doorvoeren dienen gasdicht te worden achtergelaten.
+          </li>
+          <li>
+            Geopende bestraling/plantsoen dichtleggen en waar nodig herstellen.
+          </li>
+          <li>
+            Na afloop werkzaamheden dient de werkplek schoon en opgeruimd te
+            worden achtergelaten.
+          </li>
+        </ol>
       </div>
-      <!-- Page 15: Agreement Continuation and Signatures -->
-      <div class="page">
-         <div class="header">
-            <div class="header-left">
-               <img
-                  src={{firstLogoUrl}}
-                  alt="ARTEMIS Logo"
-                  />
+    </div>
+
+    <!-- Page 12: Work Description and Technical Specifications -->
+    <div class="page">
+      <div class="page-content main-page-content-padding">
+        <h3 style="font-size: 18px">Werkomschrijving:</h3>
+        <ul
+          style="
+            list-style: none;
+            margin: 10px 0;
+            font-size: 16px;
+            padding-left: 20px;
+          "
+        >
+          <li>
+            ☑ Vanaf tracé naar de gevel van het pand graven/pneumatisch boren.
+          </li>
+          <li>
+            ☑ Bij de invoerpunten worden de kabels, via de route binnendoor
+            naar de aansluitpunten verlegd.
+          </li>
+          <li>☑ Routering binnendoor.</li>
+          <li>
+            ☑ De glasvezelaansluitpunten (FTU's) worden in de berging
+            geplaatst.
+          </li>
+        </ul>
+        <h3 style="font-size: 18px; padding-top: 30px">Strenglijsten</h3>
+        <p style="font-size: 16px; padding-top: 10px">
+          Geschatte in- of opvoerpunt per woning staan onder de foto's vermeld.
+          Indien onduidelijk vragen aub.
+        </p>
+        <p style="font-size: 16px; padding-top: 30px">
+          De geschatte in- of opvoerpunt van de glasvezelkabel is de lengte die
+          op rol gelegd bij het invoerpunt van het complex.
+          <strong>Let op:</strong> aantal meters is inclusief overmaat.
+        </p>
+        <p style="font-size: 16px; padding-top: 30px">
+          GLASVEZELNET AMSTERDAM B.V. is niet verantwoordelijk voor de 230 volt
+          voorziening.
+        </p>
+        <p style="color: red; font-size: 16px">
+          * Indien er om uitvoeringstechnische redenen afgeweken dient te worden
+          van de invoeringswijze zoals beschreven in het getekende
+          installatiedocument, zal in overleg met de contactpersoon ter plaatse
+          een nieuw technisch uitvoerbaar tracé worden bepaald.
+        </p>
+        <table class="survey-table" style="margin-top: 30px; width: 80%">
+          <tr style="font-size: 16px">
+            <th>Adres</th>
+            <th>Hnr</th>
+            <th>Lengte</th>
+            <th>Invoer</th>
+            <th>St.p</th>
+            <th>DP</th>
+            <th>Streng ID</th>
+          </tr>
+          {{#each strenglijsten}}
+          <tr style="font-size: 14px">
+            <td>{{adres}}</td>
+            <td>{{hnr}}</td>
+            <td>{{lengte}}</td>
+            <td>{{invoer}}</td>
+            <td>{{stp}}</td>
+            <td>{{dp}}</td>
+            <td>{{strengId}}</td>
+          </tr>
+          {{/each}}
+        </table>
+      </div>
+    </div>
+
+    <!-- Page 13: Materials List -->
+    <div class="page">
+      <div class="page-content main-page-content-padding">
+        <h2>8. Materiaalstaat</h2>
+        <table class="survey-table">
+          <tr style="font-size: 14px">
+            <th>Omschrijving</th>
+            <th>Aantal</th>
+            <th>Type</th>
+            <th>Huidige te gebruiken?</th>
+          </tr>
+          <tr style="font-size: 14px">
+            <td>Schroeven</td>
+            <td></td>
+            <td>Dozen 4x40</td>
+            <td>Nee</td>
+          </tr>
+          <tr style="font-size: 14px">
+            <td>RVS schroeven</td>
+            <td></td>
+            <td>Dozen 4x40</td>
+            <td></td>
+          </tr>
+          <tr style="font-size: 14px">
+            <td>Stoplas</td>
+            <td></td>
+            <td>Kokers</td>
+            <td>Nee</td>
+          </tr>
+          <tr style="font-size: 14px">
+            <td>Clips</td>
+            <td></td>
+            <td>Zak</td>
+            <td></td>
+          </tr>
+          <tr style="font-size: 14px">
+            <td>Krimpkous</td>
+            <td></td>
+            <td>Rol</td>
+            <td></td>
+          </tr>
+          <tr style="font-size: 14px">
+            <td>Kit</td>
+            <td></td>
+            <td>Tubes</td>
+            <td></td>
+          </tr>
+          <tr style="font-size: 14px">
+            <td>Pluggen</td>
+            <td></td>
+            <td>Dozen 6 mm</td>
+            <td></td>
+          </tr>
+          <tr style="font-size: 14px">
+            <td>FTU</td>
+            <td>3</td>
+            <td>TRIO</td>
+            <td></td>
+          </tr>
+          <tr style="font-size: 14px">
+            <td>PVS goot</td>
+            <td>Mtr</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr style="font-size: 14px">
+            <td>Kunststof goot (grijs)</td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr style="font-size: 14px">
+            <td>Fwart(s) flex</td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr style="font-size: 14px">
+            <td>IDP</td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr style="font-size: 14px">
+            <td>Type kabel</td>
+            <td>DAC</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr style="font-size: 14px">
+            <td>Brandwerende afwerking</td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr style="font-size: 14px">
+            <td>muurplug</td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </table>
+        <p style="margin: 10px 0; font-size: 14px">
+          Standaard verbruiksmateriaal; Pluggen, schroeven, trekontlasting, kit,
+          Stoplas, krimpkous, flexibele buis, tube, parasulum, beugels en
+          vulbusjes.
+        </p>
+        <p style="margin-top: 20px; font-size: 16px">
+          Akkoord voor uitvoering van de in dit document beschreven hoogbouw.
+        </p>
+        <p style="margin-top: 20px; font-size: 16px">
+          Betreffende sitelocatie {{siteLocationName}} te Amsterdam.
+        </p>
+        <p style="margin-top: 20px; font-size: 16px">
+          Uitvoering zoals beschreven in dit document.
+        </p>
+        <div style="margin-top: 30px">
+          <p style="font-size: 16px"><strong>Voor akkoord:</strong></p>
+          <div style="display: flex; gap: 100px; margin-top: 20px">
+            <div>
+              <p>Namens {{siteLocationName}}</p>
+              <div
+                style="
+                  border-bottom: 1px solid #000;
+                  width: 200px;
+                  margin: 20px 0;
+                "
+              ></div>
             </div>
-            <div class="header-right">
-               <img
-                  src={{secondLogoUrl}}
-                  alt="KPN NetwerkNL Logo"
-                  />
+            <div>
+              <p>Namens Artemis Naam:</p>
+              <p>Naam:</p>
             </div>
-         </div>
-         <div class="page-content">
-            <p style="margin-left: 20px; margin-top: 15px; font-size: 16px;">
-               1.2 De Grondeigenaar verklaart onbekend te zijn dat in of op of in de
-               nabijheid van de gronden en woningen als omschreven in artikel 1.1 van
-               deze overeenkomst vervuiling aanwezig is.
-            </p>
-            <p style="margin-left: 20px; margin-top: 15px; font-size: 16px;">
-               1.3 Indien en voor zover er bij de Grondeigenaar vervuiling bekend is
-               zal de Grondeigenaar alsdan de bij haar bekende informatie bij de
-               ondertekening van deze overeenkomst verstrekken.
-            </p>
-            <p style="margin-left: 20px; margin-top: 15px; font-size: 16px;">1.4 Deze deelovereenkomst gaat in per datum ondertekening.</p>
-            <p style="margin-left: 20px; margin-top: 15px; font-size: 16px;">
-               1.5 Deze deelovereenkomst maakt integraal onderdeel uit van de
-               Raamovereenkomst.
-            </p>
-            <p style="margin-left: 20px; margin-top: 15px; font-size: 16px;">
-               1.6 De Grondeigenaar verklaart thans geen plannen te hebben of bekend te
-               zijn met zodanige plannen om binnen vijf jaar na ondertekening van deze
-               deelovereenkomst ingrijpende wijzigingen door te voeren, zoals sloop,
-               renovatie, splitsing en samenvoeging van het Perceel.
-            </p>
-            <p style="margin: 30px 0; font-size: 18px;">
-               <strong
-                  >Aldus overeengekomen en in tweevoud opgemaakt en ondertekend,</strong
-                  >
-            </p>
+          </div>
+          <div style="display: flex; gap: 100px; margin-top: 80px">
+            <div>
+              <p>Handtekening:_____________________</p>
+            </div>
+            <div>
+              <p>Handtekening:_____________________</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page 14: Agreement Contract -->
+    <div class="page">
+      <div class="page-content main-page-content-padding">
+        <h2 style="font-weight: lighter">8. OVEREENKOMST</h2>
+        <h3 style="text-decoration: underline; font-size: 16px">
+          DEELOVEREENKOMST GLASVEZELNET AMSTERDAM B.V.
+        </h3>
+        <p style="margin-top: 20px">
+          <strong>BEHORENDE BIJ DE RAAMOVEREENKOMST REGGEBIED TTM B.V.</strong>
+        </p>
+        <p>
+          <strong>
+            STREKKENDE TOT DE VERKRIJGING VAN EEN GEBRUIKSRECHT VOOR ONBEPAALDE
+            TIJD BETREFFENDE DE AANLEG EN INSTANDHOUDING VAN KABELS EN/OF
+            LEIDINGEN MET BIJBEHORENDE IN, OP OF BOVEN PARTICULIERE GRONDEN EN
+            GEBOUWEN.
+          </strong>
+        </p>
+        <p style="margin-top: 20px; font-size: 17px">
+          <strong>Partijen:</strong>
+        </p>
+        <ol style="padding-left: 30px; font-size: 16px">
+          <li>
+            <strong style="text-decoration: underline"
+              >Glasvezelnet Amsterdam B.V.</strong
+            >, een besloten vennootschap met beperkte aansprakelijkheid,
+            statutair gevestigd te Rijssen en kantoorhoudende aan de
+            Stationsstraat 115 te (8911 MH) Amersfoort, te dezen
+            vertegenwoordigd door haar projectmanager de heer R. Su urd, als
+            gevolmachtigde, hierna te noemen: "de Gerechtigde";
+          </li>
+        </ol>
+        <p style="margin-top: 20px; margin-bottom: 20px; font-size: 16px">en</p>
+        <ol start="2" style="padding-left: 30px; font-size: 16px">
+          <li>
+            Statutair gevestigd te Amsterdam, kantoorhoudende aan
+            <strong>{{siteLocationName}}</strong>, geregistreerd in het
+            handelsregister van de Kamer van Koophandel onder nummer
+            _________________ te dezen vertegenwoordigd door _________________
+            in zijn/haar hoedanigheid als beheerder wonen, hierna te noemen:
+            "_________________".
+          </li>
+        </ol>
+        <p style="margin-top: 20px; font-size: 17px">
+          <strong>OVEREENGEKOMEN DAT:</strong>
+        </p>
+        <ul style="padding-left: 30px; font-size: 16px; margin-top: 10px">
+          <li>
+            Partijen een raamovereenkomst inzake de vestiging van meerdere
+            gebruiksrechten ten behoeve van het aanleggen, in stand houden en
+            opruimen van Kabels zijn aangegaan (hierna de
+            <strong>Raamovereenkomst</strong>);
+          </li>
+          <li>
+            De Grondeigenaar aan Gerechtigde een Gebruiksrecht wenst te
+            verlenen.
+          </li>
+          <li>Partijen het navolgende zijn overeengekomen:</li>
+        </ul>
+        <p style="margin-top: 20px; font-size: 17px">
+          <strong>KOMEN HET VOLGENDE OVEREEN:</strong>
+        </p>
+        <p style="margin-top: 20px; font-size: 16px">
+          <strong>Artikel 1 Gebruiksrecht</strong>
+        </p>
+        <p style="margin-left: 20px; margin-top: 15px; font-size: 16px">
+          1.1 Onder de voorwaarden zoals uiteengezet in de Raamovereenkomst,
+          verleent de Grondeigenaar aan de Gerechtigde een Gebruiksrecht
+          inhoudende het leggen, hebben, houden en onderhouden, verwijderen of
+          vervangen van een of meer telecommunicatie- en/of andere leidingen,
+          een en ander technisch telecommunicatienetwerk in de grond van en/of
+          het Perceel/de Percelen in het bijgesloten installatiedocument, welke
+          deel uitmaakt van deze overeenkomst. (zie bijlage)
+        </p>
+      </div>
+    </div>
+
+    <!-- Page 15: Agreement Continuation and Signatures -->
+    <div class="page">
+      <div class="page-content main-page-content-padding">
+        <p style="margin-left: 20px; margin-top: 15px; font-size: 16px">
+          1.2 De Grondeigenaar verklaart onbekend te zijn dat in of op of in de
+          nabijheid van de gronden en woningen als omschreven in artikel 1.1 van
+          deze overeenkomst vervuiling aanwezig is.
+        </p>
+        <p style="margin-left: 20px; margin-top: 15px; font-size: 16px">
+          1.3 Indien en voor zover er bij de Grondeigenaar vervuiling bekend is
+          zal de Grondeigenaar alsdan de bij haar bekende informatie bij de
+          ondertekening van deze overeenkomst verstrekken.
+        </p>
+        <p style="margin-left: 20px; margin-top: 15px; font-size: 16px">
+          1.4 Deze deelovereenkomst gaat in per datum ondertekening.
+        </p>
+        <p style="margin-left: 20px; margin-top: 15px; font-size: 16px">
+          1.5 Deze deelovereenkomst maakt integraal onderdeel uit van de
+          Raamovereenkomst.
+        </p>
+        <p style="margin-left: 20px; margin-top: 15px; font-size: 16px">
+          1.6 De Grondeigenaar verklaart thans geen plannen te hebben of bekend
+          te zijn met zodanige plannen om binnen vijf jaar na ondertekening van
+          deze deelovereenkomst ingrijpende wijzigingen door te voeren, zoals
+          sloop, renovatie, splitsing en samenvoeging van het Perceel.
+        </p>
+        <p style="margin: 30px 0; font-size: 18px">
+          <strong
+            >Aldus overeengekomen en in tweevoud opgemaakt en
+            ondertekend,</strong
+          >
+        </p>
+        <div
+          style="
+            display: flex;
+            flex-direction: row;
+            gap: 100px;
+            margin-top: 60px;
+          "
+        >
+          <div>
+            <p><strong>Handtekening gerechtigde</strong></p>
             <div
-               style="display: flex; flex-direction: row; gap: 100px; margin-top: 60px"
-               >
-               <div style="">
-                  <p><strong>Handtekening gerechtigde</strong></p>
-                  <div
-                     style="border-bottom: 1px solid #000; width: 200px; margin: 40px 0"
-                     ></div>
-                  <p>Namens Glasvezelnet Amsterdam B.V.</p>
-                  <p>Vertegenwoordigd door:</p>
-                  <br /><br />
-                  <p>De heer R. Suurd</p>
-                  <p>Projectmanager</p>
-                  <br /><br />
-                  <p>Plaats: Amsterdam</p>
-                  <br /><br />
-                  <p>Datum: ______-______-______</p>
-               </div>
-               <div style="">
-                  <p><strong>Handtekening</strong></p>
-                  <div
-                     style="border-bottom: 1px solid #000; width: 200px; margin: 40px 0"
-                     ></div>
-                  <p>Namens {{siteLocationName}}</p>
-                  <p>Vertegenwoordigd door:</p>
-                  <br /><br />
-                  <div
-                     style="border-bottom: 1px solid #000; width: 200px; margin: 20px 0"
-                     ></div>
-                  <br /><br />
-                  <p>Plaats: Amsterdam</p>
-                  <br /><br />
-                  <p>Datum: ______-______-______</p>
-               </div>
-            </div>
-         </div>
+              style="
+                border-bottom: 1px solid #000;
+                width: 200px;
+                margin: 40px 0;
+              "
+            ></div>
+            <p>Namens Glasvezelnet Amsterdam B.V.</p>
+            <p>Vertegenwoordigd door:</p>
+            <br /><br />
+            <p>De heer R. Suurd</p>
+            <p>Projectmanager</p>
+            <br /><br />
+            <p>Plaats: Amsterdam</p>
+            <br /><br />
+            <p>Datum: ______-______-______</p>
+          </div>
+          <div>
+            <p><strong>Handtekening</strong></p>
+            <div
+              style="
+                border-bottom: 1px solid #000;
+                width: 200px;
+                margin: 40px 0;
+              "
+            ></div>
+            <p>Namens {{siteLocationName}}</p>
+            <p>Vertegenwoordigd door:</p>
+            <br /><br />
+            <div
+              style="
+                border-bottom: 1px solid #000;
+                width: 200px;
+                margin: 20px 0;
+              "
+            ></div>
+            <br /><br />
+            <p>Plaats: Amsterdam</p>
+            <br /><br />
+            <p>Datum: ______-______-______</p>
+          </div>
+        </div>
       </div>
-   </body>
+    </div>
+  </body>
 </html>
