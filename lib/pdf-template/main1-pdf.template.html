@@ -482,8 +482,8 @@
       <div class="header-left">
         <img src="{{firstLogoUrl}}" alt="ARTEMIS Logo" />
       </div>
-      <div style="font-weight: bold;">
-       <p>Amsterdam Burgwallen</p>
+      <div style="font-weight: bold">
+        <p>Amsterdam Burgwallen</p>
       </div>
       <div class="header-right">
         <img src="{{secondLogoUrl}}" alt="KPN NetwerkNL Logo" />
@@ -492,7 +492,10 @@
 
     <!-- Page 1: Cover Page (no header) -->
     <div class="page">
-      <div class="page-content main-page-content-padding" style="text-align: center">
+      <div
+        class="page-content main-page-content-padding"
+        style="text-align: center"
+      >
         <h1>PLAATSINGSDOCUMENT</h1>
         <div class="Home-page-image-container">
           <div
@@ -1770,19 +1773,18 @@
 
     <!-- Page 7: Building View -->
     <div class="page">
-      <div class="page-content main-page-content-padding>
+      <div class="page-content main-page-content-padding">
         <h2>4. Aanzicht complex eenheden</h2>
-        <span class="page-content case-{{aanzichtComplexImages.length}}">
+        <div class="page-content case-{{aanzichtComplexImages.length}}">
           {{#each aanzichtComplexImages}}
           <img
             src="{{this.url}}"
             alt="{{#if this.alt}}{{this.alt}}{{else}}Location Image {{@index}}{{/if}}"
           />
           {{/each}}
-        </span>
+        </div>
       </div>
     </div>
-
     <!-- Page 8: Cable Route Description -->
     <div class="page">
       <div class="page-content main-page-content-padding">
@@ -1798,12 +1800,6 @@
           />
           {{/each}}
         </span>
-        <p>
-          <strong
-            >Dit is het stijgpunt, vanaf hier worden de kabels naar boven
-            gebracht.</strong
-          >
-        </p>
       </div>
     </div>
 
@@ -2093,7 +2089,7 @@
           <p style="font-size: 16px"><strong>Voor akkoord:</strong></p>
           <div style="display: flex; gap: 100px; margin-top: 20px">
             <div>
-              <p>Namens {{siteLocationName}}</p>
+              <p>Namens {{site_survey.contactpersoon_beheer}}</p>
               <div
                 style="
                   border-bottom: 1px solid #000;
@@ -2265,7 +2261,7 @@
               "
             ></div>
             <p>Namens {{siteLocationName}}</p>
-            <p>Vertegenwoordigd door:</p>
+            <p>Vertegenwoordigd door: {{site_survey.contactpersoon_beheer}}</p>
             <br /><br />
             <div
               style="
