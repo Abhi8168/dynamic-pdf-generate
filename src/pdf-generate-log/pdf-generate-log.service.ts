@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import {
@@ -22,6 +22,24 @@ export class PdgGenerateLogService {
     return create;
   }
 
+  async updateLog(id, userId, payload, pdfPathUrl) {
+    return await this.pdgGenerateLogModel.findOneAndUpdate(
+      {
+        _id: id,
+        userId: userId,
+      },
+      {
+        $set: {
+          pdfUrl: pdfPathUrl,
+          payload: payload,
+        },
+      },
+      {
+        new: true,
+      },
+    );
+  }
+
   async fetchLogs(limit, skip) {
     const data = await this.pdgGenerateLogModel
       .find({
@@ -35,5 +53,18 @@ export class PdgGenerateLogService {
     });
     return { data, count };
   }
- 
+
+  async getById(id, userDetail) {
+    const data = await this.pdgGenerateLogModel.findOne({
+      _id: id,
+      userId: userDetail._id,
+    });
+    if (!data) {
+      throw new NotFoundException({
+        success: false,
+        message: 'Log not found',
+      });
+    }
+    return data;
+  }
 }

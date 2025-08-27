@@ -74,4 +74,56 @@ export class AppService {
     );
     return { pdfFilePath, fileName };
   }
+
+  async updatePdf(templateId, payload, userDetail) {
+    const pdfTemplate = fs.readFileSync(constants.PDF_TEMPLATE_PATH).toString();
+
+    // Ensure the directaory exists
+    const uploadedPdfDirectory = constants.UPLOADED_PDF_DIRECTORY;
+    await createPath(uploadedPdfDirectory);
+
+    const template = await handlebars.compile(pdfTemplate);
+
+    const htmlContent = await template({
+      ...payload,
+      locationTableImage: payload?.locationTableImage[0]?.url || '',
+      firstLogoUrl: `${process.env.BASE_URI}/static-images/logo1.png`,
+      secondLogoUrl: `${process.env.BASE_URI}/static-images/logo2.png`,
+      beslisboomImages: [
+        {
+          url: `${process.env.BASE_URI}/static-images/Beslisboom.jpg`,
+          alt: 'Aerial Map View',
+        },
+      ],
+    });
+
+    const footerContent = `Plaatsingsdocument: ${payload?.locationTable?.dp || ''} , ${
+      payload?.locationTable?.straat_huisnrs || ''
+    }`;
+
+    const pdfBufferData = await generatePDFBuffer(htmlContent, footerContent);
+
+    if (!pdfBufferData) {
+      throw new BadRequestException({
+        success: false,
+        message: 'Something went wrong',
+      });
+    }
+    // Generate a file name (timestamp, UUID, etc.)
+    const fileName = `generated-${Date.now()}.pdf`;
+
+    const pdfFilePath = `${uploadedPdfDirectory}/${fileName}`;
+
+    // Create a new PDF document
+    fs.writeFileSync(pdfFilePath, pdfBufferData);
+    const pdfPathUrl = join(constants.UPLOADED_PDF_DIRECTORY, fileName);
+    // Log the PDF generation
+    await this.pdgGenerateLogService.updateLog(
+      templateId,
+      userDetail._id,
+      payload,
+      pdfPathUrl,
+    );
+    return { pdfFilePath, fileName };
+  }
 }
