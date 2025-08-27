@@ -58,7 +58,8 @@
 
       /* Cover page specific styling */
       .page.no-header {
-        padding-top: 5mm;
+        padding-top: 5mm !important;
+        margin-top: 5mm !important;
       }
 
       .page.no-header .cover-header {
@@ -87,7 +88,7 @@
 
       .page {
         width: 210mm;
-        min-height: 210mm;
+        min-height: 297mm;
         page-break-after: always;
         padding-left: 15mm;
         padding-right: 15mm;
@@ -375,11 +376,30 @@
         grid-gap: 10px;
       }
 
+      /* ===== Auto Add Top Padding on Page Breaks ===== */
+      .page img {
+        display: block;
+        max-width: 100%;
+        page-break-inside: avoid;
+        page-break-before: auto;
+        page-break-after: auto;
+      }
+
+      /* This forces any new-page-starting image to leave padding below header */
+      .page img::before {
+        content: '';
+        display: block;
+        height: 30mm; /* same as header space */
+      }
+
       @media print {
         .page {
           border: none;
           margin: 0;
           padding: 0;
+        }
+        .page.no-header {
+          padding-top: 5mm !important;
         }
       }
 
@@ -390,7 +410,7 @@
       }
 
       .page-content.case-1 img {
-        width: 100%;
+        width: 400px;
         height: 100%;
         object-fit: contain;
       }
@@ -401,7 +421,7 @@
       }
 
       .page-content.case-2 img {
-        width: 600px;
+        width: 400px;
         height: 100%;
         object-fit: contain;
       }
@@ -412,7 +432,7 @@
         grid-template-rows: 1fr 1fr;
         grid-template-areas:
           'img1 img2'
-          'img3 img3';
+          'img3 img4';
       }
 
       .page-content.case-3 img:nth-child(1) {
@@ -426,7 +446,7 @@
       }
 
       .page-content.case-3 img {
-        width: 100%;
+        width: 400px;
         height: 100%;
         object-fit: contain;
       }
@@ -438,7 +458,7 @@
       }
 
       .page-content.case-4 img {
-        width: 100%;
+        width: 400px;
         height: 100%;
         object-fit: contain;
       }
@@ -470,7 +490,7 @@
       }
 
       .page-content.case-5 img {
-        width: 100%;
+        width: 400px;
         height: 100%;
         object-fit: contain;
       }
